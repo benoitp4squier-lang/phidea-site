@@ -1,0 +1,120 @@
+---
+import ReferenceArticle from "@/components/ReferenceArticle.astro";
+
+const intro = [
+  "Aviation sits under the deepest safety-assurance framework of any regulated industry. Software in flight-critical systems is certified to DO-178C and DO-254; development process follows ARP4754A. That framework was built for deterministic software. Machine learning is not deterministic.",
+  "EASA, the FAA, ICAO, and the UK CAA are each publishing roadmaps that extend existing assurance doctrine to AI. EUROCAE WG-114 and SAE G-34 are drafting the joint standard (ED-324 / AS6983). This page catalogues the primary texts.",
+];
+
+const steps = [
+  {
+    label: "EU — EASA AI Concept Paper Issue 2 (March 2024).",
+    body: "Building on the <a href='https://www.easa.europa.eu/en/document-library/general-publications/easa-artificial-intelligence-roadmap-20' target='_blank' rel='noopener'>AI Roadmap 2.0</a> (May 2023), the <a href='https://www.easa.europa.eu/en/document-library/general-publications/easa-artificial-intelligence-concept-paper-issue-2' target='_blank' rel='noopener'>Concept Paper Issue 2</a> sets the certification expectations for Level 1 and Level 2 ML applications — the human-assistance and human–machine-cooperation tiers. Learning Assurance, Operational Design Domain, and W-shaped development are introduced as formal process requirements."
+  },
+  {
+    label: "US — FAA Roadmap for AI Safety Assurance (July 2024).",
+    body: "The <a href='https://www.faa.gov/media/82891' target='_blank' rel='noopener'>FAA's Roadmap for AI Safety Assurance, Version I</a> sets the US direction. The <a href='https://www.faa.gov/aircraft/air_cert/step/disciplines/artificial_intelligence' target='_blank' rel='noopener'>AIR-600 AI/ML page</a> hosts the agency's certification-specific resources and guidance as it lands."
+  },
+  {
+    label: "Joint standard — EUROCAE WG-114 / SAE G-34 ED-324 / AS6983.",
+    body: "The joint EUROCAE WG-114 and SAE G-34 Process Standard for Development and Certification/Approval of Aeronautical Safety-Related Products Implementing AI is the consensus standard draft. It sits alongside DO-178C and ARP4754A as the AI supplement and is <a href='https://www.eurocae.net/open-consultation-for-ed-324/' target='_blank' rel='noopener'>open for consultation</a>."
+  },
+  {
+    label: "International — ICAO and UK CAA.",
+    body: "ICAO has established an ANC study group on AI and tabled working papers at the 42nd Assembly (2025). The UK CAA's strategy (<a href='https://www.caa.co.uk/about-us/research-and-innovation/artificial-intelligence/' target='_blank' rel='noopener'>CAP3064</a>) covers 2024–2028 with specific regulatory expectations across aerodromes, airspace, and aircraft."
+  },
+  {
+    label: "Process standards already in force.",
+    body: "ML applications still have to live inside the existing assurance stack: DO-178C (software), DO-254 (complex hardware), ARP4754A (aircraft systems development), ARP4761A (safety assessment), Design Assurance Levels A–E, SMS under 14 CFR Part 5. The AI supplement does not replace these — it extends them."
+  },
+  {
+    label: "NTSB and accident-data reflex.",
+    body: "Automation-related accidents carry through <a href='https://data.ntsb.gov/Docket' target='_blank' rel='noopener'>the NTSB's Docket Management System</a>. Each docket contains investigator findings, human-factors analyses, and the supplier data that informs subsequent regulatory direction. Aviation doctrine is disproportionately shaped by accident-data review."
+  },
+];
+
+const sources = [
+  {
+    label: "EU — EASA",
+    desc: "The European Union Aviation Safety Agency's AI concept papers and roadmaps.",
+    urls: [
+      { text: "easa.europa.eu — AI Concept Paper Issue 2", url: "https://www.easa.europa.eu/en/document-library/general-publications/easa-artificial-intelligence-concept-paper-issue-2" },
+      { text: "easa.europa.eu — AI Roadmap 2.0", url: "https://www.easa.europa.eu/en/document-library/general-publications/easa-artificial-intelligence-roadmap-20" },
+    ],
+  },
+  {
+    label: "US — FAA",
+    desc: "Federal Aviation Administration AI roadmap and the AIR-600 certification page.",
+    urls: [
+      { text: "faa.gov — AI Roadmap (PDF)", url: "https://www.faa.gov/media/82891" },
+      { text: "faa.gov — AIR-600 AI/ML", url: "https://www.faa.gov/aircraft/air_cert/step/disciplines/artificial_intelligence" },
+    ],
+  },
+  {
+    label: "International — ICAO",
+    desc: "Assembly working papers and the ANC study group on AI.",
+    urls: [
+      { text: "icao.int — AI in Aviation", url: "https://www.icao.int/Meetings/innovation-series/Pages/Challenges-and-Opportunities-for-Artificial-Intelligence-(AI)-in-Aviation.aspx" },
+    ],
+  },
+  {
+    label: "UK — CAA",
+    desc: "Civil Aviation Authority AI strategy (CAP3064A/B, 2024–2028).",
+    urls: [
+      { text: "caa.co.uk — AI strategy", url: "https://www.caa.co.uk/about-us/research-and-innovation/artificial-intelligence/" },
+    ],
+  },
+  {
+    label: "Joint standard — EUROCAE WG-114 / SAE G-34",
+    desc: "ED-324 / AS6983 Process Standard for AI in Aeronautical Safety-Related Products. Draft open for consultation.",
+    urls: [
+      { text: "eurocae.net — WG-114", url: "https://www.eurocae.net/working-group/wg-114/" },
+      { text: "eurocae.net — ED-324 open consultation", url: "https://www.eurocae.net/open-consultation-for-ed-324/" },
+    ],
+  },
+  {
+    label: "RTCA",
+    desc: "DO-178C stewardship and AI-supplement discussion (SC-240).",
+    urls: [
+      { text: "rtca.org — SC-240", url: "https://www.rtca.org/sc-240/" },
+    ],
+  },
+  {
+    label: "Voices — operators and regulators",
+    desc: "Named figures publishing or speaking on AI in aviation.",
+    urls: [
+      { text: "Guillaume Soudain (EASA, AI Programme Manager)", url: "https://www.linkedin.com/in/guillaume-soudain-12a7a613a/" },
+      { text: "Jon Ostrower (EIC, The Air Current)", url: "https://theaircurrent.com/author/jonostrower/" },
+      { text: "Shawn Pruchnicki (Ohio State, FAA automation project)", url: "https://aviation.osu.edu/people/pruchnicki.4" },
+    ],
+  },
+  {
+    label: "Publications",
+    desc: "Aviation-specific trade press that covers AI certification and automation.",
+    urls: [
+      { text: "theaircurrent.com — The Air Current", url: "https://theaircurrent.com/" },
+      { text: "leehamnews.com — Leeham News (Bjorn's Corner AI series)", url: "https://leehamnews.com/" },
+      { text: "aviationweek.com — Aviation Week Network", url: "https://aviationweek.com/" },
+    ],
+  },
+  {
+    label: "Accident-data reflex",
+    desc: "The US National Transportation Safety Board docket — primary source for automation-related accident investigations.",
+    urls: [
+      { text: "data.ntsb.gov — Docket Management System", url: "https://data.ntsb.gov/Docket" },
+    ],
+  },
+];
+---
+
+<ReferenceArticle
+  variant="aviation"
+  tier="Industry · Aviation"
+  h1="AI in aviation."
+  standfirst="The industry with the deepest safety-assurance framework is extending it to machine learning. Six primary frameworks, one draft joint standard, and the accident-data reflex that shapes the rest."
+  intro={intro}
+  verifyTitle="The primary frameworks."
+  steps={steps}
+  sources={sources}
+  newsletterHook="EASA AI Days readouts, EUROCAE WG-114 plenary dispositions, FAA AIR-600 memos, and any NTSB docket release that cites AI or automation lineage."
+/>

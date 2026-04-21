@@ -2,80 +2,118 @@
 import ReferenceArticle from "@/components/ReferenceArticle.astro";
 
 const intro = [
-  "Banking had model risk management before AI was a marketing word. The governance function that reviews statistical models used in decisioning has been a supervisory expectation since 2011 — SR 11-7 in the US, refreshed in the UK through PRA SS1/23 in 2023. Generative AI sits inside that existing framework.",
-  "What is new is the application. Credit scoring, fraud detection, customer-service agents, and operational-resilience use cases all intersect with a specific primary text. This page catalogues them.",
+  "Banking has had a named model risk management framework since 2011. SR 11-7 was the foundational US supervisory letter. As of April 2026 it has been superseded by SR 26-2, with OCC Bulletin 2026-13 revising the companion national-bank guidance. The governance architecture is the same; the scope and language are updated for LLMs and generative AI.",
+  "The UK refresh landed earlier (PRA SS1/23, May 2023). The EU adds two layers: AI Act credit-scoring provisions and DORA. This page catalogues the primary texts in force, plus the legacy ones still referenced in policy memos.",
 ];
 
 const steps = [
   {
-    label: "US — SR 11-7 and OCC Bulletin 2011-12.",
-    body: "Supervisory Letter on Model Risk Management, jointly issued by the Federal Reserve and the OCC. Model inventory, development-and-implementation controls, validation (including ongoing monitoring and outcomes analysis), governance. Still the foundational text for banks supervised in the US."
+    label: "US — SR 26-2 (current) and OCC Bulletin 2026-13.",
+    body: "The <a href='https://www.federalreserve.gov/supervisionreg/srletters/SR2602.htm' target='_blank' rel='noopener'>Federal Reserve's SR 26-2</a> (April 17, 2026) supersedes SR 11-7 on Model Risk Management. <a href='https://www.occ.treas.gov/news-issuances/bulletins/2026/bulletin-2026-13.html' target='_blank' rel='noopener'>OCC Bulletin 2026-13</a> revises the national-bank MRM guidance in parallel. Inventory, validation, outcomes monitoring, and governance carry through from the 2011 framework; the updated text explicitly contemplates LLMs."
+  },
+  {
+    label: "US — SR 11-7 and OCC Bulletin 2011-12 (legacy).",
+    body: "<a href='https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm' target='_blank' rel='noopener'>SR 11-7</a> and <a href='https://www.occ.treas.gov/news-issuances/bulletins/2011/bulletin-2011-12.html' target='_blank' rel='noopener'>OCC Bulletin 2011-12</a> remain heavily referenced in existing MRM documentation and continuing-education curricula. A bank's model inventory is likely still mapped to the 2011 vocabulary; the 2026 refresh extends rather than rebuilds it."
   },
   {
     label: "UK — PRA Supervisory Statement 1/23.",
-    body: "Published May 2023. Updates the UK model-risk expectations with outcome-based controls, including categories that translate cleanly to LLM telemetry (grounding, refusal, behavioural fingerprints)."
+    body: "<a href='https://www.bankofengland.co.uk/prudential-regulation/publication/2023/may/model-risk-management-principles-for-banks-ss' target='_blank' rel='noopener'>SS1/23</a>, in force from May 17, 2024. Outcome-based controls that translate cleanly to LLM telemetry: grounding, refusal, behavioural fingerprints, challenger comparison."
+  },
+  {
+    label: "US — CFPB Circular 2023-03.",
+    body: "<a href='https://www.consumerfinance.gov/about-us/newsroom/cfpb-issues-guidance-on-credit-denials-by-lenders-using-artificial-intelligence/' target='_blank' rel='noopener'>CFPB Circular 2023-03</a> on adverse-action notices for complex AI/ML credit models. ECOA and Reg B obligations apply regardless of model complexity; a credit model's AI nature does not reduce the notice requirements."
+  },
+  {
+    label: "US — NYDFS Industry Letter (Oct 16, 2024).",
+    body: "<a href='https://www.dfs.ny.gov/industry-guidance/industry-letters/il20241016-cyber-risks-ai-and-strategies-combat-related-risks' target='_blank' rel='noopener'>NYDFS Industry Letter of October 16, 2024</a> on AI cybersecurity under 23 NYCRR Part 500. Covers the specific adversarial-AI threat posture expected of New York-authorised financial institutions."
   },
   {
     label: "EU — AI Act (Regulation 2024/1689).",
-    body: "Annex III classifies creditworthiness assessment as a high-risk AI use. Articles 9 (risk management), 11 (technical documentation), 14 (human oversight) apply. Banks using AI in credit decisioning are in scope."
+    body: "<a href='https://eur-lex.europa.eu/eli/reg/2024/1689/oj' target='_blank' rel='noopener'>Regulation 2024/1689</a> classifies creditworthiness assessment as a high-risk AI use under Annex III. Articles 9 (risk management), 11 (technical documentation), 14 (human oversight) apply to banks using AI in credit decisioning."
   },
   {
     label: "EU — DORA (Regulation 2022/2554).",
-    body: "Applies to banks as financial entities. ICT third-party risk Register of Information, incident classification, resilience testing. Provisions apply from January 2025."
+    body: "<a href='https://eur-lex.europa.eu/eli/reg/2022/2554/oj' target='_blank' rel='noopener'>DORA</a> covers banks as financial entities. ICT third-party risk Register of Information, incident classification, resilience testing. Obligations apply from January 2025."
   },
   {
-    label: "US — CFPB and interagency statements on AI.",
-    body: "The Consumer Financial Protection Bureau has issued statements on adverse-action notices, AI-driven advertising, and credit-decisioning transparency under the Fair Credit Reporting Act and Equal Credit Opportunity Act."
-  },
-  {
-    label: "Basel — BCBS principles for risk data and model governance.",
-    body: "BCBS 239 (Principles for Effective Risk Data Aggregation and Risk Reporting) and the Basel Committee's wider guidance on model risk set cross-border expectations that supervisors apply to AI in risk decisioning."
+    label: "International — FSB and Basel.",
+    body: "The <a href='https://www.fsb.org/2024/11/the-financial-stability-implications-of-artificial-intelligence/' target='_blank' rel='noopener'>FSB's Financial Stability Implications of AI</a> (Nov 2024) and <a href='https://www.bis.org/publ/bcbs_nl27.htm' target='_blank' rel='noopener'>BCBS Newsletter on AI/ML</a> set the international supervisory direction. BCBS 239 on risk data aggregation is the legacy anchor that supervisors apply to AI data governance."
   },
 ];
 
 const sources = [
   {
     label: "US — Fed / OCC",
-    desc: "SR 11-7 (Federal Reserve) and OCC Bulletin 2011-12 — the US MRM framework.",
+    desc: "The current and legacy US model-risk supervisory framework.",
     urls: [
-      { text: "federalreserve.gov — SR 11-7", url: "https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm" },
-      { text: "occ.treas.gov — Bulletin 2011-12", url: "https://www.occ.treas.gov/news-issuances/bulletins/2011/bulletin-2011-12.html" },
+      { text: "federalreserve.gov — SR 26-2 (current)", url: "https://www.federalreserve.gov/supervisionreg/srletters/SR2602.htm" },
+      { text: "occ.treas.gov — Bulletin 2026-13 (current)", url: "https://www.occ.treas.gov/news-issuances/bulletins/2026/bulletin-2026-13.html" },
+      { text: "federalreserve.gov — SR 11-7 (legacy)", url: "https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm" },
+      { text: "occ.treas.gov — Bulletin 2011-12 (legacy)", url: "https://www.occ.treas.gov/news-issuances/bulletins/2011/bulletin-2011-12.html" },
+      { text: "occ.gov — Semiannual Risk Perspective (Fall 2025)", url: "https://www.occ.gov/publications-and-resources/publications/semiannual-risk-perspective/files/pub-semiannual-risk-perspective-fall-2025.pdf" },
     ],
   },
   {
     label: "UK — PRA",
-    desc: "Supervisory Statement 1/23 Model Risk Management Principles for Banks.",
+    desc: "Supervisory Statement 1/23 Model Risk Management Principles for Banks, plus the 2025 CRO roundtable readout.",
     urls: [
-      { text: "bankofengland.co.uk — SS1/23", url: "https://www.bankofengland.co.uk/prudential-regulation/publication/2023/may/model-risk-management-principles-for-banks" },
+      { text: "bankofengland.co.uk — SS1/23", url: "https://www.bankofengland.co.uk/prudential-regulation/publication/2023/may/model-risk-management-principles-for-banks-ss" },
+      { text: "bankofengland.co.uk — PRA MRM AI roundtable (Nov 2025)", url: "https://www.bankofengland.co.uk/prudential-regulation/publication/2025/november/pra-holds-model-risk-management-roundtable-on-ai" },
     ],
   },
   {
-    label: "EU — AI Act",
-    desc: "Regulation (EU) 2024/1689. Annex III lists creditworthiness assessment as high-risk.",
+    label: "US — CFPB and NYDFS",
+    desc: "Consumer-finance and cybersecurity AI guidance for US banks.",
+    urls: [
+      { text: "consumerfinance.gov — Circular 2023-03", url: "https://www.consumerfinance.gov/about-us/newsroom/cfpb-issues-guidance-on-credit-denials-by-lenders-using-artificial-intelligence/" },
+      { text: "dfs.ny.gov — Industry Letter Oct 2024", url: "https://www.dfs.ny.gov/industry-guidance/industry-letters/il20241016-cyber-risks-ai-and-strategies-combat-related-risks" },
+    ],
+  },
+  {
+    label: "EU — AI Act and DORA",
+    desc: "EU-level regulation for AI in credit decisioning and ICT third-party risk.",
     urls: [
       { text: "eur-lex.europa.eu — Regulation 2024/1689", url: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj" },
-    ],
-  },
-  {
-    label: "EU — DORA",
-    desc: "Regulation (EU) 2022/2554 on digital operational resilience.",
-    urls: [
       { text: "eur-lex.europa.eu — Regulation 2022/2554", url: "https://eur-lex.europa.eu/eli/reg/2022/2554/oj" },
-      { text: "eba.europa.eu — DORA", url: "https://www.eba.europa.eu/regulation-and-policy/digital-operational-resilience-and-cybersecurity/digital-operational-resilience-act" },
     ],
   },
   {
-    label: "US — CFPB",
-    desc: "Consumer Financial Protection Bureau statements on AI in consumer finance.",
+    label: "International — FSB, BCBS, EBA, ECB",
+    desc: "Cross-border supervisory direction on AI and model risk.",
     urls: [
-      { text: "consumerfinance.gov — guidance", url: "https://www.consumerfinance.gov/rules-policy/final-rules/" },
+      { text: "fsb.org — Financial Stability Implications of AI", url: "https://www.fsb.org/2024/11/the-financial-stability-implications-of-artificial-intelligence/" },
+      { text: "bis.org — BCBS Newsletter on AI/ML", url: "https://www.bis.org/publ/bcbs_nl27.htm" },
+      { text: "eba.europa.eu — ML for IRB follow-up", url: "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-follow-report-use-machine-learning-internal" },
+      { text: "bankingsupervision.europa.eu — ECB guide to internal models (July 2025)", url: "https://www.bankingsupervision.europa.eu/ecb/pub/pdf/ssm.supervisory_guide202507.en.pdf" },
     ],
   },
   {
-    label: "Basel",
-    desc: "BCBS 239 Principles for Effective Risk Data Aggregation and Risk Reporting.",
+    label: "Voices — operators and regulators",
+    desc: "Named figures publishing on AI governance in banking.",
     urls: [
-      { text: "bis.org — BCBS 239", url: "https://www.bis.org/publ/bcbs239.htm" },
+      { text: "Michael Barr (Governor, Federal Reserve Board)", url: "https://www.federalreserve.gov/newsevents/speech/barr20250404a.htm" },
+      { text: "Greg Baer (CEO, Bank Policy Institute)", url: "https://bpi.com/people/greg-baer/" },
+      { text: "Alexandra Mousavizadeh (Evident Insights)", url: "https://www.linkedin.com/in/alexandra-mousavizadeh/" },
+      { text: "Jón Daníelsson (LSE Systemic Risk Centre)", url: "https://www.systemicrisk.ac.uk/people/jon-danielsson" },
+    ],
+  },
+  {
+    label: "Publications",
+    desc: "Trade press and specialist publications tracking AI in banking.",
+    urls: [
+      { text: "risk.net", url: "https://www.risk.net" },
+      { text: "americanbanker.com", url: "https://www.americanbanker.com" },
+      { text: "bankingdive.com", url: "https://www.bankingdive.com" },
+      { text: "centralbanking.com", url: "https://www.centralbanking.com" },
+      { text: "Evident AI Banking Brief", url: "https://evidentinsights.com/bankingbrief/" },
+    ],
+  },
+  {
+    label: "Newsletters",
+    desc: "Substacks covering bank-fintech and AI policy plumbing.",
+    urls: [
+      { text: "Fintech Business Weekly — Jason Mikula", url: "https://fintechbusinessweekly.substack.com" },
+      { text: "Fintech Takes — Alex Johnson", url: "https://newsletter.fintechtakes.com" },
     ],
   },
 ];
@@ -85,10 +123,10 @@ const sources = [
   variant="banking"
   tier="Industry · Banking"
   h1="AI in banking."
-  standfirst="The industry with the oldest model risk management framework. Generative AI sits inside that framework. The application is new; the governance texts are not."
+  standfirst="SR 11-7 is legacy. SR 26-2 is current. The governance architecture carried through; the language is updated for LLMs. Plus PRA SS1/23, EU AI Act, DORA, and the CFPB layer on top."
   intro={intro}
   verifyTitle="The primary frameworks."
   steps={steps}
   sources={sources}
-  newsletterHook="Fed, OCC, PRA, ECB, and FCA supervisory announcements on AI; how banks are extending SR 11-7 and SS1/23 doctrine to LLMs; and which credit-scoring applications are drawing AI Act scrutiny."
+  newsletterHook="Fed, OCC, PRA, ECB supervisory announcements on AI as they land; how banks are extending SR 26-2 doctrine to LLMs in practice; and which credit-scoring applications are drawing AI Act scrutiny."
 />

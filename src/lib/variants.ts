@@ -42,7 +42,8 @@ export type VariantId =
   | "banking"
   | "healthcare"
   | "pharma"
-  | "legal";
+  | "legal"
+  | "aviation";
 
 export interface Variant {
   id: VariantId;
@@ -366,5 +367,14 @@ export const variants: Record<VariantId, Variant> = {
     shortLabel: "Legal",
     primaryKpi: "Newsletter signup",
     audience: "General counsel, partners, professional responsibility leads at law firms",
+  },
+  aviation: {
+    id: "aviation",
+    path: "/aviation.html",
+    title: "Phidea — AI in aviation",
+    description: "EASA AI Concept Paper, FAA AI roadmap, ICAO study group, UK CAA strategy, EUROCAE WG-114 / SAE G-34 draft standard ED-324 / AS6983 — the primary frameworks for AI in aviation safety assurance.",
+    shortLabel: "Aviation",
+    primaryKpi: "Newsletter signup",
+    audience: "Safety, certification, systems engineering, and pilot-union AI leads",
   },
 };
