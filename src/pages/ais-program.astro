@@ -1,21 +1,72 @@
 ---
-import NarrowAngle from "@/components/NarrowAngle.astro";
+import ReferenceArticle from "@/components/ReferenceArticle.astro";
+
+const intro = [
+  "The term AI System Program (AIS Program) comes from the NAIC Model Bulletin on the Use of Artificial Intelligence Systems by Insurers (December 2023). It describes a governance document plus an inventory of AI Systems an insurer uses. The expectation is that the insurer's board or senior management adopts the program, and that the inventory is current.",
+  "Separately, US bank model risk management frameworks (SR 11-7; OCC 2011-12) and UK prudential guidance (PRA SS1/23) describe related expectations for model governance more broadly. These are not insurance-specific but are commonly referenced by insurance actuarial and risk functions.",
+];
+
+const steps = [
+  {
+    label: "One, NAIC AIS Program expectations.",
+    body: "The <a href='https://content.naic.org/sites/default/files/inline-files/2023-12-4%20Model%20Bulletin_Adopted_0.pdf' target='_blank' rel='noopener'>Model Bulletin</a> asks each insurer for a written AIS Program that covers governance, risk management, testing, third-party oversight, and records retention. The bulletin is adopted state by state, often with modifications."
+  },
+  {
+    label: "Two, inventory contents.",
+    body: "The inventory is not a specified schema; it is a list of AI Systems in use, each with stated purpose, risk assessment, and accountable owner. The bulletin expects reconciliation against reality, not a single snapshot at adoption."
+  },
+  {
+    label: "Three, related model risk frameworks.",
+    body: "<a href='https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm' target='_blank' rel='noopener'>SR 11-7</a> (US banks) and <a href='https://www.occ.treas.gov/news-issuances/bulletins/2011/bulletin-2011-12.html' target='_blank' rel='noopener'>OCC Bulletin 2011-12</a> set out model risk management for supervised banks. <a href='https://www.bankofengland.co.uk/prudential-regulation/publication/2023/may/model-risk-management-principles-for-banks' target='_blank' rel='noopener'>PRA SS1/23</a> is the UK equivalent. Insurance risk functions frequently adapt these frameworks for model governance in actuarial, pricing, and claims."
+  },
+  {
+    label: "Four, scope expansion under the EU AI Act.",
+    body: "The <a href='https://eur-lex.europa.eu/eli/reg/2024/1689/oj' target='_blank' rel='noopener'>EU AI Act</a> requires a risk management system (Article 9) for high-risk AI. Article 61 sets out post-market monitoring. For insurance systems classified as high-risk under Annex III, the AIS Program content and the EU AI Act documentation substantially overlap."
+  },
+];
+
+const sources = [
+  {
+    label: "US — NAIC",
+    desc: "Model Bulletin on the Use of AI Systems by Insurers; AI topic and state-adoption tracker.",
+    urls: [
+      { text: "Model Bulletin (PDF)", url: "https://content.naic.org/sites/default/files/inline-files/2023-12-4%20Model%20Bulletin_Adopted_0.pdf" },
+      { text: "NAIC AI topic", url: "https://content.naic.org/cipr-topics/artificial-intelligence" },
+    ],
+  },
+  {
+    label: "US — Fed / OCC",
+    desc: "SR 11-7 and OCC Bulletin 2011-12, the US model risk management supervisory letters.",
+    urls: [
+      { text: "SR 11-7 — Fed Reserve", url: "https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm" },
+      { text: "OCC Bulletin 2011-12", url: "https://www.occ.treas.gov/news-issuances/bulletins/2011/bulletin-2011-12.html" },
+    ],
+  },
+  {
+    label: "UK — PRA",
+    desc: "Supervisory Statement 1/23 on model risk management principles for banks.",
+    urls: [
+      { text: "bankofengland.co.uk — SS1/23", url: "https://www.bankofengland.co.uk/prudential-regulation/publication/2023/may/model-risk-management-principles-for-banks" },
+    ],
+  },
+  {
+    label: "EU — AI Act",
+    desc: "Regulation 2024/1689, specifically Article 9 (risk management) and Article 61 (post-market monitoring).",
+    urls: [
+      { text: "eur-lex.europa.eu — Regulation 2024/1689", url: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj" },
+    ],
+  },
+];
 ---
 
-<NarrowAngle
+<ReferenceArticle
   variant="ais-program"
-  tier="Tier 3 · Compliance"
-  h1="Keep the AIS Program that regulators actually expect."
-  lead="The NAIC Model Bulletin introduces the term AI System Program — a governance document plus a live inventory. Most carriers drafted the document. Few maintain the inventory. Audits begin where the document ends."
-  whyTitle="What we're watching."
-  whyBody="The inventory is operationally hard: new agents ship weekly, vendor contracts change, owners rotate. A document-only AIS Program survives a tabletop exercise and fails a real audit. Reconciling the document against reality quarterly is the minimum cadence."
-  watchTitle="Five audit findings we see repeatedly."
-  watchPoints={[
-    "Every AI System needs a named accountable officer. Rotation without reassignment is the single most common finding.",
-    "Risk tiering drives audit scope. Tier-1 systems need continuous evidence; Tier-3 sampling is acceptable. Untiered systems are all treated as Tier-1.",
-    "Third-party AI systems are in scope. A wrapper around ChatGPT is your AIS, not OpenAI's.",
-    "Retired systems must stay on the inventory with a retirement date. Deleted rows are a finding; historical trace queries need the row.",
-    "The AIS Program document and the inventory must reconcile. Drift between them is the second most common finding, after ownership.",
-  ]}
-  newsletterPrompt="Every Tuesday: what audit teams are flagging, which AIS Program structures hold up under examination, and where carriers are retrofitting."
+  tier="Topic 11 · Compliance"
+  h1="The AIS Program regulators expect."
+  standfirst="A governance document and an inventory. The NAIC bulletin specifies both."
+  intro={intro}
+  verifyTitle="What the primary texts require."
+  steps={steps}
+  sources={sources}
+  newsletterHook="State-by-state adoption of the NAIC bulletin, revisions to EIOPA guidance on AI governance, and how examiners are reading the AIS Program in practice."
 />

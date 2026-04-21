@@ -1,21 +1,70 @@
 ---
-import NarrowAngle from "@/components/NarrowAngle.astro";
+import ReferenceArticle from "@/components/ReferenceArticle.astro";
+
+const intro = [
+  "Portfolio drift is the gradual divergence of a carrier's written book from the risk appetite statement approved by the board. It has always been a known phenomenon in underwriting; the only question is how quickly it can be detected. With AI-assisted underwriting speeding up binding cadence, the detection question becomes harder.",
+  "Solvency II (EU) and ORSA (Own Risk and Solvency Assessment, under Solvency II and adopted by the NAIC for US insurers) codify the governance around risk appetite. Both frameworks are primary-text-sourced.",
+];
+
+const steps = [
+  {
+    label: "One, Solvency II — Pillar 2 and ORSA.",
+    body: "<a href='https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32009L0138' target='_blank' rel='noopener'>Directive 2009/138/EC (Solvency II)</a> establishes the governance and risk-management framework for EU insurers, including the Own Risk and Solvency Assessment. <a href='https://www.eiopa.europa.eu/' target='_blank' rel='noopener'>EIOPA</a> publishes technical standards and guidelines on ORSA."
+  },
+  {
+    label: "Two, NAIC — ORSA in the US.",
+    body: "The <a href='https://content.naic.org/cipr-topics/own-risk-and-solvency-assessment-orsa' target='_blank' rel='noopener'>NAIC ORSA Guidance Manual</a> adapts ORSA for US state regulation. Insurers above defined premium thresholds must conduct and document an annual ORSA, which includes appetite-statement articulation and stress testing."
+  },
+  {
+    label: "Three, risk-appetite frameworks.",
+    body: "The <a href='https://www.coso.org/enterprise-risk-management' target='_blank' rel='noopener'>COSO Enterprise Risk Management framework</a> provides an industry-standard reference for risk appetite, tolerance, and capacity. It is used in combination with Solvency II and ORSA for actual articulation of appetite statements."
+  },
+  {
+    label: "Four, drift monitoring patterns.",
+    body: "Continuous monitoring of portfolio composition against appetite is a reporting-layer problem. Standard dimensions: LOB mix, sub-line, geography, retention band, cession structure. Variance from the stated appetite, measured on a rolling basis, is the drift metric. The mechanics are not supervisory-prescribed; the governance that this monitoring feeds into is (Solvency II Pillar 2, NAIC ORSA)."
+  },
+];
+
+const sources = [
+  {
+    label: "EU — Solvency II",
+    desc: "Directive 2009/138/EC, the European insurance prudential framework including ORSA.",
+    urls: [
+      { text: "eur-lex.europa.eu — Directive 2009/138/EC", url: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32009L0138" },
+    ],
+  },
+  {
+    label: "EU — EIOPA",
+    desc: "Technical standards and guidelines on ORSA under Solvency II.",
+    urls: [
+      { text: "eiopa.europa.eu", url: "https://www.eiopa.europa.eu/" },
+    ],
+  },
+  {
+    label: "US — NAIC",
+    desc: "ORSA Guidance Manual and related risk-management expectations.",
+    urls: [
+      { text: "content.naic.org — ORSA topic", url: "https://content.naic.org/cipr-topics/own-risk-and-solvency-assessment-orsa" },
+    ],
+  },
+  {
+    label: "Risk appetite reference",
+    desc: "COSO Enterprise Risk Management framework — industry-standard reference on risk appetite and tolerance.",
+    urls: [
+      { text: "coso.org — ERM", url: "https://www.coso.org/enterprise-risk-management" },
+    ],
+  },
+];
 ---
 
-<NarrowAngle
+<ReferenceArticle
   variant="portfolio-drift"
-  tier="Tier 4 · Model risk"
+  tier="Topic 18 · Model risk"
   h1="See portfolio drift before the quarterly deck."
-  lead="AI-informed underwriting can shift the book without anyone noticing — mix drifts, coverage extensions accumulate, geographies creep outside appetite. By the quarterly review, three months of policies are bound against an appetite statement that no longer matches the portfolio."
-  whyTitle="What we're watching."
-  whyBody="The appetite statement is a board document; the portfolio is a running process. The gap between them is where underwriting surprises come from — and where reinsurance conversations go sideways at renewal."
-  watchTitle="Five drift patterns worth catching early."
-  watchPoints={[
-    "Mix drift by sub-line surfaces exposure creep before aggregate limits trigger. Sub-line monitoring is the earliest leading indicator.",
-    "Geographic concentration builds faster than limits. Tiered thresholds catch it earlier than absolute limits, and flag the conversation before it gets hard.",
-    "Coverage extensions stack silently. 'Just one more endorsement' patterns add up across a quarter and show up as a reinsurance problem.",
-    "Cession coverage drift is a reinsurance conversation worth having monthly, not at renewal. Waiting for renewal is the expensive default.",
-    "What-if mode on a candidate appetite statement reveals what would have breached. Run it before the board signs, not after.",
-  ]}
-  newsletterPrompt="Every Tuesday: which drift patterns are hitting carriers this quarter, the early indicators that caught them, and the renewal conversations they enabled."
+  standfirst="Solvency II Pillar 2 and ORSA frame the governance. The drift monitoring itself is a reporting-layer problem."
+  intro={intro}
+  verifyTitle="The primary frameworks."
+  steps={steps}
+  sources={sources}
+  newsletterHook="Which portfolio drift patterns are showing up in the books we track, how carriers are extending ORSA reporting cadence, and where AI-assisted binding is outpacing the governance cycle."
 />

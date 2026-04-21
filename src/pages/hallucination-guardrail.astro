@@ -1,21 +1,80 @@
 ---
-import NarrowAngle from "@/components/NarrowAngle.astro";
+import ReferenceArticle from "@/components/ReferenceArticle.astro";
+
+const intro = [
+  "Hallucination in the LLM sense has a narrow meaning: the model produces a confident assertion for which it has no supporting source. In insurance, the costliest hallucinations are quantitative (coverage limits, deductibles, exclusions) and relational (what a policy does or does not cover for a specific event).",
+  "A guardrail is a deterministic check placed between the model's output and the customer. Guardrails do not change model behaviour. They inspect it, and they either let the response through, replace it, or route it to human review. The techniques are documented across provider docs, academic research, and open-source frameworks.",
+];
+
+const steps = [
+  {
+    label: "One, grounding-based verification.",
+    body: "If every substantive claim in the response must cite a chunk of your corpus, unverifiable claims can be detected before delivery. Retrieval-augmented-generation (RAG) patterns are documented in <a href='https://platform.openai.com/docs/guides/retrieval-augmented-generation' target='_blank' rel='noopener'>OpenAI's RAG guide</a> and <a href='https://docs.anthropic.com/en/docs/build-with-claude/retrieval-augmented-generation' target='_blank' rel='noopener'>Anthropic's RAG documentation</a>."
+  },
+  {
+    label: "Two, output validation.",
+    body: "Deterministic schema validation on the model's output catches format failures. <a href='https://github.com/guardrails-ai/guardrails' target='_blank' rel='noopener'>Guardrails AI</a> and <a href='https://github.com/NVIDIA/NeMo-Guardrails' target='_blank' rel='noopener'>NVIDIA NeMo Guardrails</a> are two open-source frameworks that ship validators for common failure classes, including factuality, toxicity, and schema conformance."
+  },
+  {
+    label: "Three, numeric checks against your API.",
+    body: "Every number in an insurance answer that refers to your product (coverage limit, deductible, premium) should be hard-checked against the corresponding field in your pricing or policy-admin API. This is not an LLM pattern; it is a standard application-level validation, synchronous against the model response."
+  },
+  {
+    label: "Four, regulatory framing.",
+    body: "The <a href='https://content.naic.org/sites/default/files/inline-files/2023-12-4%20Model%20Bulletin_Adopted_0.pdf' target='_blank' rel='noopener'>NAIC Model Bulletin</a> places responsibility for the outputs of any AI System on the insurer. The <a href='https://eur-lex.europa.eu/eli/reg/2024/1689/oj' target='_blank' rel='noopener'>EU AI Act, Annex III</a> classifies insurance-pricing AI systems as high-risk, with attendant post-market monitoring obligations."
+  },
+];
+
+const sources = [
+  {
+    label: "OpenAI",
+    desc: "Retrieval-augmented-generation patterns and structured output documentation.",
+    urls: [
+      { text: "platform.openai.com — RAG", url: "https://platform.openai.com/docs/guides/retrieval-augmented-generation" },
+      { text: "platform.openai.com — structured outputs", url: "https://platform.openai.com/docs/guides/structured-outputs" },
+    ],
+  },
+  {
+    label: "Anthropic",
+    desc: "RAG documentation and safety research.",
+    urls: [
+      { text: "docs.anthropic.com — RAG", url: "https://docs.anthropic.com/en/docs/build-with-claude/retrieval-augmented-generation" },
+      { text: "anthropic.com — research", url: "https://www.anthropic.com/research" },
+    ],
+  },
+  {
+    label: "Open-source frameworks",
+    desc: "Guardrails AI and NVIDIA NeMo Guardrails, two open-source validators for LLM outputs.",
+    urls: [
+      { text: "github.com — Guardrails AI", url: "https://github.com/guardrails-ai/guardrails" },
+      { text: "github.com — NeMo Guardrails", url: "https://github.com/NVIDIA/NeMo-Guardrails" },
+    ],
+  },
+  {
+    label: "US — NAIC",
+    desc: "Model Bulletin on the Use of Artificial Intelligence Systems by Insurers.",
+    urls: [
+      { text: "content.naic.org — Model Bulletin PDF", url: "https://content.naic.org/sites/default/files/inline-files/2023-12-4%20Model%20Bulletin_Adopted_0.pdf" },
+    ],
+  },
+  {
+    label: "EU — AI Act",
+    desc: "Regulation (EU) 2024/1689, the AI Act final text. Annex III lists high-risk use cases including insurance pricing.",
+    urls: [
+      { text: "eur-lex.europa.eu — Regulation 2024/1689", url: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj" },
+    ],
+  },
+];
 ---
 
-<NarrowAngle
+<ReferenceArticle
   variant="hallucination-guardrail"
-  tier="Tier 2 · AI operations"
-  h1="Stop a made-up coverage answer before it reaches a customer."
-  lead="Most hallucinations in insurance are quantitative: an invented coverage limit, a wrong deductible, a reassuring clause that doesn't exist. They sound confident, they pass a fast reader, and they are the easiest kind to catch with a gate."
-  whyTitle="What we're watching."
-  whyBody="The gate is deterministic: every number must match your pricing API, every coverage assertion must trace to a policy document. The LLM is a composition layer, not a source of truth. Treating it that way is the single largest safety upgrade a carrier can make this quarter."
-  watchTitle="Five checks worth building today."
-  watchPoints={[
-    "Hard-check numbers against your pricing API synchronously. A 50ms cost prevents a misquote — an acceptable trade for the risk it removes.",
-    "Every coverage claim must cite a document chunk. No citation, no delivery. This rule alone removes most of the visible failure modes.",
-    "Disclosures cannot live in the prompt — the model drops them under pressure. Post-process injection is more reliable and survives every model update.",
-    "Safe fallback text matters as much as the block itself. Design it for the customer, not the engineer. A blunt block is a worse UX than no bot.",
-    "Blocking mode is best turned on per agent after thirty days of observe-only traces, not on day one. The baseline matters.",
-  ]}
-  newsletterPrompt="Every Tuesday: which hallucination patterns showed up in production this week across carriers — and what the gate caught."
+  tier="Topic 08 · AI operations"
+  h1="Stop a made-up coverage answer before delivery."
+  standfirst="Guardrails are deterministic checks between the model and the customer. The techniques are open-source or provider-documented."
+  intro={intro}
+  verifyTitle="What you can verify today."
+  steps={steps}
+  sources={sources}
+  newsletterHook="Which hallucination patterns show up most often in insurance AI deployments, which guardrail combinations are holding up in production, and how regulator examinations treat guardrail documentation."
 />

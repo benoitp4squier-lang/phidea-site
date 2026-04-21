@@ -1,21 +1,80 @@
 ---
-import NarrowAngle from "@/components/NarrowAngle.astro";
+import ReferenceArticle from "@/components/ReferenceArticle.astro";
+
+const intro = [
+  "Model providers update their models. Some updates are announced with version bumps; others are silent behaviour changes within a version. Either can shift how your agent answers coverage questions between two audit dates.",
+  "Detection is a testing problem. The test is public: run a fixed set of prompts on a schedule, record the outputs, and compare. The tooling for doing this at scale is documented.",
+];
+
+const steps = [
+  {
+    label: "One, version tracking.",
+    body: "<a href='https://platform.openai.com/docs/models' target='_blank' rel='noopener'>OpenAI publishes model cards and version identifiers</a>. <a href='https://docs.anthropic.com/en/docs/about-claude/models' target='_blank' rel='noopener'>Anthropic publishes Claude model identifiers</a>. <a href='https://ai.google.dev/gemini-api/docs/models' target='_blank' rel='noopener'>Google publishes Gemini model names</a>. Version tracking is the floor: necessary but not sufficient, because behaviour within a version can shift."
+  },
+  {
+    label: "Two, provider release notes.",
+    body: "<a href='https://docs.anthropic.com/en/release-notes/overview' target='_blank' rel='noopener'>Anthropic maintains public release notes</a>. OpenAI publishes <a href='https://openai.com/news/' target='_blank' rel='noopener'>news and announcements</a> though API-level behaviour changes are not always reflected there. Subscribe and archive."
+  },
+  {
+    label: "Three, behavioural probes.",
+    body: "A probe library is a fixed set of prompts with expected properties (factual accuracy, refusal behaviour, groundedness). Run the probes on a cadence against each model version you use in production. Log the outputs. Compare week-over-week. The <a href='https://crfm.stanford.edu/helm/' target='_blank' rel='noopener'>Stanford HELM benchmark</a> is a public reference for how behavioural evaluation is structured academically."
+  },
+  {
+    label: "Four, alerting.",
+    body: "A shift in refusal rate, grounding score, or tool-call pattern is the detectable signal. Threshold-based alerting requires a baseline measured over at least two weeks of stable behaviour. <a href='https://langfuse.com/docs/tracing-features/tags' target='_blank' rel='noopener'>Langfuse</a> and similar observability platforms support per-version cohort comparison out of the box."
+  },
+];
+
+const sources = [
+  {
+    label: "OpenAI",
+    desc: "Model identifiers, deprecation schedules, and announcements.",
+    urls: [
+      { text: "platform.openai.com/docs/models", url: "https://platform.openai.com/docs/models" },
+      { text: "platform.openai.com/docs/deprecations", url: "https://platform.openai.com/docs/deprecations" },
+      { text: "openai.com/news", url: "https://openai.com/news/" },
+    ],
+  },
+  {
+    label: "Anthropic",
+    desc: "Claude model identifiers, model cards, and release notes.",
+    urls: [
+      { text: "docs.anthropic.com — models", url: "https://docs.anthropic.com/en/docs/about-claude/models" },
+      { text: "docs.anthropic.com — release notes", url: "https://docs.anthropic.com/en/release-notes/overview" },
+    ],
+  },
+  {
+    label: "Google",
+    desc: "Gemini API model names and versioning.",
+    urls: [
+      { text: "ai.google.dev — models", url: "https://ai.google.dev/gemini-api/docs/models" },
+    ],
+  },
+  {
+    label: "Stanford HELM",
+    desc: "Holistic Evaluation of Language Models — the public academic benchmark framework for LLM behaviour.",
+    urls: [
+      { text: "crfm.stanford.edu/helm", url: "https://crfm.stanford.edu/helm/" },
+    ],
+  },
+  {
+    label: "Open-source tooling",
+    desc: "Langfuse documentation for per-model-version cohort tracking and alerting.",
+    urls: [
+      { text: "langfuse.com — tags & cohorts", url: "https://langfuse.com/docs/tracing-features/tags" },
+    ],
+  },
+];
 ---
 
-<NarrowAngle
+<ReferenceArticle
   variant="model-drift"
-  tier="Tier 2 · AI operations"
+  tier="Topic 07 · AI operations"
   h1="Catch vendor model updates before a customer does."
-  lead="Providers update models on their own schedule, sometimes silently. The model that passed your validation on Monday may refuse Tuesday's queries, hallucinate Wednesday's prices, and loosen Thursday's guardrails. Your customers find out first — unless you're testing continuously."
-  whyTitle="What we're watching."
-  whyBody="Between-audit drift is the specific risk static validation cannot catch. The question is not whether drift happens; it is how many days of undetected drift your carrier is comfortable accepting. Most carriers do not know their own answer."
-  watchTitle="Five drift patterns we see in production."
-  watchPoints={[
-    "OpenAI's silent model updates — detectable by behavioral fingerprinting — ran at roughly two per quarter through 2025. None were pre-announced.",
-    "Anthropic publishes model cards but ships behavior changes out-of-band. Refusal rate is the most reliable proxy for mid-version drift.",
-    "Drift varies by LOB. Life and annuity queries drifted more than auto across all four providers in the probes we've run.",
-    "Hallucination rate on coverage-specific answers rose after three of four major provider updates observed in 2025. None were flagged by the provider.",
-    "Human review catches drift at a lag of weeks. Automated probes catch it in hours. The gap is where incidents happen.",
-  ]}
-  newsletterPrompt="Every Tuesday: which provider moved this week, what changed, and which LOBs saw the most drift — with citations."
+  standfirst="Drift detection is a fixed prompt set, a cadence, and an alert threshold. The building blocks are all public."
+  intro={intro}
+  verifyTitle="What you can verify today."
+  steps={steps}
+  sources={sources}
+  newsletterHook="Which provider behaviour changes we saw this week, which of the four major assistants moved first, and what the behavioural fingerprints looked like in the probes."
 />

@@ -1,0 +1,280 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+import type { VariantId } from "@/lib/variants";
+
+interface VerifyStep {
+  label: string;
+  body: string;
+}
+interface SourceUrl {
+  text: string;
+  url: string;
+}
+interface SourceRow {
+  label: string;
+  desc: string;
+  urls: SourceUrl[];
+}
+interface Props {
+  variant: VariantId;
+  tier: string;
+  h1: string;
+  standfirst: string;
+  intro: string[];
+  verifyTitle: string;
+  steps: VerifyStep[];
+  limitsTitle?: string;
+  limitsBody?: string;
+  sources: SourceRow[];
+  newsletterHook: string;
+}
+
+const { variant, tier, h1, standfirst, intro, verifyTitle, steps, limitsTitle, limitsBody, sources, newsletterHook } = Astro.props;
+---
+
+<Layout variant={variant}>
+  <Nav
+    variant={variant}
+    links={[
+      { href: "/", label: "Phidea" },
+      { href: "/#archive", label: "Topics" },
+      { href: "/#subscribe", label: "Subscribe" },
+    ]}
+    cta={{ href: "#subscribe", label: "Subscribe →" }}
+  />
+
+  <article class="article">
+    <header class="article-head">
+      <div class="wrap wrap-article">
+        <div class="article-meta">
+          <span>{tier}</span>
+          <span>Reference page</span>
+        </div>
+        <h1>{h1}</h1>
+        <p class="standfirst">{standfirst}</p>
+      </div>
+    </header>
+
+    <section class="article-body">
+      <div class="wrap wrap-article">
+        {intro.map((p) => <p set:html={p}></p>)}
+
+        <h2>{verifyTitle}</h2>
+        {steps.map((s) => (
+          <p><strong>{s.label}</strong> <Fragment set:html={s.body} /></p>
+        ))}
+
+        {limitsTitle && (
+          <>
+            <h2>{limitsTitle}</h2>
+            <p set:html={limitsBody}></p>
+          </>
+        )}
+
+        <h2>Sources.</h2>
+        <ul class="sources">
+          {sources.map((src) => (
+            <li>
+              <span class="src-label">{src.label}</span>
+              <span class="src-desc">{src.desc}</span>
+              {src.urls.map((u) => (
+                <a href={u.url} target="_blank" rel="noopener">{u.text}</a>
+              ))}
+            </li>
+          ))}
+        </ul>
+
+        <p class="meta-note">
+          This page is kept deliberately short and anchored in public sources. Observations and comparisons that cannot be sourced are in the weekly newsletter, where they belong.
+        </p>
+      </div>
+    </section>
+
+    <section id="subscribe" class="subscribe-strip">
+      <div class="wrap wrap-article">
+        <div class="section-label">Phidea Weekly</div>
+        <h3>The part this page does not cover.</h3>
+        <p>{newsletterHook}</p>
+        <form action="https://buttondown.email/api/emails/embed-subscribe/phidea" method="POST" class="signup">
+          <input type="hidden" name="tag" value={variant} />
+          <input type="email" name="email" placeholder="Your email" required />
+          <button type="submit">Subscribe →</button>
+        </form>
+        <p class="signup-small">One email per week. Unsubscribe in one click.</p>
+      </div>
+    </section>
+  </article>
+
+  <Footer />
+</Layout>
+
+<style>
+  .wrap-article { max-width: 680px; padding-left: 24px; padding-right: 24px; margin: 0 auto; }
+
+  .article-head { padding: 72px 0 32px; border-bottom: 1px solid var(--line); }
+  .article-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .article-head h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 44px;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    margin: 0 0 24px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .standfirst {
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin: 0;
+    font-style: italic;
+  }
+
+  .article-body { padding: 48px 0 64px; }
+  .article-body p {
+    font-size: 18px;
+    line-height: 1.72;
+    color: var(--ink-2);
+    margin: 0 0 24px;
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 400;
+  }
+  .article-body p strong { color: var(--ink); font-weight: 600; }
+  .article-body h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 26px;
+    line-height: 1.25;
+    font-weight: 500;
+    margin: 40px 0 16px;
+    color: var(--ink);
+  }
+  .article-body code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88em;
+    background: var(--soft);
+    padding: 1px 6px;
+    border-radius: 4px;
+    color: var(--ink);
+  }
+  .article-body p a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(240, 78, 54, 0.25);
+  }
+  .article-body p a:hover { border-bottom-color: var(--accent); }
+
+  .sources { list-style: none; padding: 0; margin: 0 0 32px; }
+  .sources li {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    color: var(--ink-2);
+    line-height: 1.55;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    column-gap: 20px;
+    row-gap: 6px;
+  }
+  .sources li:last-child { border-bottom: none; }
+  .sources .src-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    align-self: start;
+  }
+  .sources .src-desc { color: var(--ink-2); grid-column: 2; }
+  .sources li a {
+    color: var(--accent);
+    text-decoration: none;
+    grid-column: 2;
+    font-size: 13px;
+    word-break: break-all;
+  }
+  .sources li a:hover { text-decoration: underline; }
+  @media (max-width: 600px) {
+    .sources li { grid-template-columns: 1fr; }
+    .sources .src-desc, .sources li a { grid-column: auto; }
+  }
+
+  .meta-note {
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.55;
+    font-family: 'Inter', sans-serif !important;
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .subscribe-strip {
+    padding: 72px 0;
+    background: var(--soft);
+    border-top: 1px solid var(--line);
+  }
+  .subscribe-strip h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 28px;
+    line-height: 1.2;
+    margin: 0 0 12px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .subscribe-strip p {
+    font-size: 16px;
+    color: var(--ink-2);
+    margin: 0 0 24px;
+    font-family: inherit;
+  }
+  .signup { display: flex; gap: 10px; max-width: 520px; }
+  .signup input[type=email] {
+    flex: 1;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    background: var(--bg);
+    color: var(--ink);
+  }
+  .signup button {
+    padding: 14px 24px;
+    border: none;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: inherit;
+  }
+  .signup button:hover { background: var(--accent); }
+  .signup-small { font-size: 13px; color: var(--muted); margin-top: 12px; }
+
+  @media (max-width: 720px) {
+    .article-head h1 { font-size: 30px; }
+    .standfirst { font-size: 17px; }
+    .article-body p { font-size: 17px; }
+    .article-body h2 { font-size: 22px; }
+    .signup { flex-direction: column; }
+  }
+</style>

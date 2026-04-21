@@ -1,21 +1,72 @@
 ---
-import NarrowAngle from "@/components/NarrowAngle.astro";
+import ReferenceArticle from "@/components/ReferenceArticle.astro";
+
+const intro = [
+  "An audit bundle, in the AI-in-insurance context, is the artifact a carrier produces when a regulator asks for evidence of how an AI system made or informed a decision during a stated period. Different regulators expect different fields, different formats, and different supporting documentation.",
+  "The expectations are public. What a bundle needs to contain for NAIC, NY DFS, EIOPA, and DORA is written down. This page links the primary sources.",
+];
+
+const steps = [
+  {
+    label: "One, NAIC expectations.",
+    body: "The <a href='https://content.naic.org/sites/default/files/inline-files/2023-12-4%20Model%20Bulletin_Adopted_0.pdf' target='_blank' rel='noopener'>NAIC Model Bulletin on the Use of AI Systems by Insurers</a> describes the AI System Program an insurer must maintain: documented governance, inventory of AI Systems, third-party oversight, testing, and records retention. Data-call formats for specific examinations are issued by the state department of insurance conducting the examination."
+  },
+  {
+    label: "Two, NY DFS expectations.",
+    body: "<a href='https://www.dfs.ny.gov/industry-guidance/circular-letters/cl2024-07' target='_blank' rel='noopener'>NY DFS Circular Letter No. 7 of 2024</a> requires documentation of the material elements of an AI System and the external consumer data sources used; the unfair-discrimination test is quantitative and must be demonstrable on request."
+  },
+  {
+    label: "Three, EU AI Act — technical documentation.",
+    body: "The <a href='https://eur-lex.europa.eu/eli/reg/2024/1689/oj' target='_blank' rel='noopener'>AI Act (Regulation 2024/1689)</a> specifies technical documentation obligations for high-risk AI systems in Article 11 and Annex IV. Insurance life and health pricing and risk assessment are listed as high-risk in Annex III."
+  },
+  {
+    label: "Four, DORA — ICT third-party register and incident reporting.",
+    body: "<a href='https://eur-lex.europa.eu/eli/reg/2022/2554/oj' target='_blank' rel='noopener'>DORA (Regulation 2022/2554)</a> requires a register of ICT services provided by third parties and a standardised incident classification. The <a href='https://www.eiopa.europa.eu/browse/regulation-and-policy/digital-operational-resilience-act-dora_en' target='_blank' rel='noopener'>EIOPA DORA page</a> hosts the technical standards."
+  },
+];
+
+const sources = [
+  {
+    label: "US — NAIC",
+    desc: "Model Bulletin on the Use of AI by Insurers; AI topic page; state adoption tracker.",
+    urls: [
+      { text: "content.naic.org — Model Bulletin PDF", url: "https://content.naic.org/sites/default/files/inline-files/2023-12-4%20Model%20Bulletin_Adopted_0.pdf" },
+      { text: "content.naic.org — AI topic", url: "https://content.naic.org/cipr-topics/artificial-intelligence" },
+    ],
+  },
+  {
+    label: "US — NY DFS",
+    desc: "Circular Letter No. 7 of 2024 on Artificial Intelligence Systems.",
+    urls: [
+      { text: "dfs.ny.gov — CL 2024-07", url: "https://www.dfs.ny.gov/industry-guidance/circular-letters/cl2024-07" },
+    ],
+  },
+  {
+    label: "EU — AI Act",
+    desc: "Full text of Regulation (EU) 2024/1689, including Article 11 (technical documentation) and Annex IV.",
+    urls: [
+      { text: "eur-lex.europa.eu — Regulation 2024/1689", url: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj" },
+    ],
+  },
+  {
+    label: "EU — DORA",
+    desc: "Regulation (EU) 2022/2554 on digital operational resilience, incident classification, and third-party ICT register.",
+    urls: [
+      { text: "eur-lex.europa.eu — Regulation 2022/2554", url: "https://eur-lex.europa.eu/eli/reg/2022/2554/oj" },
+      { text: "eiopa.europa.eu — DORA page", url: "https://www.eiopa.europa.eu/browse/regulation-and-policy/digital-operational-resilience-act-dora_en" },
+    ],
+  },
+];
 ---
 
-<NarrowAngle
+<ReferenceArticle
   variant="audit-bundle"
-  tier="Tier 2 · AI operations"
-  h1="Have a regulator bundle ready, every quarter."
-  lead="A regulator request for AI evidence is not a surprise. The cadence is published. What's surprising is how few carriers can produce the bundle on demand — most assemble it reactively, from scattered systems, under deadline."
-  whyTitle="What we're watching."
-  whyBody="The bundle is an artifact, not a report. It contains the signed sessions, the policy pack version, the ECDIS log, the flagged-incident list — cryptographically linked. If you had to build it tomorrow from the systems you already run, where would you start?"
-  watchTitle="Five things every bundle should contain."
-  watchPoints={[
-    "NAIC data call format specifies the fields. Match that schema from day one; retrofitting is expensive and introduces errors.",
-    "NY DFS expects the material elements of the AIS and the consumer-disclosure check. Both are runtime artifacts — not documents prepared quarterly.",
-    "EIOPA supervisory data requires a governance snapshot tied to the period reviewed. A current-state snapshot is a frequent audit finding.",
-    "DORA's incident form requires classification within a specific window. Map your incident taxonomy before you need it, not after.",
-    "Every export should itself be logged. 'What did you send last time?' is the second-order question every regulator asks in a follow-up.",
-  ]}
-  newsletterPrompt="Every Tuesday: which regulators are asking what, the bundle formats carriers are building against, and where exports failed review."
+  tier="Topic 09 · AI operations"
+  h1="Have a regulator audit bundle ready."
+  standfirst="Each regulator publishes what a bundle must contain. The field list and the format are not a secret."
+  intro={intro}
+  verifyTitle="What you can verify today."
+  steps={steps}
+  sources={sources}
+  newsletterHook="Which regulators asked for what this month, how the bundle requirements are evolving, and the specific export formats that carriers are settling on."
 />

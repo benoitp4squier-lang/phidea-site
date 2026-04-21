@@ -1,21 +1,79 @@
 ---
-import NarrowAngle from "@/components/NarrowAngle.astro";
+import ReferenceArticle from "@/components/ReferenceArticle.astro";
+
+const intro = [
+  "Predictive pricing models — GLMs, gradient-boosted trees, and increasingly LLM-assisted feature-extraction pipelines — are governed by the same actuarial and supervisory expectations as any other pricing model. The core tests are performance-vs-plan, rate adequacy, loss-pick drift, and portfolio mix.",
+  "The supervisory framework comes from MRM (SR 11-7, PRA SS1/23) and, for insurance-specific pricing, from the NAIC Model Bulletin and the European actuarial standards. The 2025 State of Pricing industry report is cited where it quantifies common practice.",
+];
+
+const steps = [
+  {
+    label: "One, MRM framework — ongoing monitoring.",
+    body: "<a href='https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm' target='_blank' rel='noopener'>SR 11-7</a> and <a href='https://www.bankofengland.co.uk/prudential-regulation/publication/2023/may/model-risk-management-principles-for-banks' target='_blank' rel='noopener'>PRA SS1/23</a> require ongoing monitoring of model performance against stated objectives. In pricing, that translates into real-time or near-real-time tracking of rate relativity, loss-pick, and portfolio mix against plan."
+  },
+  {
+    label: "Two, NAIC — AI-specific governance.",
+    body: "The <a href='https://content.naic.org/sites/default/files/inline-files/2023-12-4%20Model%20Bulletin_Adopted_0.pdf' target='_blank' rel='noopener'>NAIC Model Bulletin</a> extends governance to AI Systems, including those used in pricing. The testing and validation expectations are consistent with MRM practice but apply specifically to AI-assisted pricing."
+  },
+  {
+    label: "Three, industry benchmarking — hyperexponential.",
+    body: "The <a href='https://www.hyperexponential.com/resources/2025-state-of-pricing-report' target='_blank' rel='noopener'>2025 State of Pricing report</a>, a survey of 350 specialty and commercial underwriters and pricing actuaries, quantifies the current state of pricing-model governance in the market. Specific findings cited include that 45% of underwriters report being hamstrung by pricing models that are inaccurate or out of date."
+  },
+  {
+    label: "Four, open-source drift-monitoring frameworks.",
+    body: "<a href='https://docs.evidentlyai.com/' target='_blank' rel='noopener'>Evidently</a> and <a href='https://docs.arize.com/' target='_blank' rel='noopener'>Arize</a> are two widely adopted frameworks for production-monitoring of predictive models, with built-in detectors for data drift, concept drift, and performance drift. The techniques are standard and documented."
+  },
+];
+
+const sources = [
+  {
+    label: "US — Fed / OCC",
+    desc: "SR 11-7 and OCC 2011-12 on model risk management, including ongoing monitoring expectations.",
+    urls: [
+      { text: "SR 11-7 — Fed Reserve", url: "https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm" },
+      { text: "OCC Bulletin 2011-12", url: "https://www.occ.treas.gov/news-issuances/bulletins/2011/bulletin-2011-12.html" },
+    ],
+  },
+  {
+    label: "UK — PRA",
+    desc: "Supervisory Statement 1/23 Model Risk Management Principles for Banks.",
+    urls: [
+      { text: "bankofengland.co.uk — SS1/23", url: "https://www.bankofengland.co.uk/prudential-regulation/publication/2023/may/model-risk-management-principles-for-banks" },
+    ],
+  },
+  {
+    label: "US — NAIC",
+    desc: "Model Bulletin on the Use of AI Systems by Insurers.",
+    urls: [
+      { text: "Model Bulletin (PDF)", url: "https://content.naic.org/sites/default/files/inline-files/2023-12-4%20Model%20Bulletin_Adopted_0.pdf" },
+    ],
+  },
+  {
+    label: "Industry survey",
+    desc: "hyperexponential 2025 State of Pricing — survey of 350 specialty and commercial underwriters and pricing actuaries.",
+    urls: [
+      { text: "hyperexponential.com — 2025 report", url: "https://www.hyperexponential.com/resources/2025-state-of-pricing-report" },
+    ],
+  },
+  {
+    label: "Open-source tooling",
+    desc: "Evidently and Arize — drift-monitoring frameworks for predictive models.",
+    urls: [
+      { text: "docs.evidentlyai.com", url: "https://docs.evidentlyai.com/" },
+      { text: "docs.arize.com", url: "https://docs.arize.com/" },
+    ],
+  },
+];
 ---
 
-<NarrowAngle
+<ReferenceArticle
   variant="predictive-monitoring"
-  tier="Tier 4 · Model risk"
+  tier="Topic 16 · Model risk"
   h1="Watch pricing drift between reserves reviews."
-  lead="Predictive pricing models — GLMs, gradient-boosted trees, increasingly LLM-assisted pipelines — drift silently between quarterly reserving reviews. By the time actuaries notice, a quarter of the new business has been bound on a stale model."
-  whyTitle="What we're watching."
-  whyBody="The signal is in the KPIs your pricing team already tracks: rate relativity by segment, loss-pick drift against plan, portfolio mix. What's missing is the cadence. Monthly reports are too slow for the speed of the book in an LLM-assisted pricing stack."
-  watchTitle="Five KPIs worth watching in real time."
-  watchPoints={[
-    "Rate relativity drift is the earliest signal. Segment-level monitoring catches it before aggregate metrics do — sometimes by weeks.",
-    "Loss-pick drift against plan becomes a hallucination proxy when pricing uses LLM-assisted feature extraction. Track both signals together.",
-    "Portfolio mix shift can fake rate adequacy. A book that shifts toward better-rated risks looks priced-right on aggregate; it isn't.",
-    "Cross-subsidy detection requires comparing realized premium to expected loss at segment level. Quarterly reviews miss this entirely.",
-    "Ultimate loss trend still matters for the long tail. Real-time KPIs augment it; they do not replace it.",
-  ]}
-  newsletterPrompt="Every Tuesday: which KPIs are shifting in the books we observe, which LLM-assisted pricing stacks are holding up, and which aren't."
+  standfirst="Continuous monitoring of pricing models. MRM-standard, insurance-extended, tooling-documented."
+  intro={intro}
+  verifyTitle="The frameworks and tools."
+  steps={steps}
+  sources={sources}
+  newsletterHook="Which KPIs are moving in the books we track, how pricing teams are integrating LLM-assisted feature extraction into traditional GLMs, and findings from examinations that cited pricing-model drift."
 />

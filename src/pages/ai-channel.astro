@@ -1,21 +1,75 @@
 ---
-import NarrowAngle from "@/components/NarrowAngle.astro";
+import ReferenceArticle from "@/components/ReferenceArticle.astro";
+
+const intro = [
+  "AI assistants can send traffic to your quote flow. Whether that traffic shows up as identifiable traffic in your analytics is a separate question. Most analytics tools were built to recognise browser-sent <code>Referer</code> headers and standard UTM parameters. AI assistants do not always populate either.",
+  "The tracking mechanisms that do work are the same ones that have worked since UTM was introduced: parameters in the outbound URL, first-party cookies or session IDs on arrival, and explicit identification in the AI agent itself when you control it.",
+];
+
+const steps = [
+  {
+    label: "One, the UTM specification.",
+    body: "Google's <a href='https://support.google.com/analytics/answer/10917952' target='_blank' rel='noopener'>UTM parameter reference</a> defines the five standard tags: <code>utm_source</code>, <code>utm_medium</code>, <code>utm_campaign</code>, <code>utm_term</code>, <code>utm_content</code>. These are strings that travel as query-string parameters on outbound links. When an AI assistant composes a link that includes them, your analytics tool can read them on arrival."
+  },
+  {
+    label: "Two, where UTMs get populated.",
+    body: "If you control the agent (a Custom GPT, MCP server, or Extension), you can set the UTM parameters on every outbound link. If you do not control the agent, UTMs are populated only when the agent's output contains a link from a page that already had them, or when a third-party citation you sponsor carries them."
+  },
+  {
+    label: "Three, GA4 event ingestion.",
+    body: "Once traffic arrives with UTMs, <a href='https://support.google.com/analytics/answer/9267735' target='_blank' rel='noopener'>GA4 recognises the standard tags and records them as traffic-source dimensions</a>. Custom events (for example, <code>quote_started</code> or <code>policy_bound</code>) can be attributed against those dimensions."
+  },
+  {
+    label: "Four, CRM-side attribution.",
+    body: "Quote-to-bind attribution lives in your CRM or policy admin system, not in web analytics. Salesforce, HubSpot, and most carrier-specific systems accept custom fields; UTM values that arrived on the web session need to be captured and written into the CRM record at quote creation for end-to-end attribution."
+  },
+];
+
+const limitsBody = "AI assistants are evolving their own conventions. There is no cross-provider standard for how an agent should signal the model name, session ID, or prompt class to a destination site. Expect this layer to formalise over the next 12–18 months and plan for a shared referer-equivalent schema to emerge.";
+
+const sources = [
+  {
+    label: "Google — UTM",
+    desc: "Google's reference for the standard UTM parameters and how GA4 reads them.",
+    urls: [
+      { text: "support.google.com — UTM reference", url: "https://support.google.com/analytics/answer/10917952" },
+      { text: "support.google.com — GA4 events", url: "https://support.google.com/analytics/answer/9267735" },
+    ],
+  },
+  {
+    label: "OpenAI",
+    desc: "Custom GPT action documentation, including how to pass parameters on outbound actions.",
+    urls: [
+      { text: "platform.openai.com/docs/actions", url: "https://platform.openai.com/docs/actions" },
+    ],
+  },
+  {
+    label: "Anthropic — MCP",
+    desc: "The specification for Model Context Protocol, including how tools return structured data to the agent.",
+    urls: [
+      { text: "modelcontextprotocol.io", url: "https://modelcontextprotocol.io" },
+    ],
+  },
+  {
+    label: "Salesforce",
+    desc: "Campaign attribution documentation for marketing sources.",
+    urls: [
+      { text: "help.salesforce.com — Campaign influence", url: "https://help.salesforce.com/s/articleView?id=sf.campaigns_influence.htm&type=5" },
+    ],
+  },
+];
 ---
 
-<NarrowAngle
+<ReferenceArticle
   variant="ai-channel"
-  tier="Tier 1 · Distribution"
+  tier="Topic 04 · Distribution"
   h1="Count the business AI assistants send you."
-  lead="AI assistants are becoming a distribution surface — the way aggregators and Google once were. Most carriers count leads from aggregators. Almost none count leads from ChatGPT, Claude, or Perplexity. The channel is uninstrumented."
-  whyTitle="What we're watching."
-  whyBody="Assistants don't send referer headers the way browsers do. Traffic lands in your CRM as 'direct' or 'unknown' and gets credited to the last-touch that wasn't AI. Without instrumenting at the agent layer, you cannot compare cost-per-bind across channels. The AI channel looks free because it looks invisible."
-  watchTitle="Five measurement moves."
-  watchPoints={[
-    "UTM tags must be injected at the agent's response, not expected from the user's browser. The assistant controls the click; your standard analytics stack does not.",
-    "Session IDs should persist across the assistant-to-website handoff. Most carriers lose them at the link click.",
-    "Intent classification matters. Discovery, comparison, and quote-intent sessions convert at different rates and should be reported separately.",
-    "Attribution should credit both the model and the upstream publication cited in the response. Otherwise, two different channels get squashed into one.",
-    "AI-assistant traffic currently converts at 0.2 – 2% across the carriers we've measured. A useful baseline for target-setting before you scale spend.",
-  ]}
-  newsletterPrompt="Every Tuesday: the measurement moves, tag schemas, and attribution wins shipped by carriers taking AI as a channel seriously."
+  standfirst="Measuring AI-assistant traffic is a tagging and CRM-attribution problem, not a new technology problem. The mechanisms are documented."
+  intro={intro}
+  verifyTitle="What you can verify today."
+  steps={steps}
+  limitsTitle="What is not yet standardised."
+  limitsBody={limitsBody}
+  sources={sources}
+  newsletterHook="Emerging conventions for AI-assistant attribution, the carriers first to report a clean AI-channel number in their distribution P&L, and what those carriers did to produce it."
 />

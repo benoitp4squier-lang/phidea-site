@@ -1,21 +1,77 @@
 ---
-import NarrowAngle from "@/components/NarrowAngle.astro";
+import ReferenceArticle from "@/components/ReferenceArticle.astro";
+
+const intro = [
+  "AI assistants answer insurance questions by composing a sentence, not by serving a ranked list. That sentence can name your carrier, name a competitor, or name no one at all. Knowing which one happens on which query, and with what frequency, is a different measurement from search engine ranking.",
+  "There is no published ranking logic for any of the major assistants. What is public is the crawler identification each provider uses and the fact that each assistant runs live web retrieval in addition to training data.",
+];
+
+const steps = [
+  {
+    label: "One, write your query list.",
+    body: "Pick twenty to forty real buyer questions in your market, in the local language. Use the actual phrasing a buyer would use, not a marketing-sanitised version. Cover coverage, price, comparison, and claims-process queries."
+  },
+  {
+    label: "Two, run the list on each assistant.",
+    body: "Run the same list against ChatGPT, <a href='https://claude.ai' target='_blank' rel='noopener'>Claude</a>, <a href='https://gemini.google.com' target='_blank' rel='noopener'>Gemini</a>, and <a href='https://perplexity.ai' target='_blank' rel='noopener'>Perplexity</a>. For each answer, note the carriers named, in order. If the answer mentions no carrier, note that too. If you were not named but a competitor was, note the competitor."
+  },
+  {
+    label: "Three, tabulate.",
+    body: "For each carrier-of-interest (you and your top five competitors), compute: times named first, times named at all, times not named but a competitor was. You now have a matrix that behaves like a share-of-voice metric for AI assistants."
+  },
+  {
+    label: "Four, repeat on a cadence.",
+    body: "Assistants retrieve the open web. What they cite today is not necessarily what they cite next week. Re-run the list monthly. The delta between months is your drift."
+  },
+];
+
+const sources = [
+  {
+    label: "OpenAI",
+    desc: "Crawler identifiers (GPTBot, ChatGPT-User, OAI-SearchBot) and the retrieval mechanism for ChatGPT with search.",
+    urls: [
+      { text: "platform.openai.com/docs/bots", url: "https://platform.openai.com/docs/bots/overview-of-openai-crawlers" },
+    ],
+  },
+  {
+    label: "Anthropic",
+    desc: "ClaudeBot documentation and robots.txt conformance statement.",
+    urls: [
+      { text: "support.anthropic.com — Anthropic crawler", url: "https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler" },
+    ],
+  },
+  {
+    label: "Perplexity",
+    desc: "PerplexityBot (training) and Perplexity-User (user queries) user-agents.",
+    urls: [
+      { text: "perplexity.ai/help-center — crawler user-agents", url: "https://www.perplexity.ai/help-center/en/articles/10163415-perplexity-crawlers-user-agents" },
+    ],
+  },
+  {
+    label: "Google",
+    desc: "Google-Extended, the token that controls Gemini and AI Overviews ingestion separately from Googlebot.",
+    urls: [
+      { text: "developers.google.com — Google-Extended", url: "https://developers.google.com/search/docs/crawling-indexing/google-extended" },
+    ],
+  },
+  {
+    label: "Independent reference",
+    desc: "Dark Visitors tracks AI crawlers across providers and keeps the robots.txt syntax list current.",
+    urls: [
+      { text: "darkvisitors.com/agents", url: "https://darkvisitors.com/agents" },
+    ],
+  },
+];
 ---
 
-<NarrowAngle
+<ReferenceArticle
   variant="competitor-share"
-  tier="Tier 1 · Distribution"
-  h1="See who ChatGPT mentions instead of you."
-  lead="Your share of answer is not your share of search. When a prospective buyer asks 'cheapest auto insurance in Texas,' assistants recite a shortlist — and that list can be dominated by two or three names that have been in the model's training mix longest."
-  whyTitle="What we're watching."
-  whyBody="The ranking is opaque. Unlike Google, there is no ad-buy to correct it. Citation is a function of who's mentioned in what external source and how recently. The competitor ranked ahead of you last month may not be the one ranked ahead this month — and most carriers do not notice the switch."
-  watchTitle="Five patterns in the shortlist."
-  watchPoints={[
-    "Comparison-media coverage drives citation rank more than your own content. Carriers with heavy presence on NerdWallet, The Zebra, and MoneyGeek get cited disproportionately.",
-    "Geographic modifiers reshuffle the list. Local and regional carriers frequently beat national carriers on state-specific queries.",
-    "Phrasing matters: 'cheapest' vs 'best' vs 'safest' pull different shortlists from the same assistant. Optimizing for one phrase is not optimizing for the category.",
-    "Citation recency shifts weekly. A single wire-service article on one carrier can reshuffle who appears first across all four assistants.",
-    "'You, unnamed' is a real outcome. Carriers not cited by name are summarized as 'several providers' — strictly worse than appearing in fourth position.",
-  ]}
-  newsletterPrompt="Every Tuesday: the movers and laggards on share of answer across ChatGPT, Claude, Gemini, Perplexity, with the external signals that moved them."
+  tier="Topic 02 · Distribution"
+  h1="The competitor cited instead of you."
+  standfirst="Share of answer is not share of search. This page is the method for measuring your competitors' share on four assistants."
+  intro={intro}
+  verifyTitle="What you can verify this afternoon."
+  steps={steps}
+  sources={sources}
+  newsletterHook="Which carriers are moving up or down in competitor-share across markets, and what external signals (media coverage, model retraining, query phrasing shifts) correlate with the moves."
 />

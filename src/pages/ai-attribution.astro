@@ -1,21 +1,83 @@
 ---
-import NarrowAngle from "@/components/NarrowAngle.astro";
+import ReferenceArticle from "@/components/ReferenceArticle.astro";
+
+const intro = [
+  "AI attribution, in the narrow sense used here, is the problem of joining an assistant conversation to a policy bind. It depends on three things being carried across systems: a session identifier, the query or prompt that produced the outbound link, and any persona or intent signal worth preserving.",
+  "All three have documented mechanisms. The assembly is carrier-specific and lives at the intersection of your agent, your web analytics, and your CRM or policy admin system.",
+];
+
+const steps = [
+  {
+    label: "One, session identifiers.",
+    body: "A session ID is an opaque token, generated on first interaction, that persists across the handoff from the agent to your website and into your CRM. A UUID v4 is sufficient. <a href='https://support.google.com/analytics/answer/9191807' target='_blank' rel='noopener'>GA4 uses a first-party cookie for client-side session identity</a>; your own agent can produce and pass a token on top of that."
+  },
+  {
+    label: "Two, preserving the prompt.",
+    body: "If your agent is under your control (a Custom GPT, MCP server, or Gemini Extension), the prompt text can be passed as a query parameter on outbound links, or stored server-side keyed by the session ID. Both patterns are standard in tool-calling agent implementations documented by <a href='https://platform.openai.com/docs/guides/function-calling' target='_blank' rel='noopener'>OpenAI's function-calling guide</a> and the <a href='https://modelcontextprotocol.io' target='_blank' rel='noopener'>MCP specification</a>."
+  },
+  {
+    label: "Three, CRM-side fields.",
+    body: "Your CRM record for a quote needs fields that hold the session ID, the assistant surface, and any prompt classification. <a href='https://help.salesforce.com/s/articleView?id=sf.campaigns_influence.htm' target='_blank' rel='noopener'>Salesforce</a> and <a href='https://knowledge.hubspot.com/reports/create-custom-properties' target='_blank' rel='noopener'>HubSpot</a> support custom fields; policy admin systems (Guidewire, Duck Creek) support it through their integration layer."
+  },
+  {
+    label: "Four, the join key.",
+    body: "The simplest reliable join is the session ID carried as a hidden field on the quote form and written to the CRM record on submission. Every subsequent stage of the funnel inherits it. Without this single identifier, AI-channel attribution becomes a probability exercise rather than a reporting one."
+  },
+];
+
+const limitsBody = "There is no standardised schema across providers for passing model, prompt class, or persona metadata to downstream systems. Conventions are emerging but not yet pinned. Expect formalisation over the next 12–18 months; until then, a carrier-defined schema that you maintain yourself is the dependable choice.";
+
+const sources = [
+  {
+    label: "Google",
+    desc: "GA4 measurement protocol, custom event documentation, and session identity.",
+    urls: [
+      { text: "support.google.com — GA4 sessions", url: "https://support.google.com/analytics/answer/9191807" },
+      { text: "developers.google.com — Measurement Protocol", url: "https://developers.google.com/analytics/devguides/collection/protocol/ga4" },
+    ],
+  },
+  {
+    label: "OpenAI",
+    desc: "Function-calling and Actions schema, including how custom parameters are passed from the agent.",
+    urls: [
+      { text: "platform.openai.com — function calling", url: "https://platform.openai.com/docs/guides/function-calling" },
+      { text: "platform.openai.com — actions", url: "https://platform.openai.com/docs/actions" },
+    ],
+  },
+  {
+    label: "Anthropic — MCP",
+    desc: "The Model Context Protocol specification, including how tools exchange structured state with the agent.",
+    urls: [
+      { text: "modelcontextprotocol.io", url: "https://modelcontextprotocol.io" },
+    ],
+  },
+  {
+    label: "Salesforce",
+    desc: "Campaign influence and custom-field creation for cross-system attribution.",
+    urls: [
+      { text: "help.salesforce.com — Campaign influence", url: "https://help.salesforce.com/s/articleView?id=sf.campaigns_influence.htm" },
+    ],
+  },
+  {
+    label: "HubSpot",
+    desc: "Custom property creation for CRM records.",
+    urls: [
+      { text: "knowledge.hubspot.com — Custom properties", url: "https://knowledge.hubspot.com/reports/create-custom-properties" },
+    ],
+  },
+];
 ---
 
-<NarrowAngle
+<ReferenceArticle
   variant="ai-attribution"
-  tier="Tier 1 · Distribution"
+  tier="Topic 05 · Distribution"
   h1="Trace each AI conversation to the policy it bound."
-  lead="Measuring a channel means knowing what it bound. For AI, that requires tagging each assistant session with enough context to survive the jump from chat to quote tool to policy admin system."
-  whyTitle="What we're watching."
-  whyBody="Each hop strips context. Most attribution stacks were built for web clicks — not for conversations that happen inside a model's context window and then hand off to a website. The shape of the data is wrong; the fix is a tagging schema that assumes loss at every step."
-  watchTitle="Five moves that preserve attribution."
-  watchPoints={[
-    "Deterministic session IDs survive across agents, quote tools, and policy admin if passed as opaque tokens. UUIDs are fine; timestamps are not.",
-    "Personas matter. A first-home buyer and an annuity renewer convert at wildly different rates. Collapse them and the channel looks noisy.",
-    "The question asked is a feature. Log it, then join it to binding later — that join is where AI attribution becomes actionable.",
-    "Duck Creek and Guidewire accept UTM-style params today. Salesforce and HubSpot need custom-field mapping but cost an afternoon.",
-    "Cohort reports by surface × LOB × persona reveal where AI is working, not just that it is working. Aggregate alone flattens the signal.",
-  ]}
-  newsletterPrompt="Every Tuesday: what carriers measuring AI as a distribution channel are seeing — conversion rates, persona winners, attribution wins and losses."
+  standfirst="Attribution is a sessions-and-fields problem. The mechanisms are standard; the assembly is carrier-specific."
+  intro={intro}
+  verifyTitle="What you can verify today."
+  steps={steps}
+  limitsTitle="What is not yet standardised."
+  limitsBody={limitsBody}
+  sources={sources}
+  newsletterHook="Which schema conventions are taking hold, which carriers are reporting clean AI-to-bind numbers, and what the surprising attribution findings look like across markets."
 />

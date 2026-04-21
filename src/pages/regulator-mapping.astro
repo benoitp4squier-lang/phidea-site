@@ -1,21 +1,95 @@
 ---
-import NarrowAngle from "@/components/NarrowAngle.astro";
+import ReferenceArticle from "@/components/ReferenceArticle.astro";
+
+const intro = [
+  "Six frameworks currently set expectations for AI systems in insurance across the markets covered by this publication: the NAIC Model Bulletin (US, state-adopted), NY DFS Circular Letter No. 7 of 2024 (New York), Colorado SB21-169 and its implementing regulation (Colorado life), the EU AI Act (Regulation 2024/1689), DORA (Regulation 2022/2554), and the Insurance Distribution Directive (Directive 2016/97).",
+  "Each has a public primary text. This page links them and describes the scope each covers, so that any mapping you maintain can be anchored against the source.",
+];
+
+const steps = [
+  {
+    label: "One, US — NAIC.",
+    body: "The <a href='https://content.naic.org/sites/default/files/inline-files/2023-12-4%20Model%20Bulletin_Adopted_0.pdf' target='_blank' rel='noopener'>NAIC Model Bulletin on the Use of AI Systems by Insurers</a> was adopted in December 2023 and has since been adopted, with modifications, by individual states. NAIC maintains an <a href='https://content.naic.org/cipr-topics/artificial-intelligence' target='_blank' rel='noopener'>AI topic page</a> tracking adoption."
+  },
+  {
+    label: "Two, US — NY DFS.",
+    body: "<a href='https://www.dfs.ny.gov/industry-guidance/circular-letters/cl2024-07' target='_blank' rel='noopener'>Circular Letter No. 7 of 2024</a> sets expectations for AI Systems and External Consumer Data and Information Sources; it is binding on authorised New York insurers."
+  },
+  {
+    label: "Three, US — Colorado SB21-169.",
+    body: "<a href='https://leg.colorado.gov/bills/sb21-169' target='_blank' rel='noopener'>Colorado SB21-169</a> was enacted in 2021; it mandates that life insurers prevent the unfair discrimination arising from the use of external consumer data. Implementing regulations from the Colorado Division of Insurance (3 CCR 702-10) specify quantitative testing methodology."
+  },
+  {
+    label: "Four, EU — AI Act.",
+    body: "The <a href='https://eur-lex.europa.eu/eli/reg/2024/1689/oj' target='_blank' rel='noopener'>AI Act (Regulation 2024/1689)</a> classifies several insurance AI uses as high-risk in Annex III. Article 11 covers technical documentation, Article 72 covers post-market monitoring, Article 9 covers risk management system."
+  },
+  {
+    label: "Five, EU — DORA.",
+    body: "<a href='https://eur-lex.europa.eu/eli/reg/2022/2554/oj' target='_blank' rel='noopener'>DORA (Regulation 2022/2554)</a> applies to insurers as financial entities and establishes ICT risk management, third-party risk oversight (including a Register of Information), and incident classification obligations. <a href='https://www.eiopa.europa.eu/browse/regulation-and-policy/digital-operational-resilience-act-dora_en' target='_blank' rel='noopener'>EIOPA's DORA page</a> hosts the associated technical standards."
+  },
+  {
+    label: "Six, EU — IDD.",
+    body: "<a href='https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016L0097' target='_blank' rel='noopener'>Directive 2016/97 (IDD)</a> governs insurance distribution across the EU, including advice, comparison, and information provision to the consumer. Article 20 addresses demands-and-needs and suitability. IDD is transposed nationally; the text is the consolidated EU version."
+  },
+];
+
+const sources = [
+  {
+    label: "US — NAIC",
+    desc: "Model Bulletin on the Use of Artificial Intelligence Systems by Insurers, Dec 2023, plus the NAIC AI topic page.",
+    urls: [
+      { text: "Model Bulletin (PDF)", url: "https://content.naic.org/sites/default/files/inline-files/2023-12-4%20Model%20Bulletin_Adopted_0.pdf" },
+      { text: "NAIC AI topic page", url: "https://content.naic.org/cipr-topics/artificial-intelligence" },
+    ],
+  },
+  {
+    label: "US — NY DFS",
+    desc: "Circular Letter No. 7 of 2024 on Artificial Intelligence Systems and External Consumer Data.",
+    urls: [
+      { text: "dfs.ny.gov — CL 2024-07", url: "https://www.dfs.ny.gov/industry-guidance/circular-letters/cl2024-07" },
+    ],
+  },
+  {
+    label: "US — Colorado",
+    desc: "SB21-169 (life) and the Division of Insurance implementing regulation.",
+    urls: [
+      { text: "leg.colorado.gov — SB21-169", url: "https://leg.colorado.gov/bills/sb21-169" },
+      { text: "doi.colorado.gov — Algorithm & Predictive Model Governance", url: "https://doi.colorado.gov/for-consumers/sb21-169-protecting-consumers-from-unfair-discrimination-in-insurance-practices" },
+    ],
+  },
+  {
+    label: "EU — AI Act",
+    desc: "Regulation (EU) 2024/1689, the AI Act, consolidated text on EUR-Lex.",
+    urls: [
+      { text: "eur-lex.europa.eu — Regulation 2024/1689", url: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj" },
+    ],
+  },
+  {
+    label: "EU — DORA",
+    desc: "Regulation (EU) 2022/2554 on digital operational resilience for the financial sector.",
+    urls: [
+      { text: "eur-lex.europa.eu — Regulation 2022/2554", url: "https://eur-lex.europa.eu/eli/reg/2022/2554/oj" },
+      { text: "eiopa.europa.eu — DORA", url: "https://www.eiopa.europa.eu/browse/regulation-and-policy/digital-operational-resilience-act-dora_en" },
+    ],
+  },
+  {
+    label: "EU — IDD",
+    desc: "Directive (EU) 2016/97 on insurance distribution.",
+    urls: [
+      { text: "eur-lex.europa.eu — Directive 2016/97", url: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016L0097" },
+    ],
+  },
+];
 ---
 
-<NarrowAngle
+<ReferenceArticle
   variant="regulator-mapping"
-  tier="Tier 3 · Compliance"
-  h1="Six AI rulebooks. One mapping you don't have to maintain."
-  lead="NAIC Model Bulletin, NY DFS Circular Letter No. 7, Colorado SB21-169, EU AI Act Annex III, DORA, IDD. Each expects slightly different evidence from the same AI system. Mapping them by hand is a job that shouldn't exist."
-  whyTitle="What we're watching."
-  whyBody="The overlap is roughly seventy percent. The divergence is in specifics: quantitative tests under Colorado, consumer disclosure under NY DFS, risk management under the AI Act. Maintain the mapping once and let the export pick the right subset per regulator."
-  watchTitle="Five anchors for the mapping."
-  watchPoints={[
-    "The seventy-percent overlap across frameworks: documented AI inventory, third-party oversight, bias testing, adverse-decision explanations, human-in-the-loop.",
-    "Colorado's specifics are life-only, quantitative, and state-demographic-calibrated. The methodology does not transfer to other states.",
-    "NY DFS specifics are ECDIS disclosure and the Insurance Law's unfair-discrimination test — a statutory standard, not a guideline.",
-    "EU AI Act Annex III puts insurance life and health explicitly in scope as high-risk. Post-market monitoring is not optional.",
-    "DORA adds what the AI Act does not: ICT third-party register, incident classification, resilience testing — overlapping but a distinct export.",
-  ]}
-  newsletterPrompt="Every Tuesday: which framework moved, what it means for carriers, and whether the mapping held."
+  tier="Topic 10 · Compliance"
+  h1="Six AI rulebooks. One mapping."
+  standfirst="The six primary frameworks that currently govern AI in insurance across the US and EU. Linked to their source texts."
+  intro={intro}
+  verifyTitle="The primary texts, six frameworks."
+  steps={steps}
+  sources={sources}
+  newsletterHook="Which states are adopting or modifying the NAIC Model Bulletin, the specific EIOPA technical standards being drafted under DORA, and the revisions under review for IDD."
 />

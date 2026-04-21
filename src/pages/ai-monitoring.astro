@@ -1,21 +1,81 @@
 ---
-import NarrowAngle from "@/components/NarrowAngle.astro";
+import ReferenceArticle from "@/components/ReferenceArticle.astro";
+
+const intro = [
+  "Observability for AI agents in production is a data-capture problem. The signals that matter (prompt, response, tool calls, policy decisions, latency per layer) are emitted by the model provider, the tool runtime, and the orchestration layer. Capturing them in one trace requires either the provider's own logging surface, an open-source tracing framework, or a specialised observability platform.",
+  "Each of those options is documented. This page indexes the public references.",
+];
+
+const steps = [
+  {
+    label: "One, provider-side logs.",
+    body: "<a href='https://platform.openai.com/docs/api-reference' target='_blank' rel='noopener'>OpenAI's API returns a response body</a> that your application can log directly; OpenAI also exposes usage history in the platform dashboard. <a href='https://docs.anthropic.com/en/api' target='_blank' rel='noopener'>Anthropic's Messages API</a> behaves similarly. Provider-side retention is commonly 30 days; check the current provider agreement for your tenancy."
+  },
+  {
+    label: "Two, open-source tracing.",
+    body: "The open-source OpenTelemetry project ships a <a href='https://opentelemetry.io/docs/specs/semconv/gen-ai/' target='_blank' rel='noopener'>GenAI semantic convention</a> that standardises span attributes for LLM calls. <a href='https://langfuse.com/docs' target='_blank' rel='noopener'>Langfuse</a> and <a href='https://docs.smith.langchain.com' target='_blank' rel='noopener'>LangSmith</a> are two widely adopted open-source-friendly tracing backends for LLM applications."
+  },
+  {
+    label: "Three, tool-call capture.",
+    body: "Tool calls (function calls the agent makes to your APIs) are returned inline in the model's response with arguments. <a href='https://platform.openai.com/docs/guides/function-calling' target='_blank' rel='noopener'>OpenAI's function-calling documentation</a> and <a href='https://docs.anthropic.com/en/docs/tool-use' target='_blank' rel='noopener'>Anthropic's tool-use documentation</a> both describe the return shape. Every tool call should be logged with arguments and the result your tool returned."
+  },
+  {
+    label: "Four, what auditors ask for.",
+    body: "Insurance regulators (see the <a href='https://content.naic.org/sites/default/files/inline-files/2023-12-4%20Model%20Bulletin_Adopted_0.pdf' target='_blank' rel='noopener'>NAIC Model Bulletin</a> and <a href='https://www.dfs.ny.gov/industry-guidance/circular-letters/cl2024-07' target='_blank' rel='noopener'>NY DFS CL 2024-07</a>) expect retention measured in years, not days. Plan storage for twelve months minimum; longer if your state or EU jurisdiction has longer retention under insurance-records law."
+  },
+];
+
+const sources = [
+  {
+    label: "OpenAI",
+    desc: "API reference and function-calling documentation; logs and usage dashboard.",
+    urls: [
+      { text: "platform.openai.com/docs/api-reference", url: "https://platform.openai.com/docs/api-reference" },
+      { text: "platform.openai.com — function calling", url: "https://platform.openai.com/docs/guides/function-calling" },
+    ],
+  },
+  {
+    label: "Anthropic",
+    desc: "Messages API and tool-use specifications.",
+    urls: [
+      { text: "docs.anthropic.com — Messages API", url: "https://docs.anthropic.com/en/api" },
+      { text: "docs.anthropic.com — tool use", url: "https://docs.anthropic.com/en/docs/tool-use" },
+    ],
+  },
+  {
+    label: "OpenTelemetry",
+    desc: "The GenAI semantic conventions, the standard schema for LLM trace spans.",
+    urls: [
+      { text: "opentelemetry.io — GenAI semconv", url: "https://opentelemetry.io/docs/specs/semconv/gen-ai/" },
+    ],
+  },
+  {
+    label: "Open-source tooling",
+    desc: "Two widely adopted open-source tracing backends for LLM applications.",
+    urls: [
+      { text: "langfuse.com/docs", url: "https://langfuse.com/docs" },
+      { text: "docs.smith.langchain.com", url: "https://docs.smith.langchain.com" },
+    ],
+  },
+  {
+    label: "Regulator expectations",
+    desc: "NAIC and NY DFS guidance on AI system documentation and retention.",
+    urls: [
+      { text: "NAIC Model Bulletin (PDF)", url: "https://content.naic.org/sites/default/files/inline-files/2023-12-4%20Model%20Bulletin_Adopted_0.pdf" },
+      { text: "dfs.ny.gov — CL 2024-07", url: "https://www.dfs.ny.gov/industry-guidance/circular-letters/cl2024-07" },
+    ],
+  },
+];
 ---
 
-<NarrowAngle
+<ReferenceArticle
   variant="ai-monitoring"
-  tier="Tier 2 · AI operations"
-  h1="Know what your AI agents said last night."
-  lead="Most carriers running LLMs in production cannot tell you what their agents answered between 2am and 6am. The trace exists, partially, in the provider's logs — for 30 days. That gap is not sustainable once a regulator asks for a year's worth."
-  whyTitle="What we're watching."
-  whyBody="AI observability is not the same as application monitoring. You need prompt, response, tool calls, and policy decisions captured at the same layer. A request/response log cannot tell you why the agent said what it said — only that something happened."
-  watchTitle="Five things most carriers are missing."
-  watchPoints={[
-    "Provider-side logs from OpenAI or Anthropic are typically retained 30 days. Regulators ask for twelve months. Your compliance calendar and the default retention window do not agree.",
-    "Tool calls are the most important signal and the most often omitted. Log every function call the agent made, with arguments and result.",
-    "Grounding score — whether the response actually cited your corpus — is what catches most hallucinations before production.",
-    "Policy decisions should be captured even when no policy fired. The absence of a flag is itself evidence, and regulators treat it as such.",
-    "Latency per layer (model, tool, policy) matters more than aggregate latency. Drift hides in layers the top-line p99 cannot see.",
-  ]}
-  newsletterPrompt="Every Tuesday: the observability gaps we see carriers closing — and the ones they're still surprised by when a regulator asks."
+  tier="Topic 06 · AI operations"
+  h1="Observability for AI agents in production."
+  standfirst="The traces you need are emitted by three layers: the provider, the tool, and the orchestrator. The conventions exist."
+  intro={intro}
+  verifyTitle="What you can verify today."
+  steps={steps}
+  sources={sources}
+  newsletterHook="Which observability patterns carriers are adopting for regulated AI, where OpenTelemetry conventions are evolving, and how regulator expectations are crystallising in examinations."
 />
