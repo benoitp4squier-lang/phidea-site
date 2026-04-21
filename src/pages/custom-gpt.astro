@@ -21,7 +21,7 @@ const steps = [
   },
   {
     label: "Four, what each assistant does with prices.",
-    body: "ChatGPT and Gemini will quote specific numbers when asked; Claude tends toward refusal on price specifics in many contexts. Behaviour on prices is not a published contract and is liable to change with model updates. Any agent that surfaces prices should rely on your pricing API as the source of truth, not the model's composition, for audit reasons."
+    body: "Any agent that surfaces prices must read them from your pricing API at runtime. Relying on the model's own composition of a number is not acceptable under audit, regardless of how accurately the model paraphrased your public page. The pricing API is the source of truth; the model is a layer over it."
   },
 ];
 

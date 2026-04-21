@@ -9,7 +9,7 @@ const intro = [
 const steps = [
   {
     label: "One, provider-side logs.",
-    body: "<a href='https://platform.openai.com/docs/api-reference' target='_blank' rel='noopener'>OpenAI's API returns a response body</a> that your application can log directly; OpenAI also exposes usage history in the platform dashboard. <a href='https://docs.anthropic.com/en/api' target='_blank' rel='noopener'>Anthropic's Messages API</a> behaves similarly. Provider-side retention is commonly 30 days; check the current provider agreement for your tenancy."
+    body: "<a href='https://platform.openai.com/docs/api-reference' target='_blank' rel='noopener'>OpenAI's API returns a response body</a> that your application can log directly; OpenAI also exposes usage history in the platform dashboard. <a href='https://docs.anthropic.com/en/api' target='_blank' rel='noopener'>Anthropic's Messages API</a> returns the same shape. Provider-side retention is 30 days. Regulator requests reach back twelve months. The gap is yours to close."
   },
   {
     label: "Two, open-source tracing.",
