@@ -58,7 +58,7 @@ const { variant, tier, h1, lead, whyTitle, whyBody, watchTitle, watchPoints, new
         <p>{newsletterPrompt}</p>
         <form action="https://buttondown.email/api/emails/embed-subscribe/phidea" method="POST" class="signup">
           <input type="hidden" name="tag" value={variant} />
-          <input type="email" name="email" placeholder="you@carrier.com" required />
+          <input type="email" name="email" placeholder="Your email" required />
           <button type="submit">Subscribe →</button>
         </form>
         <p class="small">One email, Tuesday mornings. Unsubscribe in one click. No sales pitch.</p>
