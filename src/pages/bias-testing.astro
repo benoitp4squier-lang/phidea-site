@@ -4,21 +4,18 @@ import NarrowAngle from "@/components/NarrowAngle.astro";
 
 <NarrowAngle
   variant="bias-testing"
-  umbrellaHref="/evidence.html"
-  umbrellaLabel="Governance angle"
-  eyebrow="For compliance, actuarial, risk"
-  h1Before="Protected-class testing."
-  h1Em="Per jurisdiction. Continuous."
-  lead="Colorado SB21-169 requires a specific quantitative test on life models. NAIC expects bias documentation across the portfolio. NY DFS asks for evidence that there's no unfair-discrimination relationship between variables and risk. Each test differs. Phidea runs them all — continuously against live traffic, and on schedule against synthetic personas."
-  sectionEyebrow="The testing matrix"
-  sectionH2="Jurisdictional by default. Extensible by line."
-  sectionBody="State-by-state tests baseline against demographic distributions the regulator uses. Proxy-variable detection on live traffic. Disparate-impact analysis per LOB. Results export in the format each DOI accepts. Scheduled stress tests run against a library of synthetic applicants calibrated to state demographics — a second vector that catches what live traffic alone can miss."
-  faqs={[
-    { q: "Does this work for life, auto, home, commercial?", a: "Yes, though test definitions vary by line. Life is the most codified under SB21-169; P&C tests are derived from NAIC and state unfair-discrimination standards." },
-    { q: "Can our actuarial team extend a test?", a: "Yes. Tests are declarative — extend the YAML, not the engine. Every extension is version-controlled and signed off." },
-    { q: "What's the export format?", a: "PDF for carrier review + CSV/JSON for internal data pipelines + jurisdiction-specific filing format (Colorado DOI, NAIC data call) on export." },
+  tier="Tier 3 · Compliance"
+  h1="Test for protected-class bias — per state, continuously."
+  lead="Colorado SB21-169 mandates a specific quantitative test on life models. NAIC expects bias documentation across lines. NY DFS requires the relationship between variables and risk to be not unfairly discriminatory. Each jurisdiction uses different baselines."
+  whyTitle="What we're watching."
+  whyBody="One test does not clear three regulators. Continuous testing against live traffic is the operational answer; scheduled stress testing with synthetic personas is the documentation answer. Both are needed; neither is sufficient alone."
+  watchTitle="Five bias-testing realities."
+  watchPoints={[
+    "Colorado's life test is codified — approved variables, approved tests, approved demographic baselines. No interpretation required, no shortcuts accepted.",
+    "Proxy variables hide in zip code, vehicle model, occupation, credit tier. Each has specific case law behind it that compliance should be referencing.",
+    "Disparate-impact analysis is the floor, not the ceiling. Regulators increasingly ask about disparate treatment — a distinct test with different data.",
+    "Synthetic personas must be calibrated to state demographics, not national averages. A national baseline fails a state audit for documented reasons.",
+    "Continuous testing is about operational diligence. Annual tests are a compliance ritual; they catch drift far too late to be useful.",
   ]}
-  ctaH2="See a sample bias-testing report."
-  ctaBody="Redacted from a life book deployed on Phidea. Colorado SB21-169 format plus the NAIC overlay."
-  ctaButton="Send me the sample →"
+  newsletterPrompt="Every Tuesday: which bias-testing methodologies regulators are reading, the proxy variables surfacing in examinations, and the case law worth tracking."
 />

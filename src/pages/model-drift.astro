@@ -4,21 +4,18 @@ import NarrowAngle from "@/components/NarrowAngle.astro";
 
 <NarrowAngle
   variant="model-drift"
-  umbrellaHref="/synthetic.html"
-  umbrellaLabel="Monitoring angle"
-  eyebrow="For Head of AI, model governance"
-  h1Before="A vendor pushes a model update."
-  h1Em="You notice before a customer does."
-  lead="Vendors ship model updates every few weeks. Grounding degrades. LOB-specific answers wander. Compliance guardrails loosen without notice. Phidea runs a persona-tagged probe library every hour and pages when a metric moves past its threshold."
-  sectionEyebrow="What drift looks like"
-  sectionH2="A drop that would have stayed invisible until the next review."
-  sectionBody="A claims-triage bot served twelve policyholders a subtly wrong coverage interpretation the morning after a provider updated their model. Phidea's probes caught it within the hour. The alert was paged to AI-ops; the gateway switched to observe-only on that agent; the vendor ticket was open before lunch. Between-audit drift is the entire reason the platform exists."
-  faqs={[
-    { q: "Which probes detect drift?", a: "Grounding score, policy-adherence rate, refusal rate, hallucination-classifier score, per-persona behavior. Thresholds are baselined per agent." },
-    { q: "Does it detect vendor-side prompt changes?", a: "Yes — via behavioral fingerprinting. We don't need the vendor to announce a change." },
-    { q: "How false-positive heavy is it?", a: "Baselines are per-agent, per-LOB. Expect one paged alert per month per agent in steady state." },
+  tier="Tier 2 · AI operations"
+  h1="Catch vendor model updates before a customer does."
+  lead="Providers update models on their own schedule, sometimes silently. The model that passed your validation on Monday may refuse Tuesday's queries, hallucinate Wednesday's prices, and loosen Thursday's guardrails. Your customers find out first — unless you're testing continuously."
+  whyTitle="What we're watching."
+  whyBody="Between-audit drift is the specific risk static validation cannot catch. The question is not whether drift happens; it is how many days of undetected drift your carrier is comfortable accepting. Most carriers do not know their own answer."
+  watchTitle="Five drift patterns we see in production."
+  watchPoints={[
+    "OpenAI's silent model updates — detectable by behavioral fingerprinting — ran at roughly two per quarter through 2025. None were pre-announced.",
+    "Anthropic publishes model cards but ships behavior changes out-of-band. Refusal rate is the most reliable proxy for mid-version drift.",
+    "Drift varies by LOB. Life and annuity queries drifted more than auto across all four providers in the probes we've run.",
+    "Hallucination rate on coverage-specific answers rose after three of four major provider updates observed in 2025. None were flagged by the provider.",
+    "Human review catches drift at a lag of weeks. Automated probes catch it in hours. The gap is where incidents happen.",
   ]}
-  ctaH2="Request a drift demo."
-  ctaBody="Fifteen minutes. We point the probe library at a public agent and show you a live baselining and a simulated drift event."
-  ctaButton="Request a demo →"
+  newsletterPrompt="Every Tuesday: which provider moved this week, what changed, and which LOBs saw the most drift — with citations."
 />

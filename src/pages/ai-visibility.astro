@@ -4,22 +4,18 @@ import NarrowAngle from "@/components/NarrowAngle.astro";
 
 <NarrowAngle
   variant="ai-visibility"
-  umbrellaHref="/distribution.html"
-  umbrellaLabel="Distribution angle"
-  eyebrow="For distribution, digital"
-  h1Before="Your insurance products,"
-  h1Em="findable in ChatGPT."
-  h1After=" By default."
-  lead="When a buyer asks 'am I covered for X', the assistant cites a carrier. If it isn't you, it's a competitor. Phidea makes your IPIDs grokkable to the models, measures where you appear, and alerts you when coverage drops."
-  sectionEyebrow="How it works"
-  sectionH2="Grounded in what you actually sell."
-  sectionBody="Phidea ingests your IPIDs, tariff grids, and product summaries; structures them so ChatGPT, Claude, Gemini, and Perplexity can cite them faithfully; runs a probe library against each surface on your LOBs. You get a weekly report and an alert when a model update drops your coverage."
-  faqs={[
-    { q: "Do we need to host anything?", a: "No. Grounding runs on our side. You supply the source documents." },
-    { q: "How long before we start showing up?", a: "Indexable presence in two to four weeks for a single LOB. Organic citation is model-dependent and tracked weekly." },
-    { q: "Can we restrict which products are surfaced?", a: "Yes. Scope by LOB, geography, product tier, and distribution channel." },
+  tier="Tier 1 · Distribution"
+  h1="Be present when buyers ask AI for insurance."
+  lead="Insurance buyers increasingly open a chat window instead of a comparison site. ChatGPT, Claude, Gemini, and Perplexity answer coverage questions with whichever carrier the model knows best. If that isn't you, it's a competitor."
+  whyTitle="What we're watching."
+  whyBody="Brand leadership in search does not transfer to AI leadership. Different signal, different retrieval, different game. In our last round of probes across four assistants, the carrier ranked #1 on Google was cited in the assistants' answers only 38% of the time."
+  watchTitle="Five things to check this week."
+  watchPoints={[
+    "Your robots.txt. GPTBot, ClaudeBot, PerplexityBot, and Google-Extended all respect it. Blocking them makes you invisible to the models that now index for answers.",
+    "Your IPID structure. Assistants cite documents with clearly Q/A-shaped content more often than marketing-style product pages. FAQ format wins.",
+    "Your 'am I covered for X' queries. These are the most frequent insurance entry point inside assistants. When your copy is ambiguous, the model fills the gap — confidently and often wrong.",
+    "Your comparison-media presence. NerdWallet, The Zebra, MoneyGeek, Insurance Business rank above your own microsite in model retrieval. Earned media is distribution now.",
+    "Your assistant differences. Claude refuses to quote prices. ChatGPT and Gemini will. Perplexity will cite a competitor if your structured data is thinner. One optimization target does not serve four surfaces.",
   ]}
-  ctaH2="See your current coverage."
-  ctaBody="Free scorecard for your first LOB. Delivered in 48 hours by a Phidea analyst."
-  ctaButton="Get the scorecard →"
+  newsletterPrompt="Every Tuesday: what changed in AI-assistant behavior for insurance buyers, which carriers gained or lost share of answer, and the structural moves that drove it."
 />

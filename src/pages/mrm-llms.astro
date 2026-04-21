@@ -4,21 +4,18 @@ import NarrowAngle from "@/components/NarrowAngle.astro";
 
 <NarrowAngle
   variant="mrm-llms"
-  umbrellaHref="/synthetic.html"
-  umbrellaLabel="Monitoring angle"
-  eyebrow="For model risk, actuarial, chief risk"
-  h1Before="Your MRM framework."
-  h1Em="Extended to LLMs."
-  lead="SR 11-7 and PRA SS1/23 were written for statistical models with stable inputs, trainable parameters, and documented validation. LLMs break each assumption. Phidea is not a replacement MRM — it is the extension that lets your existing framework own LLM governance without starting over."
-  sectionEyebrow="How LLMs map into your MRM"
-  sectionH2="Same controls. Different telemetry."
-  sectionBody="Model inventory reconciles with your existing model register. Validation becomes continuous probe-based testing, not static sign-off. Challenger models become vendor alternatives benchmarked hourly. Effective-challenge documentation is generated from the trace, not assembled for a committee. Model-risk tier remains yours to set; we supply the evidence feeding the tier decision."
-  faqs={[
-    { q: "Does this satisfy SR 11-7 for a US Fed-supervised entity?", a: "It is not a substitute for your internal MRM organization. It provides the evidence stream your MRM organization needs to govern LLMs at the standard of rigor SR 11-7 expects for Tier-1 models." },
-    { q: "What about SS1/23 and the PRA's outcomes-based approach?", a: "Outcomes metrics (performance, fairness, explainability, robustness) are captured per inference and roll up to model-risk-tier dashboards. Documentation exports to the SS1/23 four-pillar structure." },
-    { q: "Who signs off on the LLM validation?", a: "Your validation function, as usual. Phidea is the instrumentation layer underneath." },
+  tier="Tier 4 · Model risk"
+  h1="Govern LLMs under the MRM framework you already have."
+  lead="SR 11-7 and PRA SS1/23 were written for statistical models — stable inputs, documented validation, challenger-model benchmarking. LLMs break several of those assumptions. Your MRM organization should still own them; the framework needs an extension, not a replacement."
+  whyTitle="What we're watching."
+  whyBody="The extension is mostly about telemetry. An LLM cannot be validated once; it has to be validated continuously. The controls in SR 11-7 and SS1/23 translate cleanly if you give them the data stream they need — prompts, responses, tool calls, policy outcomes."
+  watchTitle="Five extensions worth making."
+  watchPoints={[
+    "Effective-challenge documentation is generated from live traces, not prepared for a committee before release. The committee reads the trace.",
+    "Challenger models are vendor alternatives (Claude vs GPT vs Gemini), benchmarked hourly against the same prompts. Version numbers are not benchmarks.",
+    "Material-model-change review fires automatically when behavioral fingerprint shifts, not only when the provider publishes a version number.",
+    "Validation artifacts should include the prompt library, the probe library, and the policy pack version. All three are required to reconstruct the test.",
+    "Risk tiering drives cadence, not just scope. Tier-1 LLMs need hourly evidence; Tier-3 can be weekly. Annual for LLMs is not credible.",
   ]}
-  ctaH2="Talk to model risk."
-  ctaBody="Sixty-minute working session with a Phidea risk engineer. We map your current MRM framework against LLM observability requirements and identify the gaps."
-  ctaButton="Request the session →"
+  newsletterPrompt="Every Tuesday: how MRM teams are extending SR 11-7 and SS1/23 to LLMs — the controls that translate, and the ones that need new definitions."
 />

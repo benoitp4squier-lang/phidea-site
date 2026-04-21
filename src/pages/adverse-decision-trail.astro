@@ -4,21 +4,18 @@ import NarrowAngle from "@/components/NarrowAngle.astro";
 
 <NarrowAngle
   variant="adverse-decision-trail"
-  umbrellaHref="/evidence.html"
-  umbrellaLabel="Governance angle"
-  eyebrow="For compliance, legal, actuarial"
-  h1Before="A clear, empirical, statistically significant explanation."
-  h1Em="For every adverse decision."
-  lead="When an AI-informed decision adversely affects a consumer — a denial, a higher rate, a refused endorsement — NY DFS and NAIC both require a demonstration that the decision rests on a rational, statistically significant, and not unfairly discriminatory relationship to the insured risk. Phidea generates the explanation automatically."
-  sectionEyebrow="What an explanation contains"
-  sectionH2="Traceable, statutorily shaped, carrier-signed."
-  sectionBody="The variables used, the weights applied, the ECDIS they derived from, the statistical test demonstrating significance, the protected-class exposure check, the comparable-decision benchmark, the human-in-the-loop step. Formatted to the statutory test. Available in the consumer's adverse-action notice and in the regulator bundle in the same export pass."
-  faqs={[
-    { q: "Does this work for black-box third-party models?", a: "Yes. We capture the inputs, the output, the vendor contract reference, and the vendor's own explanation artifact when provided. Missing vendor explainability is itself documented." },
-    { q: "What about Colorado SB21-169's specific test?", a: "The life-specific quantitative test runs on the same data. Output matches the Colorado DOI filing format." },
-    { q: "Can we test adverse decisions against synthetic protected-class applicants?", a: "Yes. Scheduled stress tests against synthetic personas calibrated to state demographics. Results in the bundle." },
+  tier="Tier 3 · Compliance"
+  h1="Explain every adverse AI decision, statutorily."
+  lead="When an AI-informed decision adversely affects a consumer, NY DFS and NAIC both require a demonstration that the decision rests on a clear, empirical, statistically significant, rational, and not unfairly discriminatory relationship to risk. That sentence is the bar."
+  whyTitle="What we're watching."
+  whyBody="Meeting the standard on every decision is hard when the explanation is assembled after the fact. It becomes straightforward when the decision itself produces the explanation. The shift is from audit trail as documentation to audit trail as by-product of the decision process."
+  watchTitle="Five things the statutory shape requires."
+  watchPoints={[
+    "The explanation must trace variables, weights, ECDIS sources, and the statistical test demonstrating significance. All four — not three.",
+    "Protected-class proxy variables are the most common failure mode. Test for them on the decision inputs, not only on the training data.",
+    "Comparable-decision benchmarking — similar applicants, similar outcomes — is the supplemental test regulators ask for when the primary test looks clean.",
+    "The human-in-the-loop step must be real, not ceremonial. 'The underwriter reviewed and approved' without evidence of engagement is a paper check and fails review.",
+    "The consumer's adverse-action notice and the regulator bundle should share the same evidence base. Contradictions between them are caught and costly.",
   ]}
-  ctaH2="See a sample explanation."
-  ctaBody="Redacted. Shows the statutory shape, the variable trace, the significance test, the protected-class check. Under NDA."
-  ctaButton="Send me the sample →"
+  newsletterPrompt="Every Tuesday: how regulators are actually reading adverse-decision explanations, the tests they're running, and which carriers pass or fail."
 />

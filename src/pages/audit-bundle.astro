@@ -4,22 +4,18 @@ import NarrowAngle from "@/components/NarrowAngle.astro";
 
 <NarrowAngle
   variant="audit-bundle"
-  umbrellaHref="/evidence.html"
-  umbrellaLabel="Governance angle"
-  eyebrow="For compliance, legal, AI-ops"
-  h1Before="A regulator asks."
-  h1Em="An afternoon."
-  h1After=" Not a fire drill."
-  lead="When NAIC, NY DFS, ACPR, or EIOPA asks for the evidence that your AI respected a specific rule, most carriers start an internal scramble. Phidea exports the bundle in one click — pre-mapped to the requesting body's format, signed, versioned, replayable."
-  sectionEyebrow="What's in a bundle"
-  sectionH2="The artifact a regulator actually receives."
-  sectionBody="Manifest with period, scope, and signature. Policy pack version active during the period. Signed session log with prompt, response, tool calls, grounding score, and policy outcome per inference. ECDIS register for every external data source referenced. Flagged-incident list with resolution status. Export formats for NAIC data call, NY DFS Circular Letter annex, EIOPA supervisory data template, DORA incident form."
-  faqs={[
-    { q: "How long does it take to generate one?", a: "Under ten minutes for a quarter of traffic on a live deployment. Bundles are compiled from the ledger, not re-constructed." },
-    { q: "Who signs the bundle?", a: "The carrier's appointed officer, via integration with your existing document-signing tool. The signature is linked to the bundle hash." },
-    { q: "Can we see what was in a previous bundle we exported?", a: "Yes. Every export is itself logged with a hash — you can reproduce it bit-for-bit." },
+  tier="Tier 2 · AI operations"
+  h1="Have a regulator bundle ready, every quarter."
+  lead="A regulator request for AI evidence is not a surprise. The cadence is published. What's surprising is how few carriers can produce the bundle on demand — most assemble it reactively, from scattered systems, under deadline."
+  whyTitle="What we're watching."
+  whyBody="The bundle is an artifact, not a report. It contains the signed sessions, the policy pack version, the ECDIS log, the flagged-incident list — cryptographically linked. If you had to build it tomorrow from the systems you already run, where would you start?"
+  watchTitle="Five things every bundle should contain."
+  watchPoints={[
+    "NAIC data call format specifies the fields. Match that schema from day one; retrofitting is expensive and introduces errors.",
+    "NY DFS expects the material elements of the AIS and the consumer-disclosure check. Both are runtime artifacts — not documents prepared quarterly.",
+    "EIOPA supervisory data requires a governance snapshot tied to the period reviewed. A current-state snapshot is a frequent audit finding.",
+    "DORA's incident form requires classification within a specific window. Map your incident taxonomy before you need it, not after.",
+    "Every export should itself be logged. 'What did you send last time?' is the second-order question every regulator asks in a follow-up.",
   ]}
-  ctaH2="See a sample bundle."
-  ctaBody="Redacted from a real production export. The manifest, the signature, the session log, the ECDIS register. Delivered under NDA."
-  ctaButton="Send me a bundle →"
+  newsletterPrompt="Every Tuesday: which regulators are asking what, the bundle formats carriers are building against, and where exports failed review."
 />

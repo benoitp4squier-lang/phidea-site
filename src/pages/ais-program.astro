@@ -4,21 +4,18 @@ import NarrowAngle from "@/components/NarrowAngle.astro";
 
 <NarrowAngle
   variant="ais-program"
-  umbrellaHref="/evidence.html"
-  umbrellaLabel="Governance angle"
-  eyebrow="For compliance, risk, AI governance"
-  h1Before="The AIS Program your board signed off on."
-  h1Em="And the inventory behind it."
-  lead="The NAIC Model Bulletin expects a documented AI System inventory — every model, every use, every risk tier, every owner. Most carriers maintain it in a spreadsheet that's six months stale. Phidea builds it live from the gateway and keeps it current from the trace."
-  sectionEyebrow="The inventory"
-  sectionH2="Live. Ownable by a named accountable party."
-  sectionBody="Each AI System entry: provider, model, version, deployment mode, LOB coverage, risk tier, accountable owner, third-party dependencies, active policy pack, last review date, incident count. Exports to spreadsheet, NAIC data call format, EU AI Act technical documentation, DORA ICT register. Reconciles automatically against new agents discovered in the gateway traffic."
-  faqs={[
-    { q: "What if a team deploys an agent outside Phidea?", a: "Unmonitored inference is flagged on the network side. The inventory includes a 'unrecognized agent' queue until ownership and policy pack are assigned." },
-    { q: "Who can edit the inventory?", a: "Per-field permissions: platform teams add technical data, compliance signs off on risk tier, business owners on accountability. Every edit logged." },
-    { q: "How does it link to our risk register?", a: "Risk-tier field feeds your ORSA inputs and enterprise risk register via API. Supported: Riskonnect, LogicGate, Archer, and webhook." },
+  tier="Tier 3 · Compliance"
+  h1="Keep the AIS Program that regulators actually expect."
+  lead="The NAIC Model Bulletin introduces the term AI System Program — a governance document plus a live inventory. Most carriers drafted the document. Few maintain the inventory. Audits begin where the document ends."
+  whyTitle="What we're watching."
+  whyBody="The inventory is operationally hard: new agents ship weekly, vendor contracts change, owners rotate. A document-only AIS Program survives a tabletop exercise and fails a real audit. Reconciling the document against reality quarterly is the minimum cadence."
+  watchTitle="Five audit findings we see repeatedly."
+  watchPoints={[
+    "Every AI System needs a named accountable officer. Rotation without reassignment is the single most common finding.",
+    "Risk tiering drives audit scope. Tier-1 systems need continuous evidence; Tier-3 sampling is acceptable. Untiered systems are all treated as Tier-1.",
+    "Third-party AI systems are in scope. A wrapper around ChatGPT is your AIS, not OpenAI's.",
+    "Retired systems must stay on the inventory with a retirement date. Deleted rows are a finding; historical trace queries need the row.",
+    "The AIS Program document and the inventory must reconcile. Drift between them is the second most common finding, after ownership.",
   ]}
-  ctaH2="See a sample inventory export."
-  ctaBody="Redacted from a live deployment. Spreadsheet + NAIC format. Shows what the accountable officer signs on."
-  ctaButton="Send me the sample →"
+  newsletterPrompt="Every Tuesday: what audit teams are flagging, which AIS Program structures hold up under examination, and where carriers are retrofitting."
 />

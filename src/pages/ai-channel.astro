@@ -4,21 +4,18 @@ import NarrowAngle from "@/components/NarrowAngle.astro";
 
 <NarrowAngle
   variant="ai-channel"
-  umbrellaHref="/distribution.html"
-  umbrellaLabel="Distribution angle"
-  eyebrow="For Head of Distribution"
-  h1Before="A new distribution channel."
-  h1Em="Measured like the old ones."
-  lead="AI assistants are a distribution surface, like aggregators or search once were. Most carriers can't yet count the leads that came from them, can't compare CAC, can't attribute bind. Phidea makes the channel legible to your existing distribution P&L."
-  sectionEyebrow="What Phidea tracks"
-  sectionH2="From AI session to quote to bind."
-  sectionBody="Every conversation on a Phidea-instrumented agent is tagged at source — surface, model version, query intent, persona match, referring prompt. Tags flow to your CRM with the quote request. You see the policies bound, the competitors displaced, and the cost per bind alongside your existing channels."
-  faqs={[
-    { q: "Which CRMs integrate?", a: "Salesforce, HubSpot, Duck Creek, Guidewire, and any webhook-ingesting target. Drop-in for systems that accept UTM-shaped params." },
-    { q: "How do you count leads when the AI doesn't hand off?", a: "Intent-classification on the full session. Conversion-ready sessions are tagged whether or not the buyer clicks through that hour." },
-    { q: "Does this replace our attribution platform?", a: "No. We feed tagged events into it." },
+  tier="Tier 1 · Distribution"
+  h1="Count the business AI assistants send you."
+  lead="AI assistants are becoming a distribution surface — the way aggregators and Google once were. Most carriers count leads from aggregators. Almost none count leads from ChatGPT, Claude, or Perplexity. The channel is uninstrumented."
+  whyTitle="What we're watching."
+  whyBody="Assistants don't send referer headers the way browsers do. Traffic lands in your CRM as 'direct' or 'unknown' and gets credited to the last-touch that wasn't AI. Without instrumenting at the agent layer, you cannot compare cost-per-bind across channels. The AI channel looks free because it looks invisible."
+  watchTitle="Five measurement moves."
+  watchPoints={[
+    "UTM tags must be injected at the agent's response, not expected from the user's browser. The assistant controls the click; your standard analytics stack does not.",
+    "Session IDs should persist across the assistant-to-website handoff. Most carriers lose them at the link click.",
+    "Intent classification matters. Discovery, comparison, and quote-intent sessions convert at different rates and should be reported separately.",
+    "Attribution should credit both the model and the upstream publication cited in the response. Otherwise, two different channels get squashed into one.",
+    "AI-assistant traffic currently converts at 0.2 – 2% across the carriers we've measured. A useful baseline for target-setting before you scale spend.",
   ]}
-  ctaH2="See the attribution view."
-  ctaBody="Thirty-minute walk-through on a sample data set. Your analytics lead gets the dashboard mock and the tag schema."
-  ctaButton="Request the walk-through →"
+  newsletterPrompt="Every Tuesday: the measurement moves, tag schemas, and attribution wins shipped by carriers taking AI as a channel seriously."
 />

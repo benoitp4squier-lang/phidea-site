@@ -4,21 +4,18 @@ import NarrowAngle from "@/components/NarrowAngle.astro";
 
 <NarrowAngle
   variant="augmented-underwriting"
-  umbrellaHref="/"
-  umbrellaLabel="Flagship"
-  eyebrow="For chief underwriter, head of UW ops"
-  h1Before="Underwriters spend three hours a day on referrals."
-  h1Em="That's the number."
-  lead="The 2025 State of Pricing survey (350 specialty and commercial underwriters, hyperexponential / Coleman Parkes) put manual referral triage at the top of what's slowing the desk. Phidea's augmented-underwriting module lets you codify the referral rules as policies — triage, straight-through, refer — without a dev cycle."
-  sectionEyebrow="How policy-as-code works for UW"
-  sectionH2="Written by your underwriters. Not by us."
-  sectionBody="Rules are declarative: the submission enters Phidea, is graded against your appetite, your sub-line thresholds, your authority letters, and the live portfolio composition. Straight-through submissions bind. Borderline ones route to the right authority with the evidence package attached. Edge cases escalate. Every decision logged, every deviation from the rule flagged for the audit."
-  faqs={[
-    { q: "Who owns the rules?", a: "Your underwriters. Version-controlled. Every change reviewed by the authority the change affects. We provide the runtime, not the rulebook." },
-    { q: "How does this differ from a generic BPM tool?", a: "Insurance-specific: line of business, authority letter, treaty year, reinstatement rules, cession logic, bind-versus-quote differences. The BPM tool doesn't know what a facultative is." },
-    { q: "Integration with our PAS?", a: "Duck Creek, Guidewire, Majesco, Applied Epic, custom. Read submissions and write decisions via API." },
+  tier="Tier 4 · Model risk"
+  h1="Give underwriters their three hours back."
+  lead="The 2025 State of Pricing survey from hyperexponential and Coleman Parkes put manual referral triage at the top of what's slowing the desk: specialty and commercial underwriters spend up to three hours a day on referrals. Most of those referrals could be policy-as-code."
+  whyTitle="What we're watching."
+  whyBody="Codifying referral rules is not a tech project and not a compliance project — it is an underwriting project. The underwriters own the rules; the platform owns the runtime. When that separation is respected, the rollout is weeks, not quarters."
+  watchTitle="Five rules that cover most of the referral queue."
+  watchPoints={[
+    "Authority letter, appetite statement, and LOB sub-line rules cover roughly eighty percent of referrals. Codify those first; the rest can wait.",
+    "Straight-through thresholds should be audited, not assumed. Most carriers set them conservatively once and never revisit.",
+    "Borderline referrals should route with the evidence package attached, not just the submission. The underwriter's time is on the decision, not on digging.",
+    "Deviations from rule should be logged with the underwriter's reason. 'Underwriter judgment' is perfectly fine — and now auditable, which it wasn't.",
+    "Policy-as-code is version-controlled. Underwriters can push rule changes without a dev ticket, which is usually the hardest culture change in the rollout.",
   ]}
-  ctaH2="Request an underwriting walk-through."
-  ctaBody="Forty-five minutes. Bring a recent submission that got stuck in a referral queue; we map it to a Phidea policy live on the call."
-  ctaButton="Request the walk-through →"
+  newsletterPrompt="Every Tuesday: which referral rules are being codified where, the straight-through thresholds holding up, and the deviation patterns worth knowing."
 />

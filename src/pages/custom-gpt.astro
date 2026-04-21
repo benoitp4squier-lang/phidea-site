@@ -4,21 +4,18 @@ import NarrowAngle from "@/components/NarrowAngle.astro";
 
 <NarrowAngle
   variant="custom-gpt"
-  umbrellaHref="/distribution.html"
-  umbrellaLabel="Distribution angle"
-  eyebrow="For platform, digital, product"
-  h1Before="A ChatGPT Custom GPT"
-  h1Em="your compliance team can sign off on."
-  lead="Most custom GPTs built inside carriers fail compliance review before launch. Phidea ships a governed AI app — grounded in your IPIDs, constrained by an IDD advice-boundary classifier, price-accuracy checked against your pricing API, every session logged to an audit-ready ledger."
-  sectionEyebrow="What ships"
-  sectionH2="A reference agent your legal team has seen before."
-  sectionBody="Prompt pack, policy pack, gateway, and the insurance-agent-v1 reference implementation — a governed home-insurance agent running on real IPIDs, with NAIC, NY DFS, Colorado, and ACPR policy packs already instrumented against it. ChatGPT GPT, Claude MCP, or Gemini Extension — pick your surface. Live in weeks."
-  faqs={[
-    { q: "Who owns the IP on the agent?", a: "You do. The reference agent is permissively licensed; the policy packs and gateway are source-available under a carrier EULA." },
-    { q: "Can it quote and bind?", a: "Yes, when connected to your pricing and policy admin APIs. Every quote is traceable to its inputs." },
-    { q: "What happens to the session if the agent misbehaves?", a: "Policy gate withholds the response, serves a safe fallback, logs the incident with the full trace." },
+  tier="Tier 1 · Distribution"
+  h1="Ship a Custom GPT your compliance team can live with."
+  lead="Custom GPTs, Claude MCP servers, and Gemini Extensions can answer buyer questions on your products. Most carriers halt internal builds at compliance review. The fix is to shift AI governance from documentation to runtime."
+  whyTitle="What we're watching."
+  whyBody="Compliance's real concern is not the model — it is the inability to explain what the model said and why. Runtime constraint and session logging solve that. The model becomes a cog inside a governed pipeline; it is no longer a black box that speaks under your brand."
+  watchTitle="Five constraints that survive a legal review."
+  watchPoints={[
+    "IDD's advice-boundary rule is solvable with a deterministic classifier on the response path. No LLM fine-tuning, no heuristics — a rule.",
+    "Price accuracy breaks first. Most insurance hallucinations are quantitative. Hard-check every number against your pricing API before delivery.",
+    "Required disclosures inject as a post-processor, not a prompt instruction. The model forgets instructions under pressure; post-processing does not.",
+    "Session logs must be append-only and signed. Your legal team will ask. A SaaS product's vanilla logs usually don't qualify.",
+    "A compliance-grade Custom GPT does not need your full rate engine. A product-tier lookup is enough for discovery; pricing punts to your existing quote tool.",
   ]}
-  ctaH2="Book a technical walkthrough."
-  ctaBody="Thirty minutes. We run the reference agent live, step through the policy pipeline, and map it to one of your use cases."
-  ctaButton="Book a walkthrough →"
+  newsletterPrompt="Every Tuesday: what carriers who shipped AI agents learned — from IDD classifier thresholds to the three hallucinations that killed their pilot."
 />

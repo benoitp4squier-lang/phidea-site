@@ -4,21 +4,18 @@ import NarrowAngle from "@/components/NarrowAngle.astro";
 
 <NarrowAngle
   variant="hallucination-guardrail"
-  umbrellaHref="/synthetic.html"
-  umbrellaLabel="Monitoring angle"
-  eyebrow="For AI-ops, compliance, product"
-  h1Before="An invented €1M coverage limit."
-  h1Em="Caught before delivery."
-  lead="A young renter in Lyon asked a home-insurance agent if her contract covered death at home. The model invented a one-million-euro life clause. Phidea flagged it on three policy checks — scope mismatch, ACPR IDD advice-boundary breach, unsupported quantitative assertion — blocked it, served a fallback, logged the incident. Production deployment."
-  sectionEyebrow="The policy gate"
-  sectionH2="Three layers. Any flag withholds the response."
-  sectionBody="Grounding check: every substantive claim must trace to a document in your corpus. Price-accuracy check: every number fails closed against your pricing API. Hallucination classifier: trained on insurance-specific failure patterns, runs on every output. Most carriers start in observe-only, cross the blocking threshold after 30 days of clean traces."
-  faqs={[
-    { q: "What's the false-positive rate on the classifier?", a: "Under 2% at production threshold on the tier-1 European carrier deployment. Tuneable per agent and per LOB." },
-    { q: "What happens to the customer when a response is blocked?", a: "Safe fallback routes to a scripted reply or, if configured, to a human agent. No dead end." },
-    { q: "Can you catch French-language hallucinations?", a: "Yes. Classifier is multilingual and tuned for FR, EN, DE, IT, ES insurance vocabulary." },
+  tier="Tier 2 · AI operations"
+  h1="Stop a made-up coverage answer before it reaches a customer."
+  lead="Most hallucinations in insurance are quantitative: an invented coverage limit, a wrong deductible, a reassuring clause that doesn't exist. They sound confident, they pass a fast reader, and they are the easiest kind to catch with a gate."
+  whyTitle="What we're watching."
+  whyBody="The gate is deterministic: every number must match your pricing API, every coverage assertion must trace to a policy document. The LLM is a composition layer, not a source of truth. Treating it that way is the single largest safety upgrade a carrier can make this quarter."
+  watchTitle="Five checks worth building today."
+  watchPoints={[
+    "Hard-check numbers against your pricing API synchronously. A 50ms cost prevents a misquote — an acceptable trade for the risk it removes.",
+    "Every coverage claim must cite a document chunk. No citation, no delivery. This rule alone removes most of the visible failure modes.",
+    "Disclosures cannot live in the prompt — the model drops them under pressure. Post-process injection is more reliable and survives every model update.",
+    "Safe fallback text matters as much as the block itself. Design it for the customer, not the engineer. A blunt block is a worse UX than no bot.",
+    "Blocking mode is best turned on per agent after thirty days of observe-only traces, not on day one. The baseline matters.",
   ]}
-  ctaH2="See a blocked hallucination, live."
-  ctaBody="Fifteen minutes. We run a probe designed to trigger a hallucination and walk you through the gate decision and the trace."
-  ctaButton="Request a demo →"
+  newsletterPrompt="Every Tuesday: which hallucination patterns showed up in production this week across carriers — and what the gate caught."
 />

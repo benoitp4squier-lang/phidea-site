@@ -4,22 +4,18 @@ import NarrowAngle from "@/components/NarrowAngle.astro";
 
 <NarrowAngle
   variant="competitor-share"
-  umbrellaHref="/distribution.html"
-  umbrellaLabel="Distribution angle"
-  eyebrow="For CMO, Head of Digital"
-  h1Before="The competitor cited instead of you."
-  h1Em="Named."
-  h1After=" Per query. Per surface."
-  lead="Phidea runs forty real buyer queries per LOB across ChatGPT, Claude, Gemini, and Perplexity. You get a matrix — your share of answer, each named competitor's, and the queries where neither of you wins."
-  sectionEyebrow="The scorecard"
-  sectionH2="Share of answer, broken out."
-  sectionBody="By surface: ChatGPT vs Claude vs Gemini vs Perplexity. By query intent: discovery, coverage check, comparison, price. By geography. Redacted examples from a Tier-1 European carrier ship with the free tier. You can take the PDF to the next distribution meeting on day two."
-  faqs={[
-    { q: "Is the query library public?", a: "The methodology is. The weighted query set is carrier-specific and tuned per LOB." },
-    { q: "How often does it refresh?", a: "Weekly on paid. Quarterly on the free scorecard." },
-    { q: "Can we benchmark against peers we choose?", a: "Yes. Select up to five named competitors per LOB." },
+  tier="Tier 1 · Distribution"
+  h1="See who ChatGPT mentions instead of you."
+  lead="Your share of answer is not your share of search. When a prospective buyer asks 'cheapest auto insurance in Texas,' assistants recite a shortlist — and that list can be dominated by two or three names that have been in the model's training mix longest."
+  whyTitle="What we're watching."
+  whyBody="The ranking is opaque. Unlike Google, there is no ad-buy to correct it. Citation is a function of who's mentioned in what external source and how recently. The competitor ranked ahead of you last month may not be the one ranked ahead this month — and most carriers do not notice the switch."
+  watchTitle="Five patterns in the shortlist."
+  watchPoints={[
+    "Comparison-media coverage drives citation rank more than your own content. Carriers with heavy presence on NerdWallet, The Zebra, and MoneyGeek get cited disproportionately.",
+    "Geographic modifiers reshuffle the list. Local and regional carriers frequently beat national carriers on state-specific queries.",
+    "Phrasing matters: 'cheapest' vs 'best' vs 'safest' pull different shortlists from the same assistant. Optimizing for one phrase is not optimizing for the category.",
+    "Citation recency shifts weekly. A single wire-service article on one carrier can reshuffle who appears first across all four assistants.",
+    "'You, unnamed' is a real outcome. Carriers not cited by name are summarized as 'several providers' — strictly worse than appearing in fourth position.",
   ]}
-  ctaH2="Get your first scorecard."
-  ctaBody="Free for your first LOB in your first market. PDF delivered by a Phidea analyst within 48 hours."
-  ctaButton="Get the scorecard →"
+  newsletterPrompt="Every Tuesday: the movers and laggards on share of answer across ChatGPT, Claude, Gemini, Perplexity, with the external signals that moved them."
 />

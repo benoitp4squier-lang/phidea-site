@@ -4,21 +4,18 @@ import NarrowAngle from "@/components/NarrowAngle.astro";
 
 <NarrowAngle
   variant="portfolio-drift"
-  umbrellaHref="/synthetic.html"
-  umbrellaLabel="Monitoring angle"
-  eyebrow="For portfolio manager, chief UW, CRO"
-  h1Before="Portfolio composition drift."
-  h1Em="Caught before the quarterly board deck."
-  lead="AI-informed underwriting can shift the book without anyone noticing — mix drifts, coverage extensions accumulate, geographies creep outside appetite. By the quarterly review, three months of policies are bound against an appetite statement that no longer matches the portfolio. Phidea tracks drift live against the statement the board signed."
-  sectionEyebrow="What Phidea tracks"
-  sectionH2="Against the risk appetite statement your board signed."
-  sectionBody="Portfolio composition by LOB, by sub-line, by geography, by retention band. Exposure concentration. Cession coverage. Gross-vs-net exposure drift. Every change diffed against the appetite statement in effect. Alerts when any dimension breaches — before the next reinsurance renewal, not after."
-  faqs={[
-    { q: "Does this replace our portfolio management system?", a: "No. It monitors against it. Phidea reads live bound policies, compares to your appetite statement, and pages breach. The PMS remains the source of truth." },
-    { q: "How is the appetite statement represented?", a: "As structured limits — exposure caps per dimension, concentration thresholds, cession floors. Imported from your existing document or authored in YAML with your chief underwriter." },
-    { q: "Can we test a proposed appetite change against the current book?", a: "Yes. What-if mode replays the current portfolio against a candidate appetite statement and surfaces what would have breached." },
+  tier="Tier 4 · Model risk"
+  h1="See portfolio drift before the quarterly deck."
+  lead="AI-informed underwriting can shift the book without anyone noticing — mix drifts, coverage extensions accumulate, geographies creep outside appetite. By the quarterly review, three months of policies are bound against an appetite statement that no longer matches the portfolio."
+  whyTitle="What we're watching."
+  whyBody="The appetite statement is a board document; the portfolio is a running process. The gap between them is where underwriting surprises come from — and where reinsurance conversations go sideways at renewal."
+  watchTitle="Five drift patterns worth catching early."
+  watchPoints={[
+    "Mix drift by sub-line surfaces exposure creep before aggregate limits trigger. Sub-line monitoring is the earliest leading indicator.",
+    "Geographic concentration builds faster than limits. Tiered thresholds catch it earlier than absolute limits, and flag the conversation before it gets hard.",
+    "Coverage extensions stack silently. 'Just one more endorsement' patterns add up across a quarter and show up as a reinsurance problem.",
+    "Cession coverage drift is a reinsurance conversation worth having monthly, not at renewal. Waiting for renewal is the expensive default.",
+    "What-if mode on a candidate appetite statement reveals what would have breached. Run it before the board signs, not after.",
   ]}
-  ctaH2="See live drift detection."
-  ctaBody="Forty-five minutes with a Phidea portfolio engineer. We run drift analysis against a sample book and walk through the breach flow."
-  ctaButton="Request the session →"
+  newsletterPrompt="Every Tuesday: which drift patterns are hitting carriers this quarter, the early indicators that caught them, and the renewal conversations they enabled."
 />

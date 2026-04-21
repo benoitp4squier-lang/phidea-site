@@ -4,21 +4,18 @@ import NarrowAngle from "@/components/NarrowAngle.astro";
 
 <NarrowAngle
   variant="ai-monitoring"
-  umbrellaHref="/synthetic.html"
-  umbrellaLabel="Monitoring angle"
-  eyebrow="For Head of AI, AI-ops"
-  h1Before="Observability for AI agents"
-  h1Em="in production."
-  lead="You shipped a claims-triage bot, an underwriting copilot, a storefront chatbot. They run. You have no idea what they're saying, whether they're grounded, or how often they refuse. Phidea instruments them — every prompt, every tool call, every response, graded in real time."
-  sectionEyebrow="What gets captured"
-  sectionH2="The trace a compliance lead can read."
-  sectionBody="Prompt, response, tool calls, grounding score against your policy corpus, hallucination classifier output, policy-gate decision, model + version, user session, latency — all in a structured trace. Dashboards by LOB, by surface, by agent. Alerts paged to PagerDuty, Opsgenie, or Slack."
-  faqs={[
-    { q: "What agents does this cover?", a: "OpenAI-compatible agents, Claude MCP servers, Gemini Extensions, LangGraph, CrewAI, custom frameworks. Anything reachable via HTTP or MCP." },
-    { q: "How is this different from LangSmith or Langfuse?", a: "Those are dev-tools for AI engineers. Phidea is for insurance compliance and ops — pre-mapped policy packs, regulator-ready export, carrier-grade SLAs." },
-    { q: "Can we self-host the collector?", a: "Yes. Container bundle runs in VPC or air-gapped. Same code path as managed SaaS." },
+  tier="Tier 2 · AI operations"
+  h1="Know what your AI agents said last night."
+  lead="Most carriers running LLMs in production cannot tell you what their agents answered between 2am and 6am. The trace exists, partially, in the provider's logs — for 30 days. That gap is not sustainable once a regulator asks for a year's worth."
+  whyTitle="What we're watching."
+  whyBody="AI observability is not the same as application monitoring. You need prompt, response, tool calls, and policy decisions captured at the same layer. A request/response log cannot tell you why the agent said what it said — only that something happened."
+  watchTitle="Five things most carriers are missing."
+  watchPoints={[
+    "Provider-side logs from OpenAI or Anthropic are typically retained 30 days. Regulators ask for twelve months. Your compliance calendar and the default retention window do not agree.",
+    "Tool calls are the most important signal and the most often omitted. Log every function call the agent made, with arguments and result.",
+    "Grounding score — whether the response actually cited your corpus — is what catches most hallucinations before production.",
+    "Policy decisions should be captured even when no policy fired. The absence of a flag is itself evidence, and regulators treat it as such.",
+    "Latency per layer (model, tool, policy) matters more than aggregate latency. Drift hides in layers the top-line p99 cannot see.",
   ]}
-  ctaH2="Request a monitoring demo."
-  ctaBody="Thirty minutes. Bring one of your agents; we instrument it live on the call and walk through the trace together."
-  ctaButton="Request a demo →"
+  newsletterPrompt="Every Tuesday: the observability gaps we see carriers closing — and the ones they're still surprised by when a regulator asks."
 />

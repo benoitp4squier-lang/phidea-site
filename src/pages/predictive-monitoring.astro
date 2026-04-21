@@ -4,21 +4,18 @@ import NarrowAngle from "@/components/NarrowAngle.astro";
 
 <NarrowAngle
   variant="predictive-monitoring"
-  umbrellaHref="/synthetic.html"
-  umbrellaLabel="Monitoring angle"
-  eyebrow="For pricing, actuarial, reserving"
-  h1Before="Rate adequacy monitored."
-  h1Em="Between reserves reviews."
-  lead="Predictive pricing models drift silently. By the time actuaries notice in the quarterly reserve review, the damage is three months old on a portion of the book. Phidea tracks rate adequacy, loss-pick drift, and relativity stability in real time — with the granularity your pricing team already writes reports in."
-  sectionEyebrow="What Phidea monitors"
-  sectionH2="The KPIs already in your pricing deck."
-  sectionBody="Rate relativity drift by segment. Loss-pick drift against plan. Portfolio mix shift against appetite. Cross-subsidy detection. Ultimate loss trend. Alert thresholds baselined per line. Output formatted to match the reports your actuarial team already runs — the dashboard replaces the monthly pull, not the pricing tool."
-  faqs={[
-    { q: "Does this replace our hyperexponential / Earnix / Akur8 pricing stack?", a: "No. It monitors what that stack deploys. We read the model outputs post-deployment; your pricing team stays in their tool." },
-    { q: "How do you handle confidential pricing data?", a: "Pricing data never leaves your boundary. Phidea reads from your data warehouse via a read-only service account; computes are in your VPC." },
-    { q: "What's the alert latency?", a: "Threshold breaches are paged within the hour. Daily roll-ups land in the actuarial team's inbox with the morning reports." },
+  tier="Tier 4 · Model risk"
+  h1="Watch pricing drift between reserves reviews."
+  lead="Predictive pricing models — GLMs, gradient-boosted trees, increasingly LLM-assisted pipelines — drift silently between quarterly reserving reviews. By the time actuaries notice, a quarter of the new business has been bound on a stale model."
+  whyTitle="What we're watching."
+  whyBody="The signal is in the KPIs your pricing team already tracks: rate relativity by segment, loss-pick drift against plan, portfolio mix. What's missing is the cadence. Monthly reports are too slow for the speed of the book in an LLM-assisted pricing stack."
+  watchTitle="Five KPIs worth watching in real time."
+  watchPoints={[
+    "Rate relativity drift is the earliest signal. Segment-level monitoring catches it before aggregate metrics do — sometimes by weeks.",
+    "Loss-pick drift against plan becomes a hallucination proxy when pricing uses LLM-assisted feature extraction. Track both signals together.",
+    "Portfolio mix shift can fake rate adequacy. A book that shifts toward better-rated risks looks priced-right on aggregate; it isn't.",
+    "Cross-subsidy detection requires comparing realized premium to expected loss at segment level. Quarterly reviews miss this entirely.",
+    "Ultimate loss trend still matters for the long tail. Real-time KPIs augment it; they do not replace it.",
   ]}
-  ctaH2="Talk to pricing."
-  ctaBody="Forty-five minutes with a Phidea actuarial engineer. We map your pricing stack to what Phidea monitors and show the alert flow."
-  ctaButton="Request the session →"
+  newsletterPrompt="Every Tuesday: which KPIs are shifting in the books we observe, which LLM-assisted pricing stacks are holding up, and which aren't."
 />

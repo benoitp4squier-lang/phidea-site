@@ -4,21 +4,18 @@ import NarrowAngle from "@/components/NarrowAngle.astro";
 
 <NarrowAngle
   variant="ecdis-oversight"
-  umbrellaHref="/evidence.html"
-  umbrellaLabel="Governance angle"
-  eyebrow="For compliance, vendor risk, data governance"
-  h1Before="Every ECDIS your models touched."
-  h1Em="Logged and inspectable."
-  lead="NY DFS Circular Letter No. 7 and the NAIC Model Bulletin both require carriers to track the External Consumer Data and Information Sources used by AI systems, and to demonstrate the material elements were disclosed. Most carriers can't list them. Phidea does, automatically, by fingerprinting the data pulled into each prompt."
-  sectionEyebrow="What Phidea tracks"
-  sectionH2="Every source. Every vendor. Every contract reference."
-  sectionBody="For each AI inference: the ECDIS touched, the vendor providing it, the contract in effect at the time, the data categories used, the disclosure to the consumer (if any). Rolled up into a vendor register that matches your DORA ICT third-party register — or becomes the register if you didn't have one for AI-linked data."
-  faqs={[
-    { q: "Does this cover data enriched outside of Phidea (e.g. our own data lake)?", a: "Yes, when called from the inference path. We fingerprint the payload and link it to your registered source. Out-of-path enrichment is traced from the ingestion manifest." },
-    { q: "What about data we're not supposed to be using?", a: "Detection rules against your internal 'do-not-use' list flag any inference that references a restricted ECDIS. Blocked at the gate if you configure it." },
-    { q: "Does this integrate with our TPRM / vendor platform?", a: "Yes. Webhook to Archer, OneTrust, ProcessUnity, LogicGate, or any target. The ECDIS register shares the vendor-id keyspace." },
+  tier="Tier 3 · Compliance"
+  h1="Track every third-party data source your models touch."
+  lead="External Consumer Data and Information Sources — ECDIS — are called out explicitly by NY DFS and NAIC. If your AI pulls from them, you are accountable for them. Most carriers cannot list the sources, the vendors, or the contracts."
+  whyTitle="What we're watching."
+  whyBody="ECDIS tracking lives at the inference path. Post-hoc inventories miss sources that are only touched under certain query conditions. The only reliable method is fingerprinting the data as it enters the prompt — which is why most carriers don't have a complete list yet."
+  watchTitle="Five recurring findings on ECDIS reviews."
+  watchPoints={[
+    "The list of active sources changes constantly. Sources added mid-quarter without governance review are the most common finding in examinations.",
+    "Contract references must link to the specific ECDIS in use. 'We have a contract with vendor X' is not sufficient if X supplies multiple data products.",
+    "Consumer disclosure of material ECDIS elements is required under NY DFS. Most disclosures are generic and do not survive regulator review.",
+    "Do-not-use lists should be enforced at the inference layer, not only at ingestion. Data that was ingested once gets called again.",
+    "DORA's ICT third-party register overlaps with ECDIS tracking. Build one register that satisfies both; maintaining two is expensive and always drifts.",
   ]}
-  ctaH2="See a sample ECDIS register."
-  ctaBody="Redacted live export. Shows the sources, the vendors, the contract links, and the consumer-disclosure check."
-  ctaButton="Send me the sample →"
+  newsletterPrompt="Every Tuesday: which ECDIS issues regulators are flagging, the new data sources carriers are onboarding, and where disclosures are holding or failing."
 />
