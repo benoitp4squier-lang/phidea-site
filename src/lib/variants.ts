@@ -7,6 +7,7 @@
 
 export type VariantId =
   | "flagship-observability"
+  | "insurance"
   | "distribution"
   | "evidence"
   | "developers"
@@ -35,6 +36,16 @@ export const variants: Record<VariantId, Variant> = {
     shortLabel: "Observability",
     primaryKpi: "Demo request",
     audience: "Heads of AI, insurance CTOs, AI-ops leads",
+  },
+  insurance: {
+    id: "insurance",
+    path: "/insurance.html",
+    title: "Phidea — AI governance for insurance.",
+    description:
+      "One platform for observability, evidence, and synthetic testing on every AI model running in underwriting, distribution, and claims. Aligned to NAIC, NYDFS, EU AI Act, DORA, and IDD.",
+    shortLabel: "Insurance",
+    primaryKpi: "Demo request",
+    audience: "AI, compliance, and actuarial leads at carriers, reinsurers, Lloyd's syndicates, EU specialty",
   },
   distribution: {
     id: "distribution",

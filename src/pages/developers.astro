@@ -184,7 +184,7 @@ python -m agent.mcp_server
     <details><summary>Can we self-host?</summary><p>Yes. The reference agent runs locally. Production deploy is a container; VPC / on-prem options exist for carriers with that requirement.</p></details>
     <details><summary>Which model providers are supported?</summary><p>OpenAI, Anthropic, Google, Mistral, and any OpenAI-compatible endpoint. The policy pipeline is provider-agnostic.</p></details>
     <details><summary>What about latency?</summary><p>Pre-flight + input guardrails add ~50ms typical. Groundedness check adds ~100ms. Price-accuracy check is synchronous against the pricing tool. End-to-end target is sub-2s for a typical Q&amp;A turn.</p></details>
-    <details><summary>Is the reference agent open source?</summary><p>Seeking design partners first — closed beta through Q3 2026. Public under a permissive license after v1 ships.</p></details>
+    <details><summary>Is the reference agent open source?</summary><p>The <code>insurance-agent-v1</code> reference agent is released under a permissive license. Policy packs and the observability gateway are source-available under a carrier-EULA — repo access on request.</p></details>
   </div>
 </section>
 
