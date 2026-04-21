@@ -1,21 +1,238 @@
 ---
-import NarrowAngle from "@/components/NarrowAngle.astro";
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+
+const navLinks = [
+  { href: "/", label: "Phidea" },
+  { href: "/#archive", label: "Topics" },
+  { href: "/#subscribe", label: "Subscribe" },
+];
+const navCta = { href: "#subscribe", label: "Subscribe →" };
 ---
 
-<NarrowAngle
-  variant="ai-visibility"
-  tier="Tier 1 · Distribution"
-  h1="Be present when buyers ask AI for insurance."
-  lead="Insurance buyers increasingly open a chat window instead of a comparison site. ChatGPT, Claude, Gemini, and Perplexity answer coverage questions with whichever carrier the model knows best. If that isn't you, it's a competitor."
-  whyTitle="What we're watching."
-  whyBody="Brand leadership in search does not transfer to AI leadership. Different signal, different retrieval, different game. In our last round of probes across four assistants, the carrier ranked #1 on Google was cited in the assistants' answers only 38% of the time."
-  watchTitle="Five things to check this week."
-  watchPoints={[
-    "Your robots.txt. GPTBot, ClaudeBot, PerplexityBot, and Google-Extended all respect it. Blocking them makes you invisible to the models that now index for answers.",
-    "Your IPID structure. Assistants cite documents with clearly Q/A-shaped content more often than marketing-style product pages. FAQ format wins.",
-    "Your 'am I covered for X' queries. These are the most frequent insurance entry point inside assistants. When your copy is ambiguous, the model fills the gap — confidently and often wrong.",
-    "Your comparison-media presence. NerdWallet, The Zebra, MoneyGeek, Insurance Business rank above your own microsite in model retrieval. Earned media is distribution now.",
-    "Your assistant differences. Claude refuses to quote prices. ChatGPT and Gemini will. Perplexity will cite a competitor if your structured data is thinner. One optimization target does not serve four surfaces.",
-  ]}
-  newsletterPrompt="Every Tuesday: what changed in AI-assistant behavior for insurance buyers, which carriers gained or lost share of answer, and the structural moves that drove it."
-/>
+<Layout variant="ai-visibility">
+  <Nav variant="ai-visibility" links={navLinks} cta={navCta} />
+
+  <article class="article">
+    <header class="article-head">
+      <div class="wrap wrap-article">
+        <div class="article-meta">
+          <span>Topic 01 · Distribution</span>
+          <span>April 2026</span>
+          <span>6 min read</span>
+        </div>
+        <h1>When a carrier isn't cited by ChatGPT.</h1>
+        <p class="standfirst">
+          The carriers ranked #1 on Google are losing share of answer on Perplexity. The gap is structural — and the fix isn't SEO.
+        </p>
+      </div>
+    </header>
+
+    <section class="article-body">
+      <div class="wrap wrap-article">
+        <p>
+          Insurance buyers have started opening a chat window instead of a comparison site. The shift is quiet — there's no analytics platform yet that measures it cleanly — but you can see it in the pattern of queries ChatGPT, Claude, Gemini, and Perplexity answer every day about coverage. "Am I covered for X?" "Cheapest auto insurance in Texas?" "What does an umbrella policy actually do?"
+        </p>
+
+        <p>
+          Those answers aren't ranked the way Google's search results are. They're composed. The assistant decides which carrier to mention based on a mixture of training data, web retrieval, and — increasingly — the brand names that already appear in its training corpus. The result: the carriers ranked #1 on Google rarely dominate in the assistants' answers. On Perplexity, which leans hardest on retrieval, the gap is sometimes dramatic.
+        </p>
+
+        <blockquote class="pullquote">
+          Brand leadership in search does not transfer to brand leadership in AI. Different signal, different retrieval, different game.
+        </blockquote>
+
+        <p>
+          When we run forty discovery queries per line of business across the four major assistants, the pattern is consistent. A Tier-1 European auto carrier running fifteen percent of local market share shows up in roughly a quarter of ChatGPT's answers and far fewer of Perplexity's. Its largest competitor — not the market leader by premium — dominates Perplexity at a share of nearly two in five. Same market. Different game.
+        </p>
+
+        <h2>Why the signal is different.</h2>
+
+        <p>
+          Search engines rank. Assistants compose. A carrier that earns editorial coverage on NerdWallet or Insurance Business shows up more often in assistant citations than a carrier that dominates its own SEO microsite. The incentive structure is backwards from what most distribution teams optimized for in the last decade.
+        </p>
+
+        <p>
+          The other structural difference is phrasing. "Cheapest auto insurance" pulls a different shortlist than "best auto insurance" or "safest auto insurance" on the same assistant, seconds apart. Each assistant has its own retrieval personality, and each personality has biases that haven't been catalogued anywhere public. Optimizing against one is not optimizing against four.
+        </p>
+
+        <h2>Five things to check this week.</h2>
+
+        <p>
+          <strong>Your robots.txt.</strong> GPTBot, ClaudeBot, PerplexityBot, and Google-Extended all respect it. If any are blocked, you're invisible to the surface those crawlers feed. Most carriers last edited robots.txt during an SEO migration years ago and never revisited it.
+        </p>
+
+        <p>
+          <strong>Your IPID structure.</strong> Assistants cite Q/A-shaped documents more reliably than prose product pages. FAQ format, clean headings, and short answers matter more than they used to.
+        </p>
+
+        <p>
+          <strong>Your assistant differences.</strong> Claude refuses to quote prices. ChatGPT and Gemini will. Perplexity names a competitor if your structured data is thinner than theirs. One optimization target does not serve four surfaces.
+        </p>
+
+        <p>
+          <strong>Your comparison-media presence.</strong> NerdWallet, The Zebra, MoneyGeek, and Insurance Business rank above your own microsite in model retrieval. Earned media is distribution now, not PR.
+        </p>
+
+        <p>
+          <strong>Your "am I covered for X" answers.</strong> When your own copy is ambiguous, the assistant fills the gap — confidently, and often wrong. Compliance-grade IPID language is no longer just a filing artifact; it's the source material the models compose from.
+        </p>
+
+        <h2>What we're tracking next.</h2>
+
+        <p>
+          This is the first in a weekly series of observations on how AI-assistant behavior is changing insurance distribution. Next week: what happens when a provider ships a silent model update, and how refusal-rate shifts ripple through coverage queries on Tuesday morning.
+        </p>
+      </div>
+    </section>
+
+    <section id="subscribe" class="subscribe-strip">
+      <div class="wrap wrap-article">
+        <div class="section-label">Phidea Weekly</div>
+        <h3>Keep reading this kind of analysis.</h3>
+        <p>
+          Every Tuesday: the regulator moves, the model updates, the carrier experiments, and the ones that didn't make it past compliance review.
+        </p>
+        <form action="https://buttondown.email/api/emails/embed-subscribe/phidea" method="POST" class="signup">
+          <input type="hidden" name="tag" value="ai-visibility" />
+          <input type="email" name="email" placeholder="you@carrier.com" required />
+          <button type="submit">Subscribe →</button>
+        </form>
+        <p class="signup-small">One email per week. Unsubscribe in one click. No sales pitch.</p>
+      </div>
+    </section>
+  </article>
+
+  <Footer />
+</Layout>
+
+<style>
+  .wrap-article { max-width: 680px; padding-left: 24px; padding-right: 24px; margin: 0 auto; }
+
+  .article-head { padding: 72px 0 32px; border-bottom: 1px solid var(--line); }
+  .article-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .article-head h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 48px;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin: 0 0 24px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .standfirst {
+    font-size: 21px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    margin: 0 0 8px;
+    font-style: italic;
+  }
+
+  .article-body { padding: 48px 0 64px; }
+  .article-body p {
+    font-size: 18px;
+    line-height: 1.72;
+    color: var(--ink-2);
+    margin: 0 0 24px;
+  }
+  .article-body p strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .article-body h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 28px;
+    line-height: 1.25;
+    font-weight: 500;
+    margin: 48px 0 20px;
+    color: var(--ink);
+  }
+  .pullquote {
+    margin: 32px -20px;
+    padding: 20px 28px;
+    border-left: 3px solid var(--accent);
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .subscribe-strip {
+    padding: 72px 0;
+    background: var(--soft);
+    border-top: 1px solid var(--line);
+  }
+  .subscribe-strip h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 28px;
+    line-height: 1.2;
+    margin: 0 0 12px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .subscribe-strip p {
+    font-size: 16px;
+    color: var(--ink-2);
+    margin: 0 0 24px;
+  }
+  .signup {
+    display: flex;
+    gap: 10px;
+    max-width: 520px;
+  }
+  .signup input[type=email] {
+    flex: 1;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    background: var(--bg);
+    color: var(--ink);
+  }
+  .signup button {
+    padding: 14px 24px;
+    border: none;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: inherit;
+  }
+  .signup button:hover { background: var(--accent); }
+  .signup-small {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 12px;
+  }
+
+  @media (max-width: 720px) {
+    .article-head h1 { font-size: 32px; }
+    .standfirst { font-size: 18px; }
+    .article-body p { font-size: 16px; }
+    .article-body h2 { font-size: 22px; }
+    .pullquote { font-size: 18px; margin: 24px 0; padding: 16px 20px; }
+    .signup { flex-direction: column; }
+  }
+</style>
