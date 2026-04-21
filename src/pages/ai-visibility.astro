@@ -1,291 +1,104 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Nav from "@/components/Nav.astro";
-import Footer from "@/components/Footer.astro";
+import ReferenceArticle from "@/components/ReferenceArticle.astro";
 
-const navLinks = [
-  { href: "/", label: "Phidea" },
-  { href: "/#archive", label: "Topics" },
-  { href: "/#subscribe", label: "Subscribe" },
+const intro = [
+  "AI assistants like ChatGPT, Claude, Gemini, and Perplexity answer insurance questions every day. The assistants compose a sentence in response. That sentence sometimes names your carrier, sometimes names a competitor, and sometimes names no carrier at all.",
+  "Whether your carrier gets named depends on what each model has read and what it retrieves at query time. The machinery has several layers, each with its own documentation and its own enforcement reality. Getting this right is a prerequisite for any serious measurement.",
 ];
-const navCta = { href: "#subscribe", label: "Subscribe →" };
+
+const steps = [
+  {
+    label: "robots.txt is a request, not a block.",
+    body: "OpenAI, Anthropic, Perplexity, and Google all state that their crawlers honour <code>robots.txt</code>. The protocol itself offers no enforcement mechanism. In June 2024, <a href='https://www.wired.com/story/perplexity-is-a-bullshit-machine/' target='_blank' rel='noopener'>Wired reported</a> that Perplexity retrieved content from pages that disallowed its declared user-agent, including retrieval via undeclared identifiers. Treat <code>robots.txt</code> as a statement of preference. If your risk posture requires an actual block, the enforcement layer is server-side.",
+  },
+  {
+    label: "Training and retrieval are different pipelines.",
+    body: "Each major provider runs more than one crawler, and the policies you set for one do not apply to the others. OpenAI separates <a href='https://platform.openai.com/docs/gptbot' target='_blank' rel='noopener'><code>GPTBot</code></a> (training-data ingestion) from <a href='https://platform.openai.com/docs/bots/chatgpt-user' target='_blank' rel='noopener'><code>ChatGPT-User</code></a> (user-triggered browsing inside a conversation) and <a href='https://platform.openai.com/docs/bots/oai-searchbot' target='_blank' rel='noopener'><code>OAI-SearchBot</code></a> (ChatGPT's search feature). Anthropic distinguishes <code>ClaudeBot</code> (training) from <code>Claude-Web</code> and <code>anthropic-ai</code> (live retrieval). Perplexity runs <code>PerplexityBot</code> alongside <code>Perplexity-User</code>. Blocking one does not block the others.",
+  },
+  {
+    label: "Google-Extended is an opt-out token, not a crawler.",
+    body: "A <code>User-agent: Google-Extended</code> disallow tells Google not to use your content to train Gemini or Vertex AI. <a href='https://developers.google.com/search/docs/crawling-indexing/google-crawlers' target='_blank' rel='noopener'>Googlebot</a> continues to crawl your site for regular search under its own rules. AI Overviews, which compose answers at query time from the regular search index, are not controlled by Google-Extended at all; that requires different mechanisms (Search Console no-snippet directives, or absence from search altogether).",
+  },
+  {
+    label: "The crawler list is longer than the four majors.",
+    body: "Meta's <code>Meta-ExternalAgent</code>, Apple's <code>Applebot-Extended</code>, ByteDance's <code>Bytespider</code>, Amazon's <code>Amazonbot</code>, and Cohere's <code>cohere-ai</code> all identify themselves and are documented. Each sits in the same voluntary-compliance bucket. <a href='https://darkvisitors.com/agents' target='_blank' rel='noopener'>Dark Visitors</a> maintains a continuously updated list with the <code>robots.txt</code> syntax each expects. Any audit that treats four providers as the full surface is incomplete.",
+  },
+  {
+    label: "Real enforcement is server-side.",
+    body: "If you want a block rather than a request, the enforcement layer is your web application firewall or CDN: user-agent and IP-range filtering, <a href='https://blog.cloudflare.com/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click/' target='_blank' rel='noopener'>Cloudflare's AI Scrapers and Crawlers rule set</a>, or equivalent controls on your edge provider. These can be combined with <code>robots.txt</code>, but <code>robots.txt</code> on its own is not a barrier.",
+  },
+  {
+    label: "Even full blocking does not make you invisible.",
+    body: "A model may already know about you from prior crawls that predated your policy, from third-party sites that mention you (comparison media, trade press, Wikipedia), from structured-data feeds your partners maintain, and from any open dataset that happened to include you. Blocking every AI crawler does not remove existing knowledge and does not stop real-time retrieval of pages that link to you. Controlling what the model says about you is a combination of blocking, correcting third-party sources, and providing clearer material in the channels that remain open.",
+  },
+  {
+    label: "The one measurement you can always run.",
+    body: "Pick twenty to forty real buyer questions in your market, in the local language. Run them against each of the four major assistants. Note who is cited, by name, in each answer. Compare the distribution with your actual market share. The result is your current citation rate on each surface. It is repeatable, it costs nothing but time, and it gives you a number you can defend in a conversation with marketing, compliance, or the board.",
+  },
+];
+
+const limitsBody = "The crawler list moves. Providers add and rename user-agents; Cloudflare and other edge providers update their AI-bot rules; the tech press occasionally uncovers non-compliance from one provider or another. Audit on a quarterly cadence at minimum. The references below are primary sources, but the policies they document evolve.";
+
+const sources = [
+  {
+    label: "OpenAI",
+    desc: "Three separate crawlers: GPTBot (training), ChatGPT-User (user-triggered browsing), OAI-SearchBot (ChatGPT search). Each is documented independently.",
+    urls: [
+      { text: "platform.openai.com/docs/gptbot", url: "https://platform.openai.com/docs/gptbot" },
+      { text: "platform.openai.com — overview of crawlers", url: "https://platform.openai.com/docs/bots/overview-of-openai-crawlers" },
+    ],
+  },
+  {
+    label: "Anthropic",
+    desc: "ClaudeBot (training), Claude-Web and anthropic-ai (live retrieval). robots.txt conformance statement.",
+    urls: [
+      { text: "support.anthropic.com — Anthropic crawler", url: "https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler" },
+    ],
+  },
+  {
+    label: "Perplexity",
+    desc: "PerplexityBot (training) and Perplexity-User (live retrieval). See also the Wired investigation on non-compliance.",
+    urls: [
+      { text: "perplexity.ai — crawler user-agents", url: "https://www.perplexity.ai/help-center/en/articles/10163415-perplexity-crawlers-user-agents" },
+      { text: "Wired — Perplexity Is a Bullshit Machine (Jun 2024)", url: "https://www.wired.com/story/perplexity-is-a-bullshit-machine/" },
+    ],
+  },
+  {
+    label: "Google",
+    desc: "Google-Extended is an opt-out token for Gemini and Vertex AI training. Googlebot remains the search crawler and is separate.",
+    urls: [
+      { text: "developers.google.com — Google-Extended", url: "https://developers.google.com/search/docs/crawling-indexing/google-extended" },
+      { text: "developers.google.com — overview of Google crawlers", url: "https://developers.google.com/search/docs/crawling-indexing/google-crawlers" },
+    ],
+  },
+  {
+    label: "Other AI crawlers",
+    desc: "Meta-ExternalAgent, Applebot-Extended, Bytespider, Amazonbot, cohere-ai — each documented by its provider. Dark Visitors maintains the canonical cross-provider list.",
+    urls: [
+      { text: "darkvisitors.com/agents", url: "https://darkvisitors.com/agents" },
+      { text: "developer.apple.com — Applebot-Extended", url: "https://developer.apple.com/support/applebot/" },
+    ],
+  },
+  {
+    label: "Enforcement",
+    desc: "If voluntary compliance is insufficient, the server-side blocking layer is your CDN or WAF. Cloudflare ships dedicated AI-crawler rules.",
+    urls: [
+      { text: "Cloudflare — block AI bots", url: "https://blog.cloudflare.com/declaring-your-aindependence-block-ai-bots-scrapers-and-crawlers-with-a-single-click/" },
+    ],
+  },
+];
 ---
 
-<Layout variant="ai-visibility">
-  <Nav variant="ai-visibility" links={navLinks} cta={navCta} />
-
-  <article class="article">
-    <header class="article-head">
-      <div class="wrap wrap-article">
-        <div class="article-meta">
-          <span>Topic 01 · Distribution</span>
-          <span>Reference page</span>
-        </div>
-        <h1>When a carrier isn't cited by ChatGPT.</h1>
-        <p class="standfirst">
-          Your Google rank and your ChatGPT citation rate are not the same number. This page is the starting reference.
-        </p>
-      </div>
-    </header>
-
-    <section class="article-body">
-      <div class="wrap wrap-article">
-        <p>
-          AI assistants like ChatGPT, Claude, Gemini, and Perplexity answer insurance questions every day. "Am I covered for X." "Cheapest car insurance." "What does an umbrella policy do." The assistants compose a sentence, and that sentence sometimes names a specific carrier, sometimes names a competitor, and sometimes names no one at all.
-        </p>
-
-        <p>
-          Whether your carrier gets named depends on what each model has read. Every assistant uses its own mix of pre-training data and live web retrieval. The full mix is not published. What is published, and what you can verify today, is how the crawlers that feed those models identify themselves, and the fact that they respect your <code>robots.txt</code>.
-        </p>
-
-        <h2>What you can verify this afternoon.</h2>
-
-        <p>
-          <strong>One, your robots.txt.</strong> Visit <code>https://your-site.com/robots.txt</code>. Look for directives involving <a href="https://platform.openai.com/docs/gptbot" target="_blank" rel="noopener"><code>GPTBot</code></a>, <a href="https://platform.openai.com/docs/bots/overview-of-openai-crawlers" target="_blank" rel="noopener"><code>ChatGPT-User</code> and <code>OAI-SearchBot</code></a> (OpenAI), <a href="https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler" target="_blank" rel="noopener"><code>ClaudeBot</code></a> (Anthropic), <a href="https://www.perplexity.ai/help-center/en/articles/10163415-perplexity-crawlers-user-agents" target="_blank" rel="noopener"><code>PerplexityBot</code></a> (Perplexity), and <a href="https://developers.google.com/search/docs/crawling-indexing/google-extended" target="_blank" rel="noopener"><code>Google-Extended</code></a> (Gemini, AI Overviews). Each user-agent is documented by its provider. If a <code>Disallow: /</code> is set against any of them, you are invisible to that assistant's training or live retrieval pipeline.
-        </p>
-
-        <p>
-          <strong>Two, your product page format.</strong> Take one of your FAQ pages and one of your prose product descriptions. Paste each, in turn, into ChatGPT. Ask the same question of each. The quality of the two answers is data about how legibly your site renders to a language model. No probe library needed; your own pages are the test set.
-        </p>
-
-        <p>
-          <strong>Three, your citation rate on real queries.</strong> Pick twenty questions a buyer in your market would actually type. Run them, in the local language, against each of the four assistants. Note when you are cited. Note when a competitor is. The ratio is your current AI citation rate for that surface. It is a number you can produce and defend without our help.
-        </p>
-
-        <p>
-          <strong>Four, your policy wording.</strong> When a buyer asks "am I covered for flooding," the model does not paste your policy. It composes a sentence from it. If your wording is precise, the composition is likely to be accurate. If it is ambiguous, the model fills the gap. The test is the same as step two: paste a sample of your policy, ask a question about it, read the answer.
-        </p>
-
-        <h2>What is verifiable today, and what is not.</h2>
-
-        <p>
-          The user-agent identities, the robots.txt conformance, and the existence of live web retrieval on each assistant are all public. The exact ranking logic each assistant uses to pick which carrier to name in an answer is not. Nobody has a public list of what is in GPT-5's training data, or how Perplexity weighs freshness against authority, or how Claude decides to refuse a price quote. That is the part the weekly newsletter tries to track through repeated observation.
-        </p>
-
-        <h2>Sources.</h2>
-
-        <ul class="sources">
-          <li>
-            <span class="src-label">OpenAI</span>
-            <span class="src-desc">GPTBot (training), ChatGPT-User (user-triggered fetches), OAI-SearchBot (ChatGPT search).</span>
-            <a href="https://platform.openai.com/docs/gptbot" target="_blank" rel="noopener">platform.openai.com/docs/gptbot</a>
-            <a href="https://platform.openai.com/docs/bots/overview-of-openai-crawlers" target="_blank" rel="noopener">overview of OpenAI crawlers</a>
-          </li>
-          <li>
-            <span class="src-label">Anthropic</span>
-            <span class="src-desc">ClaudeBot user-agent and robots.txt conformance statement.</span>
-            <a href="https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler" target="_blank" rel="noopener">support.anthropic.com &mdash; Anthropic crawler</a>
-          </li>
-          <li>
-            <span class="src-label">Perplexity</span>
-            <span class="src-desc">PerplexityBot and Perplexity-User crawler identification.</span>
-            <a href="https://www.perplexity.ai/help-center/en/articles/10163415-perplexity-crawlers-user-agents" target="_blank" rel="noopener">perplexity.ai/help-center &mdash; crawler user-agents</a>
-          </li>
-          <li>
-            <span class="src-label">Google</span>
-            <span class="src-desc">Google-Extended token (controls AI product ingestion separately from Googlebot).</span>
-            <a href="https://developers.google.com/search/docs/crawling-indexing/google-extended" target="_blank" rel="noopener">developers.google.com &mdash; Google-Extended</a>
-            <a href="https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers" target="_blank" rel="noopener">overview of Google crawlers</a>
-          </li>
-          <li>
-            <span class="src-label">Independent reference</span>
-            <span class="src-desc">Dark Visitors maintains a continuously updated list of AI crawlers and the robots.txt syntax each expects.</span>
-            <a href="https://darkvisitors.com/agents" target="_blank" rel="noopener">darkvisitors.com/agents</a>
-          </li>
-        </ul>
-
-        <p class="meta-note">
-          This page is kept deliberately short and anchored in public sources. The observations, comparisons, and counterexamples that would make a real analysis are in the weekly newsletter, where they belong.
-        </p>
-      </div>
-    </section>
-
-    <section id="subscribe" class="subscribe-strip">
-      <div class="wrap wrap-article">
-        <div class="section-label">Phidea Weekly</div>
-        <h3>The part this page does not cover.</h3>
-        <p>
-          What each assistant actually prefers in practice, how citation rates shift as models retrain, where regulators are starting to treat AI-assistant presence as distribution activity. Once a week, in writing, for people who already know the rest.
-        </p>
-        <form action="https://buttondown.email/api/emails/embed-subscribe/phidea" method="POST" class="signup">
-          <input type="hidden" name="tag" value="ai-visibility" />
-          <input type="email" name="email" placeholder="Your email" required />
-          <button type="submit">Subscribe →</button>
-        </form>
-        <p class="signup-small">One email per week. Unsubscribe in one click.</p>
-      </div>
-    </section>
-  </article>
-
-  <Footer />
-</Layout>
-
-<style>
-  .wrap-article { max-width: 680px; padding-left: 24px; padding-right: 24px; margin: 0 auto; }
-
-  .article-head { padding: 72px 0 32px; border-bottom: 1px solid var(--line); }
-  .article-meta {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-    margin-bottom: 24px;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  .article-head h1 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 44px;
-    line-height: 1.12;
-    letter-spacing: -0.015em;
-    margin: 0 0 24px;
-    font-weight: 500;
-    color: var(--ink);
-  }
-  .standfirst {
-    font-size: 20px;
-    line-height: 1.55;
-    color: var(--ink-2);
-    margin: 0;
-    font-style: italic;
-  }
-
-  .article-body { padding: 48px 0 64px; }
-  .article-body p {
-    font-size: 18px;
-    line-height: 1.72;
-    color: var(--ink-2);
-    margin: 0 0 24px;
-    font-family: 'Fraunces', Georgia, serif;
-    font-weight: 400;
-  }
-  .article-body p strong { color: var(--ink); font-weight: 600; }
-  .article-body h2 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 26px;
-    line-height: 1.25;
-    font-weight: 500;
-    margin: 40px 0 16px;
-    color: var(--ink);
-  }
-  .article-body code {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.88em;
-    background: var(--soft);
-    padding: 1px 6px;
-    border-radius: 4px;
-    color: var(--ink);
-  }
-  .sources { list-style: none; padding: 0; margin: 0 0 32px; }
-  .sources li {
-    padding: 16px 0;
-    border-bottom: 1px solid var(--line);
-    font-size: 14px;
-    font-family: 'Inter', sans-serif;
-    color: var(--ink-2);
-    line-height: 1.55;
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    column-gap: 20px;
-    row-gap: 6px;
-  }
-  .sources li:last-child { border-bottom: none; }
-  .sources .src-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--muted);
-    align-self: start;
-  }
-  .sources .src-desc {
-    color: var(--ink-2);
-    grid-column: 2;
-  }
-  .sources li a {
-    color: var(--accent);
-    text-decoration: none;
-    grid-column: 2;
-    font-size: 13px;
-    word-break: break-all;
-  }
-  .sources li a:hover { text-decoration: underline; }
-  .article-body p a {
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(240, 78, 54, 0.25);
-  }
-  .article-body p a:hover { border-bottom-color: var(--accent); }
-  @media (max-width: 600px) {
-    .sources li { grid-template-columns: 1fr; }
-    .sources .src-desc, .sources li a { grid-column: auto; }
-  }
-  .meta-note {
-    font-size: 14px;
-    color: var(--muted);
-    font-style: italic;
-    line-height: 1.55;
-    font-family: 'Inter', sans-serif !important;
-  }
-
-  .section-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    margin-bottom: 16px;
-  }
-  .subscribe-strip {
-    padding: 72px 0;
-    background: var(--soft);
-    border-top: 1px solid var(--line);
-  }
-  .subscribe-strip h3 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 28px;
-    line-height: 1.2;
-    margin: 0 0 12px;
-    font-weight: 500;
-    color: var(--ink);
-  }
-  .subscribe-strip p {
-    font-size: 16px;
-    color: var(--ink-2);
-    margin: 0 0 24px;
-    font-family: inherit;
-  }
-  .signup { display: flex; gap: 10px; max-width: 520px; }
-  .signup input[type=email] {
-    flex: 1;
-    padding: 14px 16px;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    font-size: 15px;
-    font-family: inherit;
-    background: var(--bg);
-    color: var(--ink);
-  }
-  .signup button {
-    padding: 14px 24px;
-    border: none;
-    background: var(--ink);
-    color: var(--bg);
-    border-radius: 10px;
-    font-weight: 500;
-    cursor: pointer;
-    font-size: 15px;
-    font-family: inherit;
-  }
-  .signup button:hover { background: var(--accent); }
-  .signup-small { font-size: 13px; color: var(--muted); margin-top: 12px; }
-
-  @media (max-width: 720px) {
-    .article-head h1 { font-size: 30px; }
-    .standfirst { font-size: 17px; }
-    .article-body p { font-size: 17px; }
-    .article-body h2 { font-size: 22px; }
-    .signup { flex-direction: column; }
-  }
-</style>
+<ReferenceArticle
+  variant="ai-visibility"
+  tier="Topic 01 · Distribution"
+  h1="When a carrier isn't cited by ChatGPT."
+  standfirst="Your Google rank and your ChatGPT citation rate are not the same number. This page is the starting reference."
+  intro={intro}
+  verifyTitle="What you can verify this afternoon."
+  steps={steps}
+  limitsTitle="What is not stable in these references."
+  limitsBody={limitsBody}
+  sources={sources}
+  newsletterHook="How the crawler list changes week to week, which carriers are moving on share-of-answer, and what shows up when we rerun forty-query probes against the four major assistants."
+/>
