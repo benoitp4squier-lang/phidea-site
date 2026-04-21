@@ -426,7 +426,8 @@ const navCta = {"href":"#demo","label":"Request a demo →"};
         agent, regulatory tests firing in real time, and an audit bundle
         exported while you watch.
       </p>
-      <form class="demo" action="https://formspree.io/f/REPLACE_ME" method="POST">
+      <form class="demo" action="https://phidea-forms.vercel.app/api/lead" method="POST">
+        <input type="hidden" name="variant" value="flagship-observability" />
         <input type="text" name="carrier" placeholder="Carrier name" required />
         <input type="email" name="email" placeholder="Work email" required />
         <button type="submit">Request a demo →</button>

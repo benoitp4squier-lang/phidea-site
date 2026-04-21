@@ -22,7 +22,7 @@ const navCta = {"href":"#tool","label":"Run the test →"};
     </p>
 
     <div class="tool" id="tool">
-      <form id="probe-form" action="https://formspree.io/f/REPLACE_ME" method="POST">
+      <form id="probe-form" action="https://phidea-forms.vercel.app/api/lead" method="POST">
         <input type="hidden" name="variant" value="presence-test" />
         <div class="tool-row">
           <div>
@@ -43,13 +43,17 @@ const navCta = {"href":"#tool","label":"Run the test →"};
             </select>
           </div>
           <div>
+            <label for="email">Work email</label>
+            <input id="email" name="email" type="email" placeholder="you@carrier.com" required />
+          </div>
+          <div>
             <button type="submit">Run the test →</button>
           </div>
         </div>
         <div class="tool-hint">
           <span><strong>Free.</strong> One scorecard per carrier per quarter.</span>
           <span><strong>48 hours</strong> to your inbox.</span>
-          <span><strong>Work email</strong> requested on the next step.</span>
+          <span><strong>One scorecard</strong> per work email.</span>
         </div>
       </form>
     </div>
