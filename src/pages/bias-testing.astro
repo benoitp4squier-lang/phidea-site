@@ -1,0 +1,24 @@
+---
+import NarrowAngle from "@/components/NarrowAngle.astro";
+---
+
+<NarrowAngle
+  variant="bias-testing"
+  umbrellaHref="/evidence.html"
+  umbrellaLabel="Governance angle"
+  eyebrow="For compliance, actuarial, risk"
+  h1Before="Protected-class testing."
+  h1Em="Per jurisdiction. Continuous."
+  lead="Colorado SB21-169 requires a specific quantitative test on life models. NAIC expects bias documentation across the portfolio. NY DFS asks for evidence that there's no unfair-discrimination relationship between variables and risk. Each test differs. Phidea runs them all — continuously against live traffic, and on schedule against synthetic personas."
+  sectionEyebrow="The testing matrix"
+  sectionH2="Jurisdictional by default. Extensible by line."
+  sectionBody="State-by-state tests baseline against demographic distributions the regulator uses. Proxy-variable detection on live traffic. Disparate-impact analysis per LOB. Results export in the format each DOI accepts. Scheduled stress tests run against a library of synthetic applicants calibrated to state demographics — a second vector that catches what live traffic alone can miss."
+  faqs={[
+    { q: "Does this work for life, auto, home, commercial?", a: "Yes, though test definitions vary by line. Life is the most codified under SB21-169; P&C tests are derived from NAIC and state unfair-discrimination standards." },
+    { q: "Can our actuarial team extend a test?", a: "Yes. Tests are declarative — extend the YAML, not the engine. Every extension is version-controlled and signed off." },
+    { q: "What's the export format?", a: "PDF for carrier review + CSV/JSON for internal data pipelines + jurisdiction-specific filing format (Colorado DOI, NAIC data call) on export." },
+  ]}
+  ctaH2="See a sample bias-testing report."
+  ctaBody="Redacted from a life book deployed on Phidea. Colorado SB21-169 format plus the NAIC overlay."
+  ctaButton="Send me the sample →"
+/>

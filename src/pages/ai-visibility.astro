@@ -1,0 +1,25 @@
+---
+import NarrowAngle from "@/components/NarrowAngle.astro";
+---
+
+<NarrowAngle
+  variant="ai-visibility"
+  umbrellaHref="/distribution.html"
+  umbrellaLabel="Distribution angle"
+  eyebrow="For distribution, digital"
+  h1Before="Your insurance products,"
+  h1Em="findable in ChatGPT."
+  h1After=" By default."
+  lead="When a buyer asks 'am I covered for X', the assistant cites a carrier. If it isn't you, it's a competitor. Phidea makes your IPIDs grokkable to the models, measures where you appear, and alerts you when coverage drops."
+  sectionEyebrow="How it works"
+  sectionH2="Grounded in what you actually sell."
+  sectionBody="Phidea ingests your IPIDs, tariff grids, and product summaries; structures them so ChatGPT, Claude, Gemini, and Perplexity can cite them faithfully; runs a probe library against each surface on your LOBs. You get a weekly report and an alert when a model update drops your coverage."
+  faqs={[
+    { q: "Do we need to host anything?", a: "No. Grounding runs on our side. You supply the source documents." },
+    { q: "How long before we start showing up?", a: "Indexable presence in two to four weeks for a single LOB. Organic citation is model-dependent and tracked weekly." },
+    { q: "Can we restrict which products are surfaced?", a: "Yes. Scope by LOB, geography, product tier, and distribution channel." },
+  ]}
+  ctaH2="See your current coverage."
+  ctaBody="Free scorecard for your first LOB. Delivered in 48 hours by a Phidea analyst."
+  ctaButton="Get the scorecard →"
+/>

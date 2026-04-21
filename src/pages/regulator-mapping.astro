@@ -1,0 +1,24 @@
+---
+import NarrowAngle from "@/components/NarrowAngle.astro";
+---
+
+<NarrowAngle
+  variant="regulator-mapping"
+  umbrellaHref="/evidence.html"
+  umbrellaLabel="Governance angle"
+  eyebrow="For compliance, regulatory affairs"
+  h1Before="Six frameworks. One mapping."
+  h1Em="Kept current by Phidea."
+  lead="NAIC Model Bulletin, NY DFS Circular Letter No. 7, Colorado SB21-169, EU AI Act Annex III, DORA, IDD — each one expects a slightly different record from the same AI system. Phidea maintains the mapping live; when a regulator updates a bulletin, the policy pack updates with it."
+  sectionEyebrow="What ships"
+  sectionH2="A policy pack per framework."
+  sectionBody="Each pack contains the controls, the evidence schema, the export format, and the jurisdictional nuances the regulator actually expects. Carrier teams extend packs with internal controls without touching the rule engine. Versioned. Replayable against historical traffic when a rule clarifies."
+  faqs={[
+    { q: "How fast do you update when a regulation changes?", a: "Typical lag between bulletin adoption and updated pack: two to six weeks. Breaking changes are pushed with a migration note and a backward-compatible overlap window." },
+    { q: "Can we see the diff between two pack versions?", a: "Yes. Every pack version is semver'd with a human-readable changelog tied to the regulator's publication reference." },
+    { q: "Which states in the US beyond NAIC, NY, Colorado?", a: "Pack coverage expands on demand; request a jurisdiction and we'll quote timeline. Paid carriers vote on the roadmap." },
+  ]}
+  ctaH2="See the full mapping."
+  ctaBody="Thirty minutes with a Phidea compliance engineer. We walk through the packs in your priority jurisdictions and show the evidence each one produces."
+  ctaButton="Request the walk-through →"
+/>

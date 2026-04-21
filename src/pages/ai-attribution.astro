@@ -1,0 +1,24 @@
+---
+import NarrowAngle from "@/components/NarrowAngle.astro";
+---
+
+<NarrowAngle
+  variant="ai-attribution"
+  umbrellaHref="/distribution.html"
+  umbrellaLabel="Distribution angle"
+  eyebrow="For growth, analytics, revenue ops"
+  h1Before="Which AI session. Which query."
+  h1Em="Which bind."
+  lead="AI-assistant conversations don't show in GA4. Quote requests land in your CRM with no source, no query, no surface. Phidea tags the session at the agent layer — every bind traces back to the prompt that made it happen."
+  sectionEyebrow="The tag schema"
+  sectionH2="Sessionized, persona-tagged, CRM-ready."
+  sectionBody="Each conversation carries surface, model version, prompt intent, persona match, and a deterministic session id. Tags flow into Salesforce, HubSpot, Duck Creek, or any webhook target alongside the quote request. Cohort reports roll up by surface, query intent, and LOB — comparable to your existing channel view."
+  faqs={[
+    { q: "How do you handle privacy on session capture?", a: "Hash-only mode for prompts and responses. Only tag metadata leaves the boundary unless you opt in to full-text for trace replay." },
+    { q: "Can we back-attribute to marketing campaigns?", a: "Yes. Session tags carry UTM-style provenance from the referring surface, so AI-assistant traffic joins existing multi-touch models." },
+    { q: "Does this slow the agent?", a: "Tagging adds under 5ms. Ledger writes are async — never blocking." },
+  ]}
+  ctaH2="See a sample attribution view."
+  ctaBody="Thirty minutes. We walk your analytics lead through the schema, a sample dashboard, and the CRM integration points."
+  ctaButton="Request the walk-through →"
+/>

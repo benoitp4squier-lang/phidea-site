@@ -1,0 +1,24 @@
+---
+import NarrowAngle from "@/components/NarrowAngle.astro";
+---
+
+<NarrowAngle
+  variant="mrm-llms"
+  umbrellaHref="/synthetic.html"
+  umbrellaLabel="Monitoring angle"
+  eyebrow="For model risk, actuarial, chief risk"
+  h1Before="Your MRM framework."
+  h1Em="Extended to LLMs."
+  lead="SR 11-7 and PRA SS1/23 were written for statistical models with stable inputs, trainable parameters, and documented validation. LLMs break each assumption. Phidea is not a replacement MRM — it is the extension that lets your existing framework own LLM governance without starting over."
+  sectionEyebrow="How LLMs map into your MRM"
+  sectionH2="Same controls. Different telemetry."
+  sectionBody="Model inventory reconciles with your existing model register. Validation becomes continuous probe-based testing, not static sign-off. Challenger models become vendor alternatives benchmarked hourly. Effective-challenge documentation is generated from the trace, not assembled for a committee. Model-risk tier remains yours to set; we supply the evidence feeding the tier decision."
+  faqs={[
+    { q: "Does this satisfy SR 11-7 for a US Fed-supervised entity?", a: "It is not a substitute for your internal MRM organization. It provides the evidence stream your MRM organization needs to govern LLMs at the standard of rigor SR 11-7 expects for Tier-1 models." },
+    { q: "What about SS1/23 and the PRA's outcomes-based approach?", a: "Outcomes metrics (performance, fairness, explainability, robustness) are captured per inference and roll up to model-risk-tier dashboards. Documentation exports to the SS1/23 four-pillar structure." },
+    { q: "Who signs off on the LLM validation?", a: "Your validation function, as usual. Phidea is the instrumentation layer underneath." },
+  ]}
+  ctaH2="Talk to model risk."
+  ctaBody="Sixty-minute working session with a Phidea risk engineer. We map your current MRM framework against LLM observability requirements and identify the gaps."
+  ctaButton="Request the session →"
+/>

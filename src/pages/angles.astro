@@ -127,6 +127,59 @@ const navCta = { href: "mailto:benoit@phidea.fr", label: "Email Benoit" };
     </div>
   </section>
 
+  <section id="narrow" style="padding-top: 16px;">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-eyebrow">Narrow-hook pages · 18 under test</div>
+        <h2>One hook per page. One ad creative per page.</h2>
+        <p class="lead">
+          Each narrow page hosts a single value prop from a single tier, targeted at a single persona, with its own <code>variant</code> tag for CRM attribution. Point paid social, outbound copy, and specific LinkedIn campaigns at the narrow URLs. Let the flagship absorb organic.
+        </p>
+      </div>
+
+      <div class="narrow-grid">
+        <div class="narrow-tier">
+          <div class="narrow-tier-label">Tier 1 · Growth / distribution</div>
+          <ul class="narrow-list">
+            <li><a href="/ai-visibility.html">Findable in ChatGPT</a> <span>CMO · distribution</span></li>
+            <li><a href="/competitor-share.html">Competitor cited instead</a> <span>CMO · Head of Digital</span></li>
+            <li><a href="/custom-gpt.html">A Custom GPT compliance signs</a> <span>Platform · digital</span></li>
+            <li><a href="/ai-channel.html">AI as a distribution channel</a> <span>Head of Distribution</span></li>
+            <li><a href="/ai-attribution.html">AI session to bind attribution</a> <span>Growth · revops</span></li>
+          </ul>
+        </div>
+        <div class="narrow-tier">
+          <div class="narrow-tier-label">Tier 2 · AI-ops / monitoring</div>
+          <ul class="narrow-list">
+            <li><a href="/ai-monitoring.html">Observability in production</a> <span>Head of AI · AI-ops</span></li>
+            <li><a href="/model-drift.html">Drift between vendor updates</a> <span>Head of AI · model governance</span></li>
+            <li><a href="/hallucination-guardrail.html">Block hallucinations before delivery</a> <span>AI-ops · product</span></li>
+            <li><a href="/audit-bundle.html">Regulator bundle in one click</a> <span>Compliance · AI-ops</span></li>
+          </ul>
+        </div>
+        <div class="narrow-tier">
+          <div class="narrow-tier-label">Tier 3 · Compliance / governance</div>
+          <ul class="narrow-list">
+            <li><a href="/regulator-mapping.html">Six frameworks, one mapping</a> <span>Compliance · reg affairs</span></li>
+            <li><a href="/ais-program.html">AIS Program live inventory</a> <span>Compliance · risk</span></li>
+            <li><a href="/adverse-decision-trail.html">Adverse-decision explanations</a> <span>Compliance · legal</span></li>
+            <li><a href="/ecdis-oversight.html">ECDIS oversight</a> <span>Compliance · vendor risk</span></li>
+            <li><a href="/bias-testing.html">Protected-class testing</a> <span>Compliance · actuarial</span></li>
+          </ul>
+        </div>
+        <div class="narrow-tier">
+          <div class="narrow-tier-label">Tier 4 · Actuarial / model risk</div>
+          <ul class="narrow-list">
+            <li><a href="/mrm-llms.html">MRM extended to LLMs</a> <span>Model risk · actuarial</span></li>
+            <li><a href="/predictive-monitoring.html">Rate adequacy monitored live</a> <span>Pricing · reserving</span></li>
+            <li><a href="/augmented-underwriting.html">UW policy-as-code</a> <span>Chief UW · UW ops</span></li>
+            <li><a href="/portfolio-drift.html">Portfolio drift vs appetite</a> <span>Portfolio · CRO</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="how">
     <div class="wrap">
       <div class="section-head">
@@ -181,3 +234,53 @@ const navCta = { href: "mailto:benoit@phidea.fr", label: "Email Benoit" };
 
   <Footer />
 </Layout>
+
+<style>
+  .narrow-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-top: 16px;
+  }
+  .narrow-tier {
+    padding: 20px 24px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--soft);
+  }
+  .narrow-tier-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 12px;
+  }
+  .narrow-list { list-style: none; padding: 0; margin: 0; }
+  .narrow-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: baseline;
+  }
+  .narrow-list li:last-child { border-bottom: none; }
+  .narrow-list li a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+  }
+  .narrow-list li a:hover { color: var(--accent); }
+  .narrow-list li span {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    white-space: nowrap;
+  }
+  @media (max-width: 720px) {
+    .narrow-grid { grid-template-columns: 1fr; gap: 20px; }
+    .narrow-list li { flex-direction: column; gap: 4px; align-items: flex-start; }
+  }
+</style>

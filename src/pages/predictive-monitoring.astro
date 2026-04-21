@@ -1,0 +1,24 @@
+---
+import NarrowAngle from "@/components/NarrowAngle.astro";
+---
+
+<NarrowAngle
+  variant="predictive-monitoring"
+  umbrellaHref="/synthetic.html"
+  umbrellaLabel="Monitoring angle"
+  eyebrow="For pricing, actuarial, reserving"
+  h1Before="Rate adequacy monitored."
+  h1Em="Between reserves reviews."
+  lead="Predictive pricing models drift silently. By the time actuaries notice in the quarterly reserve review, the damage is three months old on a portion of the book. Phidea tracks rate adequacy, loss-pick drift, and relativity stability in real time — with the granularity your pricing team already writes reports in."
+  sectionEyebrow="What Phidea monitors"
+  sectionH2="The KPIs already in your pricing deck."
+  sectionBody="Rate relativity drift by segment. Loss-pick drift against plan. Portfolio mix shift against appetite. Cross-subsidy detection. Ultimate loss trend. Alert thresholds baselined per line. Output formatted to match the reports your actuarial team already runs — the dashboard replaces the monthly pull, not the pricing tool."
+  faqs={[
+    { q: "Does this replace our hyperexponential / Earnix / Akur8 pricing stack?", a: "No. It monitors what that stack deploys. We read the model outputs post-deployment; your pricing team stays in their tool." },
+    { q: "How do you handle confidential pricing data?", a: "Pricing data never leaves your boundary. Phidea reads from your data warehouse via a read-only service account; computes are in your VPC." },
+    { q: "What's the alert latency?", a: "Threshold breaches are paged within the hour. Daily roll-ups land in the actuarial team's inbox with the morning reports." },
+  ]}
+  ctaH2="Talk to pricing."
+  ctaBody="Forty-five minutes with a Phidea actuarial engineer. We map your pricing stack to what Phidea monitors and show the alert flow."
+  ctaButton="Request the session →"
+/>

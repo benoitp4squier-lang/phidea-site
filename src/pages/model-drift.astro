@@ -1,0 +1,24 @@
+---
+import NarrowAngle from "@/components/NarrowAngle.astro";
+---
+
+<NarrowAngle
+  variant="model-drift"
+  umbrellaHref="/synthetic.html"
+  umbrellaLabel="Monitoring angle"
+  eyebrow="For Head of AI, model governance"
+  h1Before="A vendor pushes a model update."
+  h1Em="You notice before a customer does."
+  lead="Vendors ship model updates every few weeks. Grounding degrades. LOB-specific answers wander. Compliance guardrails loosen without notice. Phidea runs a persona-tagged probe library every hour and pages when a metric moves past its threshold."
+  sectionEyebrow="What drift looks like"
+  sectionH2="A drop that would have stayed invisible until the next review."
+  sectionBody="A claims-triage bot served twelve policyholders a subtly wrong coverage interpretation the morning after a provider updated their model. Phidea's probes caught it within the hour. The alert was paged to AI-ops; the gateway switched to observe-only on that agent; the vendor ticket was open before lunch. Between-audit drift is the entire reason the platform exists."
+  faqs={[
+    { q: "Which probes detect drift?", a: "Grounding score, policy-adherence rate, refusal rate, hallucination-classifier score, per-persona behavior. Thresholds are baselined per agent." },
+    { q: "Does it detect vendor-side prompt changes?", a: "Yes — via behavioral fingerprinting. We don't need the vendor to announce a change." },
+    { q: "How false-positive heavy is it?", a: "Baselines are per-agent, per-LOB. Expect one paged alert per month per agent in steady state." },
+  ]}
+  ctaH2="Request a drift demo."
+  ctaBody="Fifteen minutes. We point the probe library at a public agent and show you a live baselining and a simulated drift event."
+  ctaButton="Request a demo →"
+/>

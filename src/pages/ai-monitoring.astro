@@ -1,0 +1,24 @@
+---
+import NarrowAngle from "@/components/NarrowAngle.astro";
+---
+
+<NarrowAngle
+  variant="ai-monitoring"
+  umbrellaHref="/synthetic.html"
+  umbrellaLabel="Monitoring angle"
+  eyebrow="For Head of AI, AI-ops"
+  h1Before="Observability for AI agents"
+  h1Em="in production."
+  lead="You shipped a claims-triage bot, an underwriting copilot, a storefront chatbot. They run. You have no idea what they're saying, whether they're grounded, or how often they refuse. Phidea instruments them — every prompt, every tool call, every response, graded in real time."
+  sectionEyebrow="What gets captured"
+  sectionH2="The trace a compliance lead can read."
+  sectionBody="Prompt, response, tool calls, grounding score against your policy corpus, hallucination classifier output, policy-gate decision, model + version, user session, latency — all in a structured trace. Dashboards by LOB, by surface, by agent. Alerts paged to PagerDuty, Opsgenie, or Slack."
+  faqs={[
+    { q: "What agents does this cover?", a: "OpenAI-compatible agents, Claude MCP servers, Gemini Extensions, LangGraph, CrewAI, custom frameworks. Anything reachable via HTTP or MCP." },
+    { q: "How is this different from LangSmith or Langfuse?", a: "Those are dev-tools for AI engineers. Phidea is for insurance compliance and ops — pre-mapped policy packs, regulator-ready export, carrier-grade SLAs." },
+    { q: "Can we self-host the collector?", a: "Yes. Container bundle runs in VPC or air-gapped. Same code path as managed SaaS." },
+  ]}
+  ctaH2="Request a monitoring demo."
+  ctaBody="Thirty minutes. Bring one of your agents; we instrument it live on the call and walk through the trace together."
+  ctaButton="Request a demo →"
+/>

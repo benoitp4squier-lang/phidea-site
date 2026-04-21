@@ -1,0 +1,24 @@
+---
+import NarrowAngle from "@/components/NarrowAngle.astro";
+---
+
+<NarrowAngle
+  variant="ai-channel"
+  umbrellaHref="/distribution.html"
+  umbrellaLabel="Distribution angle"
+  eyebrow="For Head of Distribution"
+  h1Before="A new distribution channel."
+  h1Em="Measured like the old ones."
+  lead="AI assistants are a distribution surface, like aggregators or search once were. Most carriers can't yet count the leads that came from them, can't compare CAC, can't attribute bind. Phidea makes the channel legible to your existing distribution P&L."
+  sectionEyebrow="What Phidea tracks"
+  sectionH2="From AI session to quote to bind."
+  sectionBody="Every conversation on a Phidea-instrumented agent is tagged at source — surface, model version, query intent, persona match, referring prompt. Tags flow to your CRM with the quote request. You see the policies bound, the competitors displaced, and the cost per bind alongside your existing channels."
+  faqs={[
+    { q: "Which CRMs integrate?", a: "Salesforce, HubSpot, Duck Creek, Guidewire, and any webhook-ingesting target. Drop-in for systems that accept UTM-shaped params." },
+    { q: "How do you count leads when the AI doesn't hand off?", a: "Intent-classification on the full session. Conversion-ready sessions are tagged whether or not the buyer clicks through that hour." },
+    { q: "Does this replace our attribution platform?", a: "No. We feed tagged events into it." },
+  ]}
+  ctaH2="See the attribution view."
+  ctaBody="Thirty-minute walk-through on a sample data set. Your analytics lead gets the dashboard mock and the tag schema."
+  ctaButton="Request the walk-through →"
+/>

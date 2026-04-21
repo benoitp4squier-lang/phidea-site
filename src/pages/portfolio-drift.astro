@@ -1,0 +1,24 @@
+---
+import NarrowAngle from "@/components/NarrowAngle.astro";
+---
+
+<NarrowAngle
+  variant="portfolio-drift"
+  umbrellaHref="/synthetic.html"
+  umbrellaLabel="Monitoring angle"
+  eyebrow="For portfolio manager, chief UW, CRO"
+  h1Before="Portfolio composition drift."
+  h1Em="Caught before the quarterly board deck."
+  lead="AI-informed underwriting can shift the book without anyone noticing — mix drifts, coverage extensions accumulate, geographies creep outside appetite. By the quarterly review, three months of policies are bound against an appetite statement that no longer matches the portfolio. Phidea tracks drift live against the statement the board signed."
+  sectionEyebrow="What Phidea tracks"
+  sectionH2="Against the risk appetite statement your board signed."
+  sectionBody="Portfolio composition by LOB, by sub-line, by geography, by retention band. Exposure concentration. Cession coverage. Gross-vs-net exposure drift. Every change diffed against the appetite statement in effect. Alerts when any dimension breaches — before the next reinsurance renewal, not after."
+  faqs={[
+    { q: "Does this replace our portfolio management system?", a: "No. It monitors against it. Phidea reads live bound policies, compares to your appetite statement, and pages breach. The PMS remains the source of truth." },
+    { q: "How is the appetite statement represented?", a: "As structured limits — exposure caps per dimension, concentration thresholds, cession floors. Imported from your existing document or authored in YAML with your chief underwriter." },
+    { q: "Can we test a proposed appetite change against the current book?", a: "Yes. What-if mode replays the current portfolio against a candidate appetite statement and surfaces what would have breached." },
+  ]}
+  ctaH2="See live drift detection."
+  ctaBody="Forty-five minutes with a Phidea portfolio engineer. We run drift analysis against a sample book and walk through the breach flow."
+  ctaButton="Request the session →"
+/>

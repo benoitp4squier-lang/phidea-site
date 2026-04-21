@@ -1,0 +1,24 @@
+---
+import NarrowAngle from "@/components/NarrowAngle.astro";
+---
+
+<NarrowAngle
+  variant="ecdis-oversight"
+  umbrellaHref="/evidence.html"
+  umbrellaLabel="Governance angle"
+  eyebrow="For compliance, vendor risk, data governance"
+  h1Before="Every ECDIS your models touched."
+  h1Em="Logged and inspectable."
+  lead="NY DFS Circular Letter No. 7 and the NAIC Model Bulletin both require carriers to track the External Consumer Data and Information Sources used by AI systems, and to demonstrate the material elements were disclosed. Most carriers can't list them. Phidea does, automatically, by fingerprinting the data pulled into each prompt."
+  sectionEyebrow="What Phidea tracks"
+  sectionH2="Every source. Every vendor. Every contract reference."
+  sectionBody="For each AI inference: the ECDIS touched, the vendor providing it, the contract in effect at the time, the data categories used, the disclosure to the consumer (if any). Rolled up into a vendor register that matches your DORA ICT third-party register — or becomes the register if you didn't have one for AI-linked data."
+  faqs={[
+    { q: "Does this cover data enriched outside of Phidea (e.g. our own data lake)?", a: "Yes, when called from the inference path. We fingerprint the payload and link it to your registered source. Out-of-path enrichment is traced from the ingestion manifest." },
+    { q: "What about data we're not supposed to be using?", a: "Detection rules against your internal 'do-not-use' list flag any inference that references a restricted ECDIS. Blocked at the gate if you configure it." },
+    { q: "Does this integrate with our TPRM / vendor platform?", a: "Yes. Webhook to Archer, OneTrust, ProcessUnity, LogicGate, or any target. The ECDIS register shares the vendor-id keyspace." },
+  ]}
+  ctaH2="See a sample ECDIS register."
+  ctaBody="Redacted live export. Shows the sources, the vendors, the contract links, and the consumer-disclosure check."
+  ctaButton="Send me the sample →"
+/>

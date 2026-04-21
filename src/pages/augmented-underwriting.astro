@@ -1,0 +1,24 @@
+---
+import NarrowAngle from "@/components/NarrowAngle.astro";
+---
+
+<NarrowAngle
+  variant="augmented-underwriting"
+  umbrellaHref="/"
+  umbrellaLabel="Flagship"
+  eyebrow="For chief underwriter, head of UW ops"
+  h1Before="Underwriters spend three hours a day on referrals."
+  h1Em="That's the number."
+  lead="The 2025 State of Pricing survey (350 specialty and commercial underwriters, hyperexponential / Coleman Parkes) put manual referral triage at the top of what's slowing the desk. Phidea's augmented-underwriting module lets you codify the referral rules as policies — triage, straight-through, refer — without a dev cycle."
+  sectionEyebrow="How policy-as-code works for UW"
+  sectionH2="Written by your underwriters. Not by us."
+  sectionBody="Rules are declarative: the submission enters Phidea, is graded against your appetite, your sub-line thresholds, your authority letters, and the live portfolio composition. Straight-through submissions bind. Borderline ones route to the right authority with the evidence package attached. Edge cases escalate. Every decision logged, every deviation from the rule flagged for the audit."
+  faqs={[
+    { q: "Who owns the rules?", a: "Your underwriters. Version-controlled. Every change reviewed by the authority the change affects. We provide the runtime, not the rulebook." },
+    { q: "How does this differ from a generic BPM tool?", a: "Insurance-specific: line of business, authority letter, treaty year, reinstatement rules, cession logic, bind-versus-quote differences. The BPM tool doesn't know what a facultative is." },
+    { q: "Integration with our PAS?", a: "Duck Creek, Guidewire, Majesco, Applied Epic, custom. Read submissions and write decisions via API." },
+  ]}
+  ctaH2="Request an underwriting walk-through."
+  ctaBody="Forty-five minutes. Bring a recent submission that got stuck in a referral queue; we map it to a Phidea policy live on the call."
+  ctaButton="Request the walk-through →"
+/>
