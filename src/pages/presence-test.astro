@@ -22,7 +22,7 @@ const navCta = {"href":"#tool","label":"Run the test →"};
     </p>
 
     <div class="tool" id="tool">
-      <form id="probe-form" action="https://phidea-forms.vercel.app/api/lead" method="POST">
+      <form id="probe-form" action="https://formspree.io/f/REPLACE_ME" method="POST">
         <input type="hidden" name="variant" value="presence-test" />
         <div class="tool-row">
           <div>
@@ -43,17 +43,13 @@ const navCta = {"href":"#tool","label":"Run the test →"};
             </select>
           </div>
           <div>
-            <label for="email">Work email</label>
-            <input id="email" name="email" type="email" placeholder="you@carrier.com" required />
-          </div>
-          <div>
             <button type="submit">Run the test →</button>
           </div>
         </div>
         <div class="tool-hint">
           <span><strong>Free.</strong> One scorecard per carrier per quarter.</span>
           <span><strong>48 hours</strong> to your inbox.</span>
-          <span><strong>One scorecard</strong> per work email.</span>
+          <span><strong>Work email</strong> requested on the next step.</span>
         </div>
       </form>
     </div>
@@ -189,7 +185,7 @@ const navCta = {"href":"#tool","label":"Run the test →"};
       <h2>Find out where you stand.</h2>
       <p>Two minutes to enter your details. 48 hours to your scorecard.</p>
       <a href="#tool" class="btn btn-primary" style="font-size: 17px; padding: 16px 32px;">Run the presence test →</a>
-      <div class="cta-foot">One scorecard per work email. Delivered by a Phidea analyst within 48 hours.</div>
+      <div class="cta-foot">Scorecards are generated manually in the current beta. Production (self-serve, live probe) ships Q3 2026.</div>
     </div>
   </div>
 </section>
