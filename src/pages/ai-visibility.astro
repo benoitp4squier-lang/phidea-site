@@ -20,11 +20,10 @@ const navCta = { href: "#subscribe", label: "Subscribe →" };
         <div class="article-meta">
           <span>Topic 01 · Distribution</span>
           <span>April 2026</span>
-          <span>6 min read</span>
         </div>
         <h1>When a carrier isn't cited by ChatGPT.</h1>
         <p class="standfirst">
-          The carriers ranked #1 on Google are losing share of answer on Perplexity. The gap is structural — and the fix isn't SEO.
+          The carriers ranked highest on Google are often not the ones ChatGPT mentions. The gap is not a mistake. It is a different system.
         </p>
       </div>
     </header>
@@ -32,57 +31,51 @@ const navCta = { href: "#subscribe", label: "Subscribe →" };
     <section class="article-body">
       <div class="wrap wrap-article">
         <p>
-          Insurance buyers have started opening a chat window instead of a comparison site. The shift is quiet — there's no analytics platform yet that measures it cleanly — but you can see it in the pattern of queries ChatGPT, Claude, Gemini, and Perplexity answer every day about coverage. "Am I covered for X?" "Cheapest auto insurance in Texas?" "What does an umbrella policy actually do?"
+          Something has changed in how people find their insurance. They used to begin on Google. Now, more and more, they open ChatGPT or Claude or Gemini or Perplexity, and they ask. In every market we have looked at, "Am I covered for X?" is typed into an AI assistant more often than into a comparison site.
         </p>
 
         <p>
-          Those answers aren't ranked the way Google's search results are. They're composed. The assistant decides which carrier to mention based on a mixture of training data, web retrieval, and — increasingly — the brand names that already appear in its training corpus. The result: the carriers ranked #1 on Google rarely dominate in the assistants' answers. On Perplexity, which leans hardest on retrieval, the gap is sometimes dramatic.
-        </p>
-
-        <blockquote class="pullquote">
-          Brand leadership in search does not transfer to brand leadership in AI. Different signal, different retrieval, different game.
-        </blockquote>
-
-        <p>
-          When we run forty discovery queries per line of business across the four major assistants, the pattern is consistent. A Tier-1 European auto carrier running fifteen percent of local market share shows up in roughly a quarter of ChatGPT's answers and far fewer of Perplexity's. Its largest competitor — not the market leader by premium — dominates Perplexity at a share of nearly two in five. Same market. Different game.
-        </p>
-
-        <h2>Why the signal is different.</h2>
-
-        <p>
-          Search engines rank. Assistants compose. A carrier that earns editorial coverage on NerdWallet or Insurance Business shows up more often in assistant citations than a carrier that dominates its own SEO microsite. The incentive structure is backwards from what most distribution teams optimized for in the last decade.
+          This matters more than most carriers realise. The answer the assistant gives is not a ranked list of links. It is a sentence. A sentence that may name your carrier, may name a competitor, or may name no one at all. The sentence is composed by the model from whatever it has read.
         </p>
 
         <p>
-          The other structural difference is phrasing. "Cheapest auto insurance" pulls a different shortlist than "best auto insurance" or "safest auto insurance" on the same assistant, seconds apart. Each assistant has its own retrieval personality, and each personality has biases that haven't been catalogued anywhere public. Optimizing against one is not optimizing against four.
-        </p>
-
-        <h2>Five things to check this week.</h2>
-
-        <p>
-          <strong>Your robots.txt.</strong> GPTBot, ClaudeBot, PerplexityBot, and Google-Extended all respect it. If any are blocked, you're invisible to the surface those crawlers feed. Most carriers last edited robots.txt during an SEO migration years ago and never revisited it.
+          Consider what the model has read. It has trained, some months ago, on a slice of the internet. It has access, when you ask, to real-time web search. And it has an internal sense of which brands are worth mentioning, built from thousands of articles that discuss insurance in different ways.
         </p>
 
         <p>
-          <strong>Your IPID structure.</strong> Assistants cite Q/A-shaped documents more reliably than prose product pages. FAQ format, clean headings, and short answers matter more than they used to.
+          None of this corresponds to your search engine ranking. A carrier that dominates Google may barely appear on Perplexity. This is not a bug. It is simply a different system, running on different signals.
         </p>
 
         <p>
-          <strong>Your assistant differences.</strong> Claude refuses to quote prices. ChatGPT and Gemini will. Perplexity names a competitor if your structured data is thinner than theirs. One optimization target does not serve four surfaces.
+          In the probes we have run across several markets, the pattern is consistent. The carriers cited most often by the assistants are not the ones ranked highest on Google. They are the ones most frequently mentioned on sites like NerdWallet, Insurance Business, and the comparison media. Earned media has always been valuable. In an AI-assistant world it is, for the first time, measurable as a form of distribution.
         </p>
 
         <p>
-          <strong>Your comparison-media presence.</strong> NerdWallet, The Zebra, MoneyGeek, and Insurance Business rank above your own microsite in model retrieval. Earned media is distribution now, not PR.
+          So what can a carrier do?
         </p>
 
         <p>
-          <strong>Your "am I covered for X" answers.</strong> When your own copy is ambiguous, the assistant fills the gap — confidently, and often wrong. Compliance-grade IPID language is no longer just a filing artifact; it's the source material the models compose from.
+          First, make sure the assistants can see you. ChatGPT, Claude, Perplexity, and Google all operate crawlers that respect <code>robots.txt</code>. Many carriers still block them — sometimes by accident, after an SEO migration no one has looked at in years. If the crawler cannot read your site, the model cannot cite you.
         </p>
 
-        <h2>What we're tracking next.</h2>
+        <p>
+          Second, write your product pages in the shape an AI finds easiest to quote. A question-and-answer structure works better than a prose description. This is not about keywords. It is about the shape of the text.
+        </p>
 
         <p>
-          This is the first in a weekly series of observations on how AI-assistant behavior is changing insurance distribution. Next week: what happens when a provider ships a silent model update, and how refusal-rate shifts ripple through coverage queries on Tuesday morning.
+          Third, remember that each assistant has its own personality. Claude refuses to quote specific prices. ChatGPT and Gemini will. Perplexity relies heavily on retrieval, and will cite whichever carrier has the clearest structured data on the open web. Optimising for one assistant does not optimise for all four.
+        </p>
+
+        <p>
+          Fourth, measure what the models are saying about you today. Run a handful of real buyer queries on each assistant, and note who is cited. Compare the number with your actual market share. The gap tells you how much work there is to do.
+        </p>
+
+        <p>
+          Finally, write your policy text in language that can survive being quoted back to a customer. When someone asks, "Am I covered for flooding while I am abroad?" the model does not copy your policy. It composes. If the original text is ambiguous, the composition will be confident — and often wrong. The cure is not to hide your text. It is to write it more clearly.
+        </p>
+
+        <p>
+          This is the first in a small weekly series. Each issue looks at one corner of how AI is changing the insurance business, and, when I can, what a sensible carrier is doing about it. If you find it useful, the subscribe box is below.
         </p>
       </div>
     </section>
@@ -90,16 +83,16 @@ const navCta = { href: "#subscribe", label: "Subscribe →" };
     <section id="subscribe" class="subscribe-strip">
       <div class="wrap wrap-article">
         <div class="section-label">Phidea Weekly</div>
-        <h3>Keep reading this kind of analysis.</h3>
+        <h3>Keep reading.</h3>
         <p>
-          Every Tuesday: the regulator moves, the model updates, the carrier experiments, and the ones that didn't make it past compliance review.
+          One short piece per week on AI in insurance: the regulator moves, the model updates, the things carriers are actually trying.
         </p>
         <form action="https://buttondown.email/api/emails/embed-subscribe/phidea" method="POST" class="signup">
           <input type="hidden" name="tag" value="ai-visibility" />
           <input type="email" name="email" placeholder="you@carrier.com" required />
           <button type="submit">Subscribe →</button>
         </form>
-        <p class="signup-small">One email per week. Unsubscribe in one click. No sales pitch.</p>
+        <p class="signup-small">One email per week. Unsubscribe in one click.</p>
       </div>
     </section>
   </article>
@@ -123,18 +116,18 @@ const navCta = { href: "#subscribe", label: "Subscribe →" };
   }
   .article-head h1 {
     font-family: 'Fraunces', Georgia, serif;
-    font-size: 48px;
-    line-height: 1.08;
-    letter-spacing: -0.02em;
+    font-size: 44px;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
     margin: 0 0 24px;
     font-weight: 500;
     color: var(--ink);
   }
   .standfirst {
-    font-size: 21px;
-    line-height: 1.5;
+    font-size: 20px;
+    line-height: 1.55;
     color: var(--ink-2);
-    margin: 0 0 8px;
+    margin: 0;
     font-style: italic;
   }
 
@@ -144,28 +137,15 @@ const navCta = { href: "#subscribe", label: "Subscribe →" };
     line-height: 1.72;
     color: var(--ink-2);
     margin: 0 0 24px;
-  }
-  .article-body p strong {
-    color: var(--ink);
-    font-weight: 600;
-  }
-  .article-body h2 {
     font-family: 'Fraunces', Georgia, serif;
-    font-size: 28px;
-    line-height: 1.25;
-    font-weight: 500;
-    margin: 48px 0 20px;
-    color: var(--ink);
+    font-weight: 400;
   }
-  .pullquote {
-    margin: 32px -20px;
-    padding: 20px 28px;
-    border-left: 3px solid var(--accent);
-    font-family: 'Fraunces', Georgia, serif;
-    font-style: italic;
-    font-size: 22px;
-    line-height: 1.45;
-    color: var(--ink);
+  .article-body p code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+    background: var(--soft);
+    padding: 1px 6px;
+    border-radius: 4px;
   }
 
   .section-label {
@@ -193,12 +173,9 @@ const navCta = { href: "#subscribe", label: "Subscribe →" };
     font-size: 16px;
     color: var(--ink-2);
     margin: 0 0 24px;
+    font-family: inherit;
   }
-  .signup {
-    display: flex;
-    gap: 10px;
-    max-width: 520px;
-  }
+  .signup { display: flex; gap: 10px; max-width: 520px; }
   .signup input[type=email] {
     flex: 1;
     padding: 14px 16px;
@@ -228,11 +205,9 @@ const navCta = { href: "#subscribe", label: "Subscribe →" };
   }
 
   @media (max-width: 720px) {
-    .article-head h1 { font-size: 32px; }
-    .standfirst { font-size: 18px; }
-    .article-body p { font-size: 16px; }
-    .article-body h2 { font-size: 22px; }
-    .pullquote { font-size: 18px; margin: 24px 0; padding: 16px 20px; }
+    .article-head h1 { font-size: 30px; }
+    .standfirst { font-size: 17px; }
+    .article-body p { font-size: 17px; }
     .signup { flex-direction: column; }
   }
 </style>
