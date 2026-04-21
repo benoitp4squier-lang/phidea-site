@@ -41,7 +41,7 @@ const navCta = { href: "#subscribe", label: "Subscribe →" };
         <h2>What you can verify this afternoon.</h2>
 
         <p>
-          <strong>One, your robots.txt.</strong> Visit <code>https://your-site.com/robots.txt</code>. Look for directives involving <code>GPTBot</code>, <code>ChatGPT-User</code> and <code>OAI-SearchBot</code> (OpenAI), <code>ClaudeBot</code> (Anthropic), <code>PerplexityBot</code> (Perplexity), and <code>Google-Extended</code> (Gemini, AI Overviews). Each user-agent is documented publicly. If a <code>Disallow: /</code> is set against any of them, you are invisible to that assistant's training or live retrieval pipeline. Most carriers edited <code>robots.txt</code> during an SEO migration years ago and have not revisited it since.
+          <strong>One, your robots.txt.</strong> Visit <code>https://your-site.com/robots.txt</code>. Look for directives involving <a href="https://platform.openai.com/docs/gptbot" target="_blank" rel="noopener"><code>GPTBot</code></a>, <a href="https://platform.openai.com/docs/bots/overview-of-openai-crawlers" target="_blank" rel="noopener"><code>ChatGPT-User</code> and <code>OAI-SearchBot</code></a> (OpenAI), <a href="https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler" target="_blank" rel="noopener"><code>ClaudeBot</code></a> (Anthropic), <a href="https://www.perplexity.ai/help-center/en/articles/10163415-perplexity-crawlers-user-agents" target="_blank" rel="noopener"><code>PerplexityBot</code></a> (Perplexity), and <a href="https://developers.google.com/search/docs/crawling-indexing/google-extended" target="_blank" rel="noopener"><code>Google-Extended</code></a> (Gemini, AI Overviews). Each user-agent is documented by its provider. If a <code>Disallow: /</code> is set against any of them, you are invisible to that assistant's training or live retrieval pipeline. Most carriers edited <code>robots.txt</code> during an SEO migration years ago and have not revisited it since.
         </p>
 
         <p>
@@ -65,10 +65,33 @@ const navCta = { href: "#subscribe", label: "Subscribe →" };
         <h2>Sources.</h2>
 
         <ul class="sources">
-          <li>OpenAI &mdash; GPTBot and related crawlers: <a href="https://platform.openai.com/docs/gptbot" target="_blank" rel="noopener">platform.openai.com/docs/gptbot</a></li>
-          <li>Anthropic &mdash; ClaudeBot crawler documentation: <a href="https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler" target="_blank" rel="noopener">support.anthropic.com</a></li>
-          <li>Perplexity &mdash; crawler user-agents: <a href="https://www.perplexity.ai/help-center/en/articles/10163415-perplexity-crawlers-user-agents" target="_blank" rel="noopener">perplexity.ai/help-center</a></li>
-          <li>Google &mdash; Google-Extended and crawler overview: <a href="https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers" target="_blank" rel="noopener">developers.google.com/search</a></li>
+          <li>
+            <span class="src-label">OpenAI</span>
+            <span class="src-desc">GPTBot (training), ChatGPT-User (user-triggered fetches), OAI-SearchBot (ChatGPT search).</span>
+            <a href="https://platform.openai.com/docs/gptbot" target="_blank" rel="noopener">platform.openai.com/docs/gptbot</a>
+            <a href="https://platform.openai.com/docs/bots/overview-of-openai-crawlers" target="_blank" rel="noopener">overview of OpenAI crawlers</a>
+          </li>
+          <li>
+            <span class="src-label">Anthropic</span>
+            <span class="src-desc">ClaudeBot user-agent and robots.txt conformance statement.</span>
+            <a href="https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler" target="_blank" rel="noopener">support.anthropic.com &mdash; Anthropic crawler</a>
+          </li>
+          <li>
+            <span class="src-label">Perplexity</span>
+            <span class="src-desc">PerplexityBot and Perplexity-User crawler identification.</span>
+            <a href="https://www.perplexity.ai/help-center/en/articles/10163415-perplexity-crawlers-user-agents" target="_blank" rel="noopener">perplexity.ai/help-center &mdash; crawler user-agents</a>
+          </li>
+          <li>
+            <span class="src-label">Google</span>
+            <span class="src-desc">Google-Extended token (controls AI product ingestion separately from Googlebot).</span>
+            <a href="https://developers.google.com/search/docs/crawling-indexing/google-extended" target="_blank" rel="noopener">developers.google.com &mdash; Google-Extended</a>
+            <a href="https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers" target="_blank" rel="noopener">overview of Google crawlers</a>
+          </li>
+          <li>
+            <span class="src-label">Independent reference</span>
+            <span class="src-desc">Dark Visitors maintains a continuously updated list of AI crawlers and the robots.txt syntax each expects.</span>
+            <a href="https://darkvisitors.com/agents" target="_blank" rel="noopener">darkvisitors.com/agents</a>
+          </li>
         </ul>
 
         <p class="meta-note">
@@ -156,19 +179,48 @@ const navCta = { href: "#subscribe", label: "Subscribe →" };
   }
   .sources { list-style: none; padding: 0; margin: 0 0 32px; }
   .sources li {
-    padding: 12px 0;
+    padding: 16px 0;
     border-bottom: 1px solid var(--line);
-    font-size: 15px;
+    font-size: 14px;
     font-family: 'Inter', sans-serif;
     color: var(--ink-2);
     line-height: 1.55;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    column-gap: 20px;
+    row-gap: 6px;
   }
   .sources li:last-child { border-bottom: none; }
-  .sources a {
+  .sources .src-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    align-self: start;
+  }
+  .sources .src-desc {
+    color: var(--ink-2);
+    grid-column: 2;
+  }
+  .sources li a {
     color: var(--accent);
     text-decoration: none;
+    grid-column: 2;
+    font-size: 13px;
+    word-break: break-all;
   }
-  .sources a:hover { text-decoration: underline; }
+  .sources li a:hover { text-decoration: underline; }
+  .article-body p a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(240, 78, 54, 0.25);
+  }
+  .article-body p a:hover { border-bottom-color: var(--accent); }
+  @media (max-width: 600px) {
+    .sources li { grid-template-columns: 1fr; }
+    .sources .src-desc, .sources li a { grid-column: auto; }
+  }
   .meta-note {
     font-size: 14px;
     color: var(--muted);
