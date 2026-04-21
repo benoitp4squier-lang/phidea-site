@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Phidea — A short research project on AI-assisted insurance distribution</title>
+<meta name="description" content="I'm Benoit Pasquier. I'm running a short research project on how insurance distribution shifts when buyers live inside ChatGPT and Claude. Looking for 25-minute conversations with heads of distribution, digital, and partnerships at US and EU insurers." />
+<meta name="robots" content="index,follow" />
+<meta property="og:title" content="Phidea — AI-assisted insurance distribution, in the field" />
+<meta property="og:description" content="A short research project. Looking for 25-minute conversations with heads of distribution, digital, and partnerships at US and EU insurers." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fdfcf9;
+    --ink: #16181d;
+    --ink-soft: #3c3f47;
+    --muted: #7a7d86;
+    --rule: #e4e2dc;
+    --accent: #b4441f;
+    --accent-soft: #f4ebe3;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --serif: 'Newsreader', Charter, 'Iowan Old Style', Georgia, serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 56px 28px 120px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 96px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .mark {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+  }
+  .meta {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 1.14;
+    letter-spacing: -0.02em;
+    margin: 0 0 28px;
+    color: var(--ink);
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .lede {
+    font-size: 20px;
+    line-height: 1.52;
+    color: var(--ink-soft);
+    margin: 0 0 40px;
+  }
+  h2 {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 72px 0 18px;
+  }
+  p { margin: 0 0 18px; color: var(--ink-soft); }
+  p.tight { margin-bottom: 6px; }
+  a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  a:hover { color: var(--accent); }
+  ul.bare {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+  }
+  ul.bare li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-soft);
+  }
+  ul.bare li:last-child { border-bottom: none; }
+  ul.bare li .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .claim-block {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    padding: 22px 24px;
+    margin: 32px 0;
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.48;
+    color: var(--ink);
+  }
+  .cta-block {
+    margin-top: 44px;
+    padding: 28px 28px 24px;
+    border: 1px solid var(--rule);
+    background: #fff;
+  }
+  .cta-block h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    margin: 0 0 10px;
+    font-weight: 600;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+  .btn {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    background: transparent;
+    transition: all 0.15s ease;
+  }
+  .btn.primary {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .qa {
+    border-top: 1px solid var(--rule);
+    padding-top: 18px;
+    margin-top: 18px;
+  }
+  .qa .q {
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .qa .a { color: var(--ink-soft); margin: 0 0 16px; }
+  footer {
+    margin-top: 96px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  figure.timeline {
+    margin: 36px 0 28px;
+    padding: 0;
+  }
+  figure.timeline a {
+    display: block;
+    text-decoration: none;
+  }
+  figure.timeline img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--rule);
+    background: #fff;
+  }
+  figure.timeline figcaption {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+    margin-top: 12px;
+    padding: 0 4px;
+    line-height: 1.6;
+  }
+  @media (max-width: 540px) {
+    .wrap { padding: 36px 20px 80px; }
+    h1 { font-size: 34px; }
+    .lede { font-size: 18px; }
+    header { margin-bottom: 64px; }
+    figure.timeline figcaption { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="mark">Phidea</div>
+  <div class="meta">A research project · 2026</div>
+</header>
+
+<h1>Insurance distribution is moving into AI assistants faster than most insurers are modeling. I want to understand <em>what your team is seeing</em>.</h1>
+
+<p class="lede">I'm Benoit Pasquier. For the next eight weeks I'm running a short, private research project on how quote, compare, and buy behavior shifts when the buyer lives inside ChatGPT, Claude, and Gemini. I'm looking for twenty-five-minute conversations with heads of distribution, digital, partnerships, and broker strategy at US and EU insurers.</p>
+
+<h2>The thesis</h2>
+
+<p>Three things are colliding at the same time. OpenAI Apps and Anthropic tool-use turned AI assistants into places where a quote can happen end-to-end. Buyer behavior is drifting: comparison shopping for home and auto increasingly starts inside an assistant rather than on Google or a comparator. And the rulebook is being written in parallel, with NAIC, NY DFS, Colorado SB21-169, and the EU AI Act each carrying specific obligations for how insurers can underwrite and distribute through AI.</p>
+
+<div class="claim-block">
+Most insurers have not audited what ChatGPT, Claude, or Perplexity currently say about their products. Most have not mapped their share of answer in those surfaces. Most have no plan for Article 29 of the EU AI Act. The gap between where the buyer is and where the distribution team looks is the biggest blind spot I can see in the category.
+</div>
+
+<p>I'm testing that claim against reality, not from a desk. Hence the calls.</p>
+
+<figure class="timeline">
+  <a href="research-timeline.png" target="_blank" rel="noopener" aria-label="Open full-size regulatory timeline">
+    <img src="research-timeline.png" alt="Regulatory waves vs. company growth, 1975–2028. Four eras (cat models; post-Enron compliance; GDPR/cross-border standards; ESG/AI) each seeded a category leader: AIR/RMS, Veeva, OneTrust, Vanta. The AI-governance-for-insurance slot is still open." />
+  </a>
+  <figcaption>Four regulatory waves, four category leaders. AI-governance for insurance is the next open slot — and the conversations I'm having now are inputs to figuring out who fills it.</figcaption>
+</figure>
+
+<h2>What I'm trying to learn</h2>
+
+<ul class="bare">
+  <li>
+    <span class="tag">01 · Surface</span>
+    Which AI assistants are your customers actually using to research your category, and how would you know if they stopped?
+  </li>
+  <li>
+    <span class="tag">02 · Evidence</span>
+    If your compliance team asked you today to prove that an AI-generated quote respected IDD disclosure rules, what would you show them?
+  </li>
+  <li>
+    <span class="tag">03 · Ownership</span>
+    Inside your company, who owns the answer to "are we showing up in ChatGPT?" — distribution, digital, partnerships, brand, compliance, or nobody?
+  </li>
+  <li>
+    <span class="tag">04 · Build vs. partner</span>
+    If you had to build an AI-assistant presence this quarter, would you do it in-house, with a platform, or with your agency of record — and why?
+  </li>
+</ul>
+
+<h2>What you get in exchange</h2>
+
+<p>One anonymized deck at the end of the research window. It will include the things I hear that are common across carriers, the things that are idiosyncratic to one or two, and the regulatory positions I've been able to triangulate. No names, no quotes, no attribution. If your team ends up wanting to be named or cited later, that becomes a separate conversation.</p>
+
+<p>If a call is useful, I will also send my own notes from our conversation back to you before I use anything from it.</p>
+
+<h2>Who I am</h2>
+
+<p>Four years of growth work for early-stage B2B SaaS through <a href="https://bulvert.com" target="_blank" rel="noopener">Bulvert</a>, a Paris-based collective. Most recently head of growth at a US infrastructure startup, before that a founder of a short-lived home-insurance brokerage experiment. Background in regulated-industry distribution, not general-purpose marketing. I am not a broker. I am not selling a platform. I am an operator looking for signal.</p>
+
+<div class="cta-block">
+  <h3>Twenty-five minutes, on your calendar.</h3>
+  <p class="tight">If any of the four questions above make you want to argue with me, that's the right reason to book. If you prefer email, reply with your sharpest disagreement and we can trade notes that way.</p>
+  <div class="cta-buttons">
+    <a class="btn primary" href="https://cal.com/benoitpasquier/phidea-25" target="_blank" rel="noopener">Book 25 minutes</a>
+    <a class="btn" href="mailto:benoit@phidea.eu?subject=Phidea%20research%20%E2%80%94%20reply">Email instead</a>
+  </div>
+</div>
+
+<h2>Anticipating the three questions I get most</h2>
+
+<div class="qa">
+  <p class="q">Are you building a product in this space?</p>
+  <p class="a">No. If that changes, this page changes first.</p>
+
+  <p class="q">Why should I trust that the findings stay anonymized?</p>
+  <p class="a">Because the value of the research disappears the moment I break that. Standard researcher incentive. You will see the final deck before anyone else does and can redact anything that reads as identifiable.</p>
+
+  <p class="q">Who else is in the sample?</p>
+  <p class="a">I'm aiming for twelve to eighteen conversations across US and EU carriers, MGAs, and digital-native insurers, with a bias toward personal lines. Current mix leans home and auto, with early signal from health and SMB commercial.</p>
+</div>
+
+<footer>
+  <div>Phidea · benoit@phidea.eu</div>
+  <div>
+    <a href="https://www.linkedin.com/in/benoitpasquier/" target="_blank" rel="noopener">LinkedIn</a>
+    &nbsp;·&nbsp;
+    <a href="mailto:benoit@phidea.eu">Email</a>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
