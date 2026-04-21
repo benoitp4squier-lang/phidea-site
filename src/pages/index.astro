@@ -4,144 +4,350 @@ import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
 
 const navLinks = [
-  { href: "/distribution.html", label: "Distribution" },
-  { href: "/synthetic.html", label: "Monitoring" },
-  { href: "/evidence.html", label: "Governance" },
-  { href: "#faq", label: "FAQ" },
+  { href: "#latest", label: "Latest" },
+  { href: "#archive", label: "Topics" },
+  { href: "#about", label: "About" },
 ];
-const navCta = { href: "#demo", label: "Request a demo →" };
+const navCta = { href: "#subscribe", label: "Subscribe →" };
 ---
 
 <Layout variant="flagship-observability">
   <Nav variant="flagship-observability" links={navLinks} cta={navCta} />
 
-  <header class="hero">
-    <div class="wrap">
-      <span class="eyebrow">AI governance for insurers</span>
-      <h1>AI supports underwriting. <em>It does not replace it.</em> A regulator can now check.</h1>
+  <header class="masthead">
+    <div class="wrap wrap-narrow">
+      <div class="masthead-label">Phidea</div>
+      <h1>What's actually happening with AI in insurance. <em>Weekly.</em></h1>
       <p class="lead">
-        Phidea is the governance layer around every AI model your insurer runs — in underwriting, claims, distribution, or the ChatGPT surface a buyer just opened.
+        Every Tuesday morning: the regulator moves, the model updates, the carrier experiments, and the ones that didn't make it past compliance review. Written for people who read combined ratios before they read keynote slides.
       </p>
-      <div class="cta-row">
-        <a href="#demo" class="btn btn-primary">Request a demo →</a>
-        <a href="#paths" class="btn btn-ghost">Where are you today?</a>
-      </div>
-      <div class="hero-meta">
-        <span><strong>Design partner:</strong> Tier-1 European carrier</span>
-        <span><strong>Private beta</strong> · 3 more carriers, Q2 2026</span>
-        <span><strong>EU-hosted</strong> · VPC and on-prem available</span>
-      </div>
+
+      <form action="https://buttondown.email/api/emails/embed-subscribe/phidea" method="POST" class="signup">
+        <input type="hidden" name="tag" value="flagship-observability" />
+        <input type="email" name="email" placeholder="you@carrier.com" required />
+        <button type="submit">Subscribe →</button>
+      </form>
+      <p class="signup-small">One email per week. Unsubscribe in one click. No sales pitch.</p>
     </div>
   </header>
 
-  <section class="trust" style="padding: 36px 0; border-bottom: 1px solid var(--line);">
-    <div class="wrap">
-      <div class="trust-label">Mapped to</div>
-      <div class="trust-items">
-        <span class="chip">NAIC Model Bulletin</span>
-        <span class="chip">NY DFS Circular Letter No. 7</span>
-        <span class="chip">Colorado SB21-169</span>
-        <span class="chip">EU AI Act Annex III</span>
-        <span class="chip">IDD / ACPR</span>
-        <span class="chip">DORA</span>
-      </div>
+  <section id="latest" class="latest">
+    <div class="wrap wrap-narrow">
+      <div class="section-label">Recent briefs</div>
+
+      <article class="brief">
+        <div class="brief-meta">Topic · Compliance</div>
+        <h3>Colorado's SB21-169 Q1 filings: who demonstrated the quantitative test, who deferred, and why it matters for every other state.</h3>
+        <p>The Colorado DOI's life filings are the first real-world read on whether carriers can produce a passing test at operational cadence. Proxy-variable detection, not demographic calibration, looks like the blocker. The adopters' patterns are worth studying before NAIC extends the framework.</p>
+      </article>
+
+      <article class="brief">
+        <div class="brief-meta">Topic · Model operations</div>
+        <h3>OpenAI ships silent model updates. Carriers should fingerprint behavior, not just track version numbers.</h3>
+        <p>Behavioral fingerprints across four providers show refusal-rate shifts on personal-lines coverage questions without corresponding version-number changes. The drift is real, invisible to naive version tracking, and catches carriers who relied on provider-published model cards.</p>
+      </article>
+
+      <article class="brief">
+        <div class="brief-meta">Topic · Distribution</div>
+        <h3>A governed Custom GPT in a regulated line: where compliance will hold the launch, and how to prevent it.</h3>
+        <p>The IDD advice-boundary classifier is the single most common hold. Price-accuracy checks are second. Post-processor disclosure injection is third. All three are solvable before legal review, and the deployment pattern is replicable across life, P&amp;C, and health.</p>
+      </article>
+
+      <p class="latest-more"><a href="#archive">See all topics</a></p>
     </div>
   </section>
 
-  <section id="paths" style="padding: 88px 0;">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="section-eyebrow">Three starting points</div>
-        <h2>Pick the one that sounds like your week.</h2>
-      </div>
+  <section id="archive" class="archive">
+    <div class="wrap wrap-narrow">
+      <div class="section-label">Topics we track</div>
+      <h2>Eighteen angles. Four tiers of reader.</h2>
+      <p class="archive-lead">
+        Each topic page is a short brief with five things to check. Jump to the tier that matches your week.
+      </p>
 
-      <div class="angle-grid">
-        <a class="angle-card" href="/distribution.html">
-          <div class="tag">Distribution · CMO · Head of Digital</div>
-          <h3>Buyers are asking ChatGPT about your products. You don't know what it's answering.</h3>
-          <p>Scan your share of answer across ChatGPT, Claude, Gemini, Perplexity. See who's cited instead. Ship a governed AI app of your own.</p>
-          <div class="url">phidea.eu/distribution</div>
-        </a>
-
-        <a class="angle-card" href="/synthetic.html">
-          <div class="tag">Monitoring · Head of AI · AI-ops</div>
-          <h3>You shipped an AI agent. Models drift. Auditors check annually.</h3>
-          <p>Every prompt, every response, graded in real time. Hallucinations classifier. Synthetic-buyer red-teaming around the clock.</p>
-          <div class="url">phidea.eu/synthetic</div>
-        </a>
-
-        <a class="angle-card" href="/evidence.html">
-          <div class="tag">Governance · Compliance · Legal · Risk</div>
-          <h3>Your AIS Program is on paper. A DFS examiner will ask for evidence.</h3>
-          <p>ECDIS log, adverse-decision trail, policy-pack mapping to NAIC Model Bulletin and NY DFS Circular Letter No. 7. Audit bundle in one click.</p>
-          <div class="url">phidea.eu/evidence</div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section id="category" style="padding: 88px 0; background: var(--soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="section-eyebrow">Why this is a new category</div>
-        <h2>Vanta won SOC 2. The same window is open for AI in regulated commerce.</h2>
-        <p class="lead">
-          AI systems in insurance left pilot last year. Regulation ships every quarter — NAIC bulletin, NY DFS Circular Letter No. 7, Colorado SB21-169, EU AI Act Annex III. Internal governance frameworks were built for static documentation, not live inference. One, maybe two, platforms will own the compliance layer. Phidea is going after it.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="faq" style="padding: 88px 0;">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="section-eyebrow">FAQ</div>
-        <h2>Straight answers.</h2>
-      </div>
-      <details>
-        <summary>Is this a red-teaming tool?</summary>
-        <p>Red-teaming is episodic. Phidea runs every hour, against your live AI, with the regulatory probe library updated per bulletin.</p>
-      </details>
-      <details>
-        <summary>Will you stop a bad answer before a customer sees it?</summary>
-        <p>Yes, optionally. Phidea sits as a policy gate in front of your agent. Most carriers start in observe-only and turn blocking on after 30 days of clean traces.</p>
-      </details>
-      <details>
-        <summary>What does "private beta" mean for us?</summary>
-        <p>The platform is in production with one tier-1 European carrier and onboarding three more in Q2. Design partners get founding pricing and co-authored case studies.</p>
-      </details>
-      <details>
-        <summary>What does it cost?</summary>
-        <p>Low five figures annual for a single line, single region. Scales by LOB and jurisdiction. Priced after a 30-minute demo — not before.</p>
-      </details>
-      <details>
-        <summary>Where is Phidea hosted?</summary>
-        <p>EU regions (Frankfurt, Paris) by default. VPC or on-prem for carriers with that requirement. Nothing phones home from an air-gapped deployment.</p>
-      </details>
-    </div>
-  </section>
-
-  <section id="demo" style="padding: 88px 0;">
-    <div class="wrap">
-      <div class="cta-panel" style="text-align: center; max-width: 720px; margin: 0 auto;">
-        <h2>See a live probe against your own AI.</h2>
-        <p>Thirty-minute demo. We run a probe suite against whichever surface you name. You see the traces, the flags, and the evidence bundle at the end. No slides.</p>
-        <form action="https://phidea-forms.vercel.app/api/lead" method="POST" style="max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;">
-          <input type="hidden" name="variant" value="flagship-observability" />
-          <input type="email" name="email" placeholder="work@carrier.com" required
-            style="padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; font-size: 15px;" />
-          <input type="text" name="carrier" placeholder="Carrier name" required
-            style="padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; font-size: 15px;" />
-          <button type="submit" class="btn btn-primary" style="align-self: center;">
-            Request a demo →
-          </button>
-        </form>
-        <div class="cta-foot">
-          Reply within one business day. Private beta — qualified insurer contacts only.
+      <div class="tier-grid">
+        <div class="tier">
+          <div class="tier-label">Tier 1 · Distribution</div>
+          <ul>
+            <li><a href="/ai-visibility.html">Be present when buyers ask AI for insurance</a></li>
+            <li><a href="/competitor-share.html">See who ChatGPT mentions instead of you</a></li>
+            <li><a href="/custom-gpt.html">Ship a Custom GPT compliance can live with</a></li>
+            <li><a href="/ai-channel.html">Count the business AI assistants send you</a></li>
+            <li><a href="/ai-attribution.html">Trace each AI conversation to the policy it bound</a></li>
+          </ul>
+        </div>
+        <div class="tier">
+          <div class="tier-label">Tier 2 · AI operations</div>
+          <ul>
+            <li><a href="/ai-monitoring.html">Know what your AI agents said last night</a></li>
+            <li><a href="/model-drift.html">Catch vendor model updates before a customer does</a></li>
+            <li><a href="/hallucination-guardrail.html">Stop a made-up coverage answer before delivery</a></li>
+            <li><a href="/audit-bundle.html">Have a regulator bundle ready, every quarter</a></li>
+          </ul>
+        </div>
+        <div class="tier">
+          <div class="tier-label">Tier 3 · Compliance</div>
+          <ul>
+            <li><a href="/regulator-mapping.html">Six AI rulebooks, one mapping</a></li>
+            <li><a href="/ais-program.html">The AIS Program regulators expect</a></li>
+            <li><a href="/adverse-decision-trail.html">Explain every adverse AI decision, statutorily</a></li>
+            <li><a href="/ecdis-oversight.html">Track every third-party data source your models touch</a></li>
+            <li><a href="/bias-testing.html">Protected-class testing, per state, continuously</a></li>
+          </ul>
+        </div>
+        <div class="tier">
+          <div class="tier-label">Tier 4 · Model risk</div>
+          <ul>
+            <li><a href="/mrm-llms.html">Govern LLMs under the MRM framework you already have</a></li>
+            <li><a href="/predictive-monitoring.html">Watch pricing drift between reserves reviews</a></li>
+            <li><a href="/augmented-underwriting.html">Give underwriters their three hours back</a></li>
+            <li><a href="/portfolio-drift.html">See portfolio drift before the quarterly deck</a></li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
+  <section id="subscribe" class="subscribe-strip">
+    <div class="wrap wrap-narrow">
+      <div class="section-label">Phidea Weekly</div>
+      <h2>One email. Every Tuesday. Free.</h2>
+      <p>Written for people who have to make the call by Friday.</p>
+      <form action="https://buttondown.email/api/emails/embed-subscribe/phidea" method="POST" class="signup">
+        <input type="hidden" name="tag" value="flagship-observability" />
+        <input type="email" name="email" placeholder="you@carrier.com" required />
+        <button type="submit">Subscribe →</button>
+      </form>
+      <p class="signup-small">Unsubscribe in one click. No sales pitch. No sponsored content.</p>
+    </div>
+  </section>
+
+  <section id="about" class="about-strip">
+    <div class="wrap wrap-narrow">
+      <div class="section-label">Who writes this</div>
+      <p>Phidea is a small team tracking AI in insurance across carriers, surfaces, and regulators. We work with a handful of carriers on AI governance and publish publicly what we see across the rest of the industry. No guest posts. No ghost-writing. No sponsored content.</p>
+    </div>
+  </section>
+
   <Footer />
 </Layout>
+
+<style>
+  .wrap-narrow { max-width: 680px; padding-left: 24px; padding-right: 24px; margin: 0 auto; }
+
+  .masthead {
+    padding: 96px 0 64px;
+    border-bottom: 1px solid var(--line);
+  }
+  .masthead-label {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 40px;
+  }
+  .masthead h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 52px;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin: 0 0 28px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .masthead h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .masthead .lead {
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin: 0 0 40px;
+  }
+
+  .signup {
+    display: flex;
+    gap: 10px;
+    max-width: 520px;
+  }
+  .signup input[type=email] {
+    flex: 1;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    background: var(--bg);
+    color: var(--ink);
+  }
+  .signup button {
+    padding: 14px 24px;
+    border: none;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: inherit;
+  }
+  .signup button:hover { background: var(--accent); }
+  .signup-small {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 12px;
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .latest { padding: 72px 0 48px; }
+  .brief {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .brief:first-of-type { padding-top: 8px; }
+  .brief:last-of-type { border-bottom: none; }
+  .brief-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+  }
+  .brief h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 24px;
+    line-height: 1.25;
+    margin: 0 0 12px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .brief p {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink-2);
+    margin: 0;
+  }
+  .latest-more {
+    margin-top: 32px;
+    font-size: 14px;
+  }
+  .latest-more a {
+    color: var(--accent);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .latest-more a:hover { color: var(--ink); }
+
+  .archive {
+    padding: 72px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--soft);
+  }
+  .archive h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 36px;
+    line-height: 1.15;
+    margin: 0 0 16px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .archive-lead {
+    font-size: 17px;
+    color: var(--ink-2);
+    margin: 0 0 40px;
+    line-height: 1.55;
+  }
+  .tier-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .tier {
+    padding: 20px 24px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+  .tier-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .tier ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .tier li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+  }
+  .tier li:last-child { border-bottom: none; }
+  .tier li a {
+    color: var(--ink);
+    text-decoration: none;
+    line-height: 1.45;
+    display: block;
+  }
+  .tier li a:hover { color: var(--accent); }
+
+  .subscribe-strip {
+    padding: 96px 0;
+    text-align: center;
+  }
+  .subscribe-strip .section-label { justify-content: center; display: inline-block; }
+  .subscribe-strip h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 40px;
+    line-height: 1.15;
+    margin: 0 0 12px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .subscribe-strip p {
+    color: var(--ink-2);
+    font-size: 17px;
+    margin: 0 0 28px;
+  }
+  .subscribe-strip .signup { margin-left: auto; margin-right: auto; }
+
+  .about-strip {
+    padding: 72px 0;
+    border-top: 1px solid var(--line);
+    background: var(--soft);
+  }
+  .about-strip p {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink-2);
+    margin: 0;
+  }
+
+  @media (max-width: 720px) {
+    .masthead h1 { font-size: 34px; }
+    .masthead .lead { font-size: 17px; }
+    .signup { flex-direction: column; }
+    .brief h3 { font-size: 20px; }
+    .tier-grid { grid-template-columns: 1fr; }
+    .archive h2 { font-size: 28px; }
+    .subscribe-strip h2 { font-size: 28px; }
+  }
+</style>
