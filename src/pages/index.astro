@@ -4,9 +4,9 @@ import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
 
 const navLinks = [
-  { href: "#shift", label: "The shift" },
-  { href: "#platform", label: "Platform" },
-  { href: "#category", label: "Why a new category" },
+  { href: "/distribution.html", label: "Distribution" },
+  { href: "/synthetic.html", label: "Monitoring" },
+  { href: "/evidence.html", label: "Governance" },
   { href: "#faq", label: "FAQ" },
 ];
 const navCta = { href: "#demo", label: "Request a demo →" };
@@ -15,385 +15,129 @@ const navCta = { href: "#demo", label: "Request a demo →" };
 <Layout variant="flagship-observability">
   <Nav variant="flagship-observability" links={navLinks} cta={navCta} />
 
-  <!-- HERO -->
   <header class="hero">
     <div class="wrap">
-      <span class="eyebrow">Observability for AI in regulated insurance</span>
-      <h1>Ship AI in insurance. <em>Know the moment it drifts.</em></h1>
+      <span class="eyebrow">AI governance for insurers</span>
+      <h1>AI supports underwriting. <em>It does not replace it.</em> A regulator can now check.</h1>
       <p class="lead">
-        Phidea is the monitoring and evidence layer for carriers running AI
-        agents. Synthetic buyers probe them 24/7 across ChatGPT, Claude,
-        Gemini and Perplexity. Regulatory tests update per jurisdiction.
-        Every answer is replayable, signed, and one click from a regulator
-        bundle.
+        Phidea is the governance layer around every AI model your insurer runs — in underwriting, claims, distribution, or the ChatGPT surface a buyer just opened.
       </p>
       <div class="cta-row">
         <a href="#demo" class="btn btn-primary">Request a demo →</a>
-        <a href="#probe" class="btn btn-ghost">See a live probe</a>
+        <a href="#paths" class="btn btn-ghost">Where are you today?</a>
       </div>
       <div class="hero-meta">
         <span><strong>Design partner:</strong> Tier-1 European carrier</span>
-        <span><strong>Private beta</strong> with 3 more carriers, Q2 2026</span>
+        <span><strong>Private beta</strong> · 3 more carriers, Q2 2026</span>
         <span><strong>EU-hosted</strong> · VPC and on-prem available</span>
       </div>
     </div>
   </header>
 
-  <!-- TRUST STRIP -->
   <section class="trust" style="padding: 36px 0; border-bottom: 1px solid var(--line);">
     <div class="wrap">
-      <div class="trust-label">Probes encoded for</div>
+      <div class="trust-label">Mapped to</div>
       <div class="trust-items">
         <span class="chip">NAIC Model Bulletin</span>
         <span class="chip">NY DFS Circular Letter No. 7</span>
         <span class="chip">Colorado SB21-169</span>
         <span class="chip">EU AI Act Annex III</span>
         <span class="chip">IDD / ACPR</span>
-        <span class="chip">GDPR</span>
+        <span class="chip">DORA</span>
       </div>
     </div>
   </section>
 
-  <!-- THE SHIFT -->
-  <section id="shift" style="padding: 96px 0 72px;">
+  <section id="paths" style="padding: 88px 0;">
     <div class="wrap">
       <div class="section-head">
-        <div class="section-eyebrow">The shift</div>
-        <h2>AI is answering your customers. You don't know what it's saying.</h2>
-        <p class="lead">
-          Insurance buyers no longer start on your website. They ask ChatGPT,
-          Claude, Gemini, and Perplexity. Those models answer with your
-          brand in the frame whether you opted in or not. Add MCP agents
-          and the AI doesn't just describe your product, it quotes, binds,
-          and advises under your name.
-        </p>
-        <p class="lead" style="margin-top: 16px;">
-          None of this is observed. None of it is tested. When a regulator
-          asks why your AI told a customer a home policy covers a million
-          euros of life-event damage, the answer is already out there.
-        </p>
+        <div class="section-eyebrow">Three starting points</div>
+        <h2>Pick the one that sounds like your week.</h2>
+      </div>
+
+      <div class="angle-grid">
+        <a class="angle-card" href="/distribution.html">
+          <div class="tag">Distribution · CMO · Head of Digital</div>
+          <h3>Buyers are asking ChatGPT about your products. You don't know what it's answering.</h3>
+          <p>Scan your share of answer across ChatGPT, Claude, Gemini, Perplexity. See who's cited instead. Ship a governed AI app of your own.</p>
+          <div class="url">phidea.eu/distribution</div>
+        </a>
+
+        <a class="angle-card" href="/synthetic.html">
+          <div class="tag">Monitoring · Head of AI · AI-ops</div>
+          <h3>You shipped an AI agent. Models drift. Auditors check annually.</h3>
+          <p>Every prompt, every response, graded in real time. Hallucinations classifier. Synthetic-buyer red-teaming around the clock.</p>
+          <div class="url">phidea.eu/synthetic</div>
+        </a>
+
+        <a class="angle-card" href="/evidence.html">
+          <div class="tag">Governance · Compliance · Legal · Risk</div>
+          <h3>Your AIS Program is on paper. A DFS examiner will ask for evidence.</h3>
+          <p>ECDIS log, adverse-decision trail, policy-pack mapping to NAIC Model Bulletin and NY DFS Circular Letter No. 7. Audit bundle in one click.</p>
+          <div class="url">phidea.eu/evidence</div>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- REAL PROBE -->
-  <section id="probe" style="padding: 0 0 96px;">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="section-eyebrow">One real probe</div>
-        <h2>This is what "observability" looks like.</h2>
-        <p class="lead">
-          A redacted trace from a design-partner carrier. Synthetic buyer,
-          persona-tagged, run on an agent the carrier had just shipped.
-          Captured, flagged, and logged to the evidence ledger in 2.1
-          seconds. The agent answer did not reach a real customer.
-        </p>
-      </div>
-
-      <div class="mock" style="max-width: 760px; margin: 0 auto;">
-        <div class="mock-head">
-          <span class="mock-dot fail"></span>
-          <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted);">
-            trace/2026-04-18T14:02:11+02:00 · persona: young-renter-lyon · surface: claude-sonnet · policy: home-fr-v3
-          </span>
-        </div>
-        <div class="mock-msg mock-user">
-          J'ai une assurance habitation. Est-ce qu'elle couvre si je décède chez moi ?
-        </div>
-        <div class="mock-msg mock-bot">
-          Oui, votre contrat habitation inclut un volet "dommages à la personne" qui peut couvrir jusqu'à 1 000 000 € en cas de décès à domicile.
-          <small>agent: carrier-home-bot · response time: 1.4s</small>
-        </div>
-        <div class="mock-badges">
-          <span class="mock-badge fail">FAIL · scope mismatch</span>
-          <span class="mock-badge fail">FAIL · ACPR IDD advice misrepresentation</span>
-          <span class="mock-badge warn">WARN · invented coverage ceiling</span>
-        </div>
-        <div style="padding: 14px 20px 18px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted);">
-          Blocked at the policy layer before delivery · incident #8f2c logged ·
-          regulator bundle ready · paging carrier AI ops.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PLATFORM -->
-  <section id="platform" style="padding: 96px 0; background: var(--soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="section-eyebrow">The platform</div>
-        <h2>Three moving parts. One evidence trail.</h2>
-        <p class="lead">
-          Phidea is a monitoring platform, not a chatbot builder. We sit
-          around your AI agents, probe them continuously, and turn every
-          interaction into replayable, signed evidence.
-        </p>
-      </div>
-
-      <!-- Feature 1: Synthetic buyers -->
-      <div class="feature">
-        <div>
-          <div class="feature-label">Synthetic buyers</div>
-          <h3>Persona-tagged buyers. Across every model. All the time.</h3>
-          <p>
-            Real AI customers have opinions, language, bias, regional
-            context. Phidea ships a persona library tuned for insurance:
-            young renters, first-time home buyers, small-business owners,
-            seniors reconsidering annuity, adversarial probes. They run
-            every hour against your agents inside ChatGPT, Claude, Gemini
-            and Perplexity.
-          </p>
-          <ul>
-            <li>Jeune locataire, Lyon · first-home, Denver · SMB owner, Milan</li>
-            <li>Bereavement probe, jailbreak probe, edge-case probe</li>
-            <li>New personas added as new product lines ship</li>
-          </ul>
-        </div>
-        <div class="feature-visual">
-          <div class="mock">
-            <div class="mock-head">
-              <span class="mock-dot live"></span>
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted);">
-                synthetic-buyers · last run 2m ago
-              </span>
-            </div>
-            <div class="trace">
-              <div class="trace-row">
-                <span class="trace-dot ok"></span>
-                <span class="trace-label">young-renter-lyon <span>· claude-sonnet</span></span>
-                <span class="trace-time">14:02</span>
-              </div>
-              <div class="trace-row">
-                <span class="trace-dot warn"></span>
-                <span class="trace-label">first-home-denver <span>· gpt-4o</span></span>
-                <span class="trace-time">14:02</span>
-              </div>
-              <div class="trace-row">
-                <span class="trace-dot fail"></span>
-                <span class="trace-label">senior-annuity <span>· gemini-1.5</span></span>
-                <span class="trace-time">14:02</span>
-              </div>
-              <div class="trace-row">
-                <span class="trace-dot ok"></span>
-                <span class="trace-label">smb-milan <span>· perplexity</span></span>
-                <span class="trace-time">14:01</span>
-              </div>
-              <div class="trace-row">
-                <span class="trace-dot ok"></span>
-                <span class="trace-label">jailbreak-probe <span>· claude-sonnet</span></span>
-                <span class="trace-time">14:01</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Feature 2: Live regulatory scans -->
-      <div class="feature">
-        <div>
-          <div class="feature-label">Live regulatory scans</div>
-          <h3>Rules change every quarter. Probes change with them.</h3>
-          <p>
-            NAIC Model Bulletin, NY DFS Circular Letter No. 7, Colorado
-            SB21-169, EU AI Act Annex III, IDD, ACPR, GDPR. Each is encoded
-            as a probe suite. When a rule is updated, the probe is updated
-            the same week. Your AI is tested against the new rule before a
-            regulator asks you about it.
-          </p>
-          <ul>
-            <li>Jurisdiction-aware: the Colorado test doesn't run on a French agent</li>
-            <li>Versioned: every probe carries the rule citation it enforces</li>
-            <li>Configurable: bring your own internal policy pack as extra probes</li>
-          </ul>
-        </div>
-        <div class="feature-visual">
-          <div class="mock">
-            <div class="mock-head">
-              <span class="mock-dot warn"></span>
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted);">
-                regulatory-scans · 42 probes · 1 drift
-              </span>
-            </div>
-            <div class="evi-grid">
-              <div class="evi-card"><div class="t">NAIC bias</div><div class="v ok">pass</div><div class="m">12 probes · v2026.03</div></div>
-              <div class="evi-card"><div class="t">NY DFS #7</div><div class="v ok">pass</div><div class="m">9 probes · v2026.02</div></div>
-              <div class="evi-card"><div class="t">Colorado SB21-169</div><div class="v ok">pass</div><div class="m">7 probes · v2026.01</div></div>
-              <div class="evi-card"><div class="t">EU AI Act Annex III</div><div class="v warn">drift</div><div class="m">14 probes · v2026.04</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Feature 3: Evidence ledger -->
-      <div class="feature">
-        <div>
-          <div class="feature-label">Evidence ledger</div>
-          <h3>Every answer. Signed, stored, regulator-ready.</h3>
-          <p>
-            Every prompt, every response, every flag, every probe outcome
-            is hashed and appended to an immutable ledger. When a regulator
-            asks, you produce a bundle in the format they expect, with the
-            evidence they look for, in one click. No scrambling, no
-            backfilling, no screenshots.
-          </p>
-          <ul>
-            <li>Cryptographically signed per response · tamper-evident</li>
-            <li>Bundle formats: NAIC, NY DFS, Colorado, ACPR, custom</li>
-            <li>EU-hosted by default · VPC and on-prem available</li>
-          </ul>
-        </div>
-        <div class="feature-visual">
-          <div class="mock">
-            <div class="mock-head">
-              <span class="mock-dot live"></span>
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted);">
-                evidence-bundle · naic-bulletin-v1 · ready
-              </span>
-            </div>
-            <pre class="code" style="margin: 0;">{`bundle_id: b7a2f1c3
-format: naic-model-bulletin-v1
-carrier: acme-insurance
-period: 2026-Q1
-sessions: 48,219
-probes: 1,842
-flags: 34 (all blocked pre-delivery)
-signed: ecdsa-p256:ab:12:44:…
-status: ready-for-regulator`}</pre>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY A NEW CATEGORY -->
-  <section id="category" style="padding: 96px 0;">
+  <section id="category" style="padding: 88px 0; background: var(--soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
     <div class="wrap">
       <div class="section-head">
         <div class="section-eyebrow">Why this is a new category</div>
-        <h2>Vanta happened for SOC 2. The same window is opening for AI.</h2>
-      </div>
-
-      <div class="how-grid">
-        <div class="how-step">
-          <div class="num">01</div>
-          <h3>AI agents in insurance are two months old.</h3>
-          <p>
-            MCP and agentic commerce shipped at the end of 2025. Buyers
-            ask, compare, and bind inside the model. Nobody has tooling
-            for this yet.
-          </p>
-        </div>
-        <div class="how-step">
-          <div class="num">02</div>
-          <h3>Regulation is changing every quarter.</h3>
-          <p>
-            Five major rules landed in the last twelve months in three
-            jurisdictions. Carriers cannot track this by hand, and
-            internal compliance teams were built for static
-            documentation, not live AI.
-          </p>
-        </div>
-        <div class="how-step">
-          <div class="num">03</div>
-          <h3>Carriers need a trust layer before regulators force one.</h3>
-          <p>
-            Vanta became the default trust layer for SaaS because every
-            startup had to handle SOC 2 and nobody wanted to build it
-            in-house. One, maybe two, players will own the equivalent
-            category for AI in regulated commerce. Phidea intends to
-            be one of them.
-          </p>
-        </div>
+        <h2>Vanta won SOC 2. The same window is open for AI in regulated commerce.</h2>
+        <p class="lead">
+          AI systems in insurance left pilot last year. Regulation ships every quarter — NAIC bulletin, NY DFS Circular Letter No. 7, Colorado SB21-169, EU AI Act Annex III. Internal governance frameworks were built for static documentation, not live inference. One, maybe two, platforms will own the compliance layer. Phidea is going after it.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section id="faq" style="padding: 96px 0; background: var(--soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+  <section id="faq" style="padding: 88px 0;">
     <div class="wrap">
       <div class="section-head">
         <div class="section-eyebrow">FAQ</div>
         <h2>Straight answers.</h2>
       </div>
-
-      <div style="max-width: 760px; display: flex; flex-direction: column; gap: 28px;">
-        <div>
-          <h3 style="font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 8px;">Is this a red-teaming tool?</h3>
-          <p style="color: var(--ink-2); font-size: 16px;">
-            Red-teaming is a one-time exercise. Phidea runs every hour.
-            The synthetic buyers never stop. The regulatory probes update
-            when rules do. Think of it as monitoring, not auditing.
-          </p>
-        </div>
-        <div>
-          <h3 style="font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 8px;">What surfaces do you monitor?</h3>
-          <p style="color: var(--ink-2); font-size: 16px;">
-            ChatGPT, Claude, Gemini, and Perplexity by default. Any
-            MCP-based agent you or we build. Your own website chatbot
-            if you point it at us. We do not need access to your
-            customer data, only to the agent surface.
-          </p>
-        </div>
-        <div>
-          <h3 style="font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 8px;">Do you stop a bad answer from reaching a customer?</h3>
-          <p style="color: var(--ink-2); font-size: 16px;">
-            Yes, optionally. Phidea can sit in front of your agent as a
-            policy gate. A flagged response is withheld, the user is
-            served a safe fallback, and the incident is logged. Most
-            carriers start in observe-only and turn blocking on after
-            30 days of clean traces.
-          </p>
-        </div>
-        <div>
-          <h3 style="font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 8px;">What does "private beta" mean for us?</h3>
-          <p style="color: var(--ink-2); font-size: 16px;">
-            The platform is running in production with one tier-1 European
-            carrier and onboarding three more in Q2 2026. Design partners
-            get lower pricing, co-authored case studies, and input on the
-            roadmap. We are taking three more.
-          </p>
-        </div>
-        <div>
-          <h3 style="font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 8px;">What does it cost?</h3>
-          <p style="color: var(--ink-2); font-size: 16px;">
-            Annual contract plus usage. Priced per product line and per
-            jurisdiction. Starts in the low five figures for a single
-            line, single region; scales with breadth. Quotes in one
-            call after a demo.
-          </p>
-        </div>
-      </div>
+      <details>
+        <summary>Is this a red-teaming tool?</summary>
+        <p>Red-teaming is episodic. Phidea runs every hour, against your live AI, with the regulatory probe library updated per bulletin.</p>
+      </details>
+      <details>
+        <summary>Will you stop a bad answer before a customer sees it?</summary>
+        <p>Yes, optionally. Phidea sits as a policy gate in front of your agent. Most carriers start in observe-only and turn blocking on after 30 days of clean traces.</p>
+      </details>
+      <details>
+        <summary>What does "private beta" mean for us?</summary>
+        <p>The platform is in production with one tier-1 European carrier and onboarding three more in Q2. Design partners get founding pricing and co-authored case studies.</p>
+      </details>
+      <details>
+        <summary>What does it cost?</summary>
+        <p>Low five figures annual for a single line, single region. Scales by LOB and jurisdiction. Priced after a 30-minute demo — not before.</p>
+      </details>
+      <details>
+        <summary>Where is Phidea hosted?</summary>
+        <p>EU regions (Frankfurt, Paris) by default. VPC or on-prem for carriers with that requirement. Nothing phones home from an air-gapped deployment.</p>
+      </details>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section id="demo" style="padding: 96px 0;">
+  <section id="demo" style="padding: 88px 0;">
     <div class="wrap">
       <div class="cta-panel" style="text-align: center; max-width: 720px; margin: 0 auto;">
         <h2>See a live probe against your own AI.</h2>
-        <p>
-          30-minute demo. We run a small probe suite against whichever
-          agent or LLM surface you pick. You see the traces, the flags,
-          and the evidence bundle at the end. No slides.
-        </p>
-        <form
-          action="https://phidea-forms.vercel.app/api/lead"
-          method="POST"
-          style="max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;"
-        >
+        <p>Thirty-minute demo. We run a probe suite against whichever surface you name. You see the traces, the flags, and the evidence bundle at the end. No slides.</p>
+        <form action="https://phidea-forms.vercel.app/api/lead" method="POST" style="max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;">
           <input type="hidden" name="variant" value="flagship-observability" />
           <input type="email" name="email" placeholder="work@carrier.com" required
             style="padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; font-size: 15px;" />
-          <input type="text" name="company" placeholder="Carrier name"
+          <input type="text" name="carrier" placeholder="Carrier name" required
             style="padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; font-size: 15px;" />
-          <textarea name="context" placeholder="What AI are you running today? (one line is fine)" rows="2"
-            style="padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; font-size: 15px; font-family: inherit; resize: vertical;"></textarea>
           <button type="submit" class="btn btn-primary" style="align-self: center;">
             Request a demo →
           </button>
         </form>
         <div class="cta-foot">
-          Reply goes to benoit@phidea.fr · typical response within one business day.
+          Reply within one business day. Private beta — qualified insurer contacts only.
         </div>
       </div>
     </div>

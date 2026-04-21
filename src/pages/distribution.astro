@@ -1,22 +1,115 @@
 ---
-/**
- * The Distribution angle was retired. It contradicted the real product
- * positioning (observability + evidence, not storefront-building), so we
- * consolidated it into the flagship. This page is a thin redirect kept
- * only to avoid 404s on external links.
- */
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+
+const navLinks = [
+  { href: "/", label: "Flagship" },
+  { href: "#scan", label: "The scan" },
+  { href: "#build", label: "Your own AI" },
+  { href: "#faq", label: "FAQ" },
+];
+const navCta = { href: "#demo", label: "Get a scorecard →" };
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0; url=/" />
-    <link rel="canonical" href="https://phidea.eu/" />
-    <meta name="robots" content="noindex" />
-    <title>Phidea</title>
-  </head>
-  <body>
-    <p>Redirecting to <a href="/">phidea.eu</a>...</p>
-  </body>
-</html>
+<Layout variant="distribution">
+  <Nav variant="distribution" links={navLinks} cta={navCta} />
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">For distribution, digital, CMO</span>
+      <h1>Your products are being described in ChatGPT. <em>By whom?</em></h1>
+      <p class="lead">
+        Insurance buyers no longer start on your website. They ask ChatGPT, Claude, Gemini, and Perplexity. Those assistants answer with your brand — or your competitor's. Phidea measures what's said, where, and by which model.
+      </p>
+      <div class="cta-row">
+        <a href="#demo" class="btn btn-primary">Get a scorecard →</a>
+        <a href="/" class="btn btn-ghost">See the platform</a>
+      </div>
+      <div class="hero-meta">
+        <span><strong>4 surfaces</strong> · ChatGPT, Claude, Gemini, Perplexity</span>
+        <span><strong>40+ buyer queries</strong> per LOB</span>
+        <span><strong>First scorecard</strong> in 48 hours</span>
+      </div>
+    </div>
+  </header>
+
+  <section id="scan" style="padding: 88px 0;">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-eyebrow">Step one</div>
+        <h2>Scan your share of answer.</h2>
+        <p class="lead">
+          A targeted probe library runs against your LOB on ChatGPT, Claude, Gemini, and Perplexity. You get the percentage of answers that cite you, the percentage that cite a named competitor, and the queries where neither wins. Broken out by surface, by query type, by geography.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="build" style="padding: 88px 0; background: var(--soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-eyebrow">Step two</div>
+        <h2>Build your own AI presence. Governed from day one.</h2>
+        <p class="lead">
+          A ChatGPT Custom GPT, a Claude MCP, or a Gemini Extension — grounded in your IPIDs and product library, constrained by your compliance policy, logged to an audit-ready ledger. IDD advice-boundary classifier and disclosure injection ship with it. Weeks, not quarters.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="measure" style="padding: 88px 0;">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-eyebrow">Step three</div>
+        <h2>Measure what actually closes.</h2>
+        <p class="lead">
+          Every AI-assistant conversation is tagged, sessionized, and attributed to quote-to-bind in your CRM. You see the revenue line that came from an AI surface, the competitor you won it from, and the query that made the difference.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="padding: 88px 0; background: var(--soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-eyebrow">FAQ</div>
+        <h2>Straight answers.</h2>
+      </div>
+      <details>
+        <summary>Which surfaces do you cover?</summary>
+        <p>ChatGPT (GPTs + Apps), Claude (MCP), Gemini (Extensions), Perplexity. Any other agent with a public endpoint.</p>
+      </details>
+      <details>
+        <summary>How long does the scan take?</summary>
+        <p>First scorecard in 48 hours — delivered by a Phidea analyst. Continuous monitoring from there.</p>
+      </details>
+      <details>
+        <summary>Is an AI-assistant presence compliant?</summary>
+        <p>Only if you instrument it. We ship IDD, ACPR, and NAIC guardrails on the agent you build — advice-boundary classifier, disclosure injection, price-accuracy check. Every session replayable.</p>
+      </details>
+      <details>
+        <summary>Can we keep the governance but host the agent ourselves?</summary>
+        <p>Yes. The gateway and policy layer are your side of the boundary. The probes run from ours. You keep the answer key.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="demo" style="padding: 88px 0;">
+    <div class="wrap">
+      <div class="cta-panel" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <h2>Get your first scorecard.</h2>
+        <p>Free for your first LOB in your first market. No slides. A PDF you can take to the next distribution meeting.</p>
+        <form action="https://phidea-forms.vercel.app/api/lead" method="POST" style="max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;">
+          <input type="hidden" name="variant" value="distribution" />
+          <input type="email" name="email" placeholder="work@carrier.com" required style="padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; font-size: 15px;" />
+          <input type="text" name="carrier" placeholder="Carrier name" required style="padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; font-size: 15px;" />
+          <button type="submit" class="btn btn-primary" style="align-self: center;">Get the scorecard →</button>
+        </form>
+        <div class="cta-foot">Delivered by a Phidea analyst within 48 hours.</div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

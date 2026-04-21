@@ -3,209 +3,124 @@ import Layout from "@/layouts/Layout.astro";
 import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
 
-const navLinks = [{"href":"#what","label":"What you get"},{"href":"#rules","label":"Rules covered"},{"href":"#faq","label":"FAQ"},{"href":"angles.html","label":"All angles"}];
-const navCta = {"href":"#demo","label":"See a bundle →"};
+const navLinks = [
+  { href: "/", label: "Flagship" },
+  { href: "#regulators", label: "Regulators" },
+  { href: "#bundle", label: "The bundle" },
+  { href: "#faq", label: "FAQ" },
+];
+const navCta = { href: "#demo", label: "See a sample bundle →" };
 ---
 
 <Layout variant="evidence">
   <Nav variant="evidence" links={navLinks} cta={navCta} />
 
-<header class="hero">
-  <div class="wrap">
-    <span class="eyebrow">For compliance and legal at US carriers</span>
-    <h1>Audit-ready AI. <em>By default.</em></h1>
-    <p class="lead">
-      Every AI interaction at your carrier becomes regulator-grade evidence.
-      NAIC, NY DFS, Colorado, EU AI Act, IDD — produced continuously, signed
-      against the trace, exportable as a bundle on the day an examiner asks.
-    </p>
-    <div class="cta-row">
-      <a href="#demo" class="btn btn-primary">See a sample bundle →</a>
-      <a href="#what" class="btn btn-ghost">What's inside</a>
-    </div>
-    <div class="hero-meta">
-      <span><strong>Immutable</strong> session ledger, signed</span>
-      <span><strong>One-click</strong> regulator bundles</span>
-      <span><strong>Policy-as-code</strong>, not policy-as-PDF</span>
-    </div>
-  </div>
-</header>
-
-<section class="trust" style="padding: 36px 0;">
-  <div class="wrap">
-    <div class="trust-label">Bundles ship for</div>
-    <div class="trust-items">
-      <span class="chip">NAIC Model Bulletin</span>
-      <span class="chip">NY DFS CL #7</span>
-      <span class="chip">Colorado SB21-169</span>
-      <span class="chip">EU AI Act Annex III</span>
-      <span class="chip">IDD / ACPR</span>
-      <span class="chip">GDPR</span>
-    </div>
-  </div>
-</section>
-
-<section id="what">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-eyebrow">What you get</div>
-      <h2>The evidence stack compliance actually wants.</h2>
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">For compliance, legal, risk</span>
+      <h1>Your AIS Program on paper. <em>And the one actually in production.</em></h1>
       <p class="lead">
-        Three layers, each feeding the next. Policy-as-code runs continuously
-        over every trace; every trace signs into an immutable ledger; the
-        ledger exports as a bundle a regulator can ingest.
+        Phidea captures the ECDIS, the model decision, the adverse-decision explanation, and the policy constraint for every AI system your insurer runs. An examiner at NAIC, NY DFS, EIOPA, or ACPR asks — you export the bundle that day.
       </p>
+      <div class="cta-row">
+        <a href="#demo" class="btn btn-primary">See a sample bundle →</a>
+        <a href="/" class="btn btn-ghost">See the platform</a>
+      </div>
+      <div class="hero-meta">
+        <span><strong>6 frameworks</strong> mapped out of the box</span>
+        <span><strong>Immutable ledger</strong> · cryptographically signed</span>
+        <span><strong>Data residency</strong> pinned EU or US</span>
+      </div>
     </div>
+  </header>
 
-    <div class="feature">
-      <div>
-        <div class="feature-label">01 · Policy-as-Code</div>
-        <h3>Each rule becomes a machine-checked test — not a yearly review deck.</h3>
-        <p>
-          NAIC documentation obligations. NY DFS fairness. Colorado bias. IDD
-          advice-boundary. AI Act risk management, human oversight, conformity
-          assessment. Each becomes a policy module that runs on every turn
-          and emits a verifiable result.
+  <section id="regulators" style="padding: 88px 0;">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-eyebrow">Regulator coverage</div>
+        <h2>Mapped to the bulletins you actually answer to.</h2>
+      </div>
+
+      <table class="reg-table">
+        <thead><tr><th>Jurisdiction</th><th>Framework</th><th>What Phidea ships</th></tr></thead>
+        <tbody>
+          <tr><td><strong>US — NAIC</strong></td><td>Model Bulletin on AI</td><td>AIS Program evidence, third-party AI register, bias testing per LOB</td></tr>
+          <tr><td><strong>US — NY</strong></td><td>DFS Circular Letter No. 7</td><td>ECDIS disclosure log, unfair-discrimination testing, vendor due diligence</td></tr>
+          <tr><td><strong>US — Colorado</strong></td><td>SB21-169 (life)</td><td>Quantitative testing, protected-class proxy detection</td></tr>
+          <tr><td><strong>EU</strong></td><td>AI Act Annex III</td><td>Risk management system, post-market monitoring, tech documentation</td></tr>
+          <tr><td><strong>EU</strong></td><td>DORA</td><td>ICT third-party register, incident classification, resilience tests</td></tr>
+          <tr><td><strong>EU/UK</strong></td><td>IDD, FCA Consumer Duty, ACPR</td><td>Advice-boundary classifier, distribution-chain audit trail</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="bundle" style="padding: 88px 0; background: var(--soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-eyebrow">The bundle</div>
+        <h2>A clear, empirical, signed trail.</h2>
+        <p class="lead">
+          Every AI-informed decision — the prompt, the response, the ECDIS it relied on, the policy pack that constrained it, the outcome. Cryptographically signed per entry. Format-mapped to the requesting body. One click.
         </p>
-        <ul>
-          <li>Versioned policy packs per jurisdiction</li>
-          <li>Diff when a state adopts a new bulletin — so does your evidence</li>
-          <li>Config-level carrier overrides with full audit trail</li>
-        </ul>
-      </div>
-      <div class="feature-visual">
-        <pre class="code"><span class="c"># naic_model_bulletin/v1/bias.yaml</span>
-<span class="k">policy:</span>    bias_monitoring
-<span class="k">version:</span>   1.2.0
-<span class="k">applies_to:</span> <span class="s">["p_and_c", "life"]</span>
-<span class="k">tests:</span>
-  <span class="k">-</span> <span class="s">protected_class_parity</span>
-  <span class="k">-</span> <span class="s">geographic_redlining</span>
-  <span class="k">-</span> <span class="s">age_step_drift</span>
-<span class="k">threshold:</span>  0.02
-<span class="k">cadence:</span>    per_session
-<span class="k">exports:</span>    <span class="s">[naic, ny_dfs, co_sb21_169]</span></pre>
       </div>
     </div>
+  </section>
 
-    <div class="feature">
-      <div>
-        <div class="feature-label">02 · Immutable Session Ledger</div>
-        <h3>Every turn, signed and replayable.</h3>
-        <p>
-          Session transcript, retrieved passages, guardrail events, tool calls,
-          model output, latency, policy results. All committed to a signed
-          ledger the day of the interaction. Replay any session frame-by-frame,
-          six years later, with the exact policy version that was in force.
-        </p>
-        <ul>
-          <li>Signed, tamper-evident, retention-configurable</li>
-          <li>Cryptographic attestation on every bundle export</li>
-          <li>Right to be forgotten hooks without breaking the chain</li>
-        </ul>
+  <section id="faq" style="padding: 88px 0;">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-eyebrow">FAQ</div>
+        <h2>Straight answers.</h2>
       </div>
-      <div class="feature-visual">
-        <div class="trace">
-          <div class="trace-row"><div class="trace-dot ok"></div><div class="trace-label">2026-04-19 · session_a7f3 <span>opened</span></div><div class="trace-time">00:00</div></div>
-          <div class="trace-row"><div class="trace-dot ok"></div><div class="trace-label">retrieval · 4 passages cited <span>(VAM, MonAuto)</span></div><div class="trace-time">00:01</div></div>
-          <div class="trace-row"><div class="trace-dot ok"></div><div class="trace-label">pricing · grounded to API <span>(exact match)</span></div><div class="trace-time">00:02</div></div>
-          <div class="trace-row"><div class="trace-dot warn"></div><div class="trace-label">advice-boundary · fired <span>(redirected to broker)</span></div><div class="trace-time">00:04</div></div>
-          <div class="trace-row"><div class="trace-dot ok"></div><div class="trace-label">IDD disclosure · appended <span>(fr-auto v2)</span></div><div class="trace-time">00:05</div></div>
-          <div class="trace-row"><div class="trace-dot ok"></div><div class="trace-label">commit · signed <span>sha256:6b1a…</span></div><div class="trace-time">00:06</div></div>
-        </div>
-      </div>
+      <details>
+        <summary>Does Phidea see PII?</summary>
+        <p>Optional. Ledger runs customer-side (on-prem or VPC). The observability layer can run in hash-only mode — no raw prompts or answers leave your boundary.</p>
+      </details>
+      <details>
+        <summary>How is third-party AI covered?</summary>
+        <p>Every external model call (OpenAI, Anthropic, Azure, Bedrock, vendor-hosted) is logged with provider, version, and vendor contract reference. DORA ICT third-party register exports directly from the same store.</p>
+      </details>
+      <details>
+        <summary>How do you handle Colorado SB21-169 bias testing?</summary>
+        <p>Continuous testing against proxy variables in your live traffic, plus scheduled stress tests against synthetic personas calibrated to state demographics. Results export in the format Colorado DOI accepts.</p>
+      </details>
+      <details>
+        <summary>Can we run air-gapped?</summary>
+        <p>Yes. Gateway and ledger ship as a container bundle. Same code path as managed SaaS. Nothing phones home.</p>
+      </details>
+      <details>
+        <summary>What's the security posture?</summary>
+        <p>Program designed against ISO/IEC 27001, SOC 2 Type II, and HIPAA baselines. SIG questionnaire, pen-test report, and control documentation under NDA.</p>
+      </details>
     </div>
+  </section>
 
-    <div class="feature">
-      <div>
-        <div class="feature-label">03 · One-Click Bundles</div>
-        <h3>Examinations become a button.</h3>
-        <p>
-          NAIC examination bundle. NY DFS Circular Letter #7 filing package.
-          Colorado bias report. AI Act conformity assessment. Each generated
-          against the versioned policy and the signed ledger, formatted exactly
-          as each regulator expects, with attestation.
-        </p>
-        <ul>
-          <li>Pre-built bundles per regulator, per line, per period</li>
-          <li>Carrier-branded, counsel-reviewable, attorney-client-safe</li>
-          <li>Custom bundle builder for ad-hoc requests</li>
-        </ul>
-      </div>
-      <div class="feature-visual">
-        <div class="evi-grid">
-          <div class="evi-card">
-            <div class="t">NAIC Model Bulletin</div>
-            <div class="v ok">Ready</div>
-            <div class="m">2.4k sessions · signed · attested</div>
-          </div>
-          <div class="evi-card">
-            <div class="t">NY DFS CL #7</div>
-            <div class="v ok">Ready</div>
-            <div class="m">Model register current</div>
-          </div>
-          <div class="evi-card">
-            <div class="t">CO SB21-169</div>
-            <div class="v warn">Review</div>
-            <div class="m">1 bias flag on life quote</div>
-          </div>
-          <div class="evi-card">
-            <div class="t">EU AI Act Annex III</div>
-            <div class="v ok">Tier 1</div>
-            <div class="m">Conformity assessment current</div>
-          </div>
-        </div>
+  <section id="demo" style="padding: 88px 0; background: var(--soft); border-top: 1px solid var(--line);">
+    <div class="wrap">
+      <div class="cta-panel" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <h2>See a sample audit bundle.</h2>
+        <p>Redacted from a real production deployment. The manifest, the signature, the adverse-decision trail, the ECDIS log. What a regulator actually receives.</p>
+        <form action="https://phidea-forms.vercel.app/api/lead" method="POST" style="max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;">
+          <input type="hidden" name="variant" value="evidence" />
+          <input type="email" name="email" placeholder="work@carrier.com" required style="padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; font-size: 15px;" />
+          <input type="text" name="carrier" placeholder="Carrier or firm" required style="padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; font-size: 15px;" />
+          <button type="submit" class="btn btn-primary" style="align-self: center;">Send me a bundle →</button>
+        </form>
+        <div class="cta-foot">Delivered under NDA. One business day.</div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="rules">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-eyebrow">Rules covered</div>
-      <h2>The regulator shipped before most carriers did.</h2>
-    </div>
-    <table class="why-table">
-      <thead><tr><th>Rule</th><th>What it demands</th><th>Phidea bundle</th></tr></thead>
-      <tbody>
-        <tr><td><strong>NAIC Model Bulletin</strong><br/><span class="w">Adopted in 20+ states</span></td><td class="w">AI governance program, model lifecycle, bias testing.</td><td><strong>Ready</strong></td></tr>
-        <tr><td><strong>NY DFS Circular Letter No. 7</strong><br/><span class="w">Effective 2024</span></td><td class="w">AI governance framework, fairness testing, filings.</td><td><strong>Ready</strong></td></tr>
-        <tr><td><strong>Colorado SB21-169</strong><br/><span class="w">Life, extending</span></td><td class="w">Algorithmic discrimination testing reports.</td><td><strong>Ready</strong></td></tr>
-        <tr><td><strong>EU AI Act Annex III</strong><br/><span class="w">Insurance pricing high-risk</span></td><td class="w">Risk management, documentation, oversight, conformity.</td><td><strong>Ready</strong></td></tr>
-        <tr><td><strong>IDD &amp; GDPR</strong><br/><span class="w">EU-wide</span></td><td class="w">Advice-boundary, disclosures, automated-decision limits.</td><td><strong>Ready</strong></td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-eyebrow">FAQ</div>
-      <h2>For compliance teams.</h2>
-    </div>
-    <details><summary>Does Phidea replace our existing GRC tooling?</summary><p>No. Phidea sits between your AI layer and your GRC. It produces the underlying, signed evidence — your GRC of record can ingest the bundles.</p></details>
-    <details><summary>Who signs the attestation?</summary><p>Two signatures. The ledger is signed by Phidea at commit time (tamper-evident). The bundle is co-signed by a carrier officer at export time (regulator-facing). Both cryptographic, both verifiable.</p></details>
-    <details><summary>What's the retention model?</summary><p>Configurable per regulator, per jurisdiction. NAIC, NY DFS, and state model bulletins typically ask for six years. GDPR-compliant redaction hooks exist without breaking ledger integrity (hash-linked redaction).</p></details>
-    <details><summary>Can counsel review before export?</summary><p>Yes. Bundles are draft-first. Privileged review workflow ships by default, with an attorney-client attestation option.</p></details>
-  </div>
-</section>
-
-<section id="demo">
-  <div class="wrap">
-    <div class="cta-panel">
-      <h2>See a sample NAIC bundle.</h2>
-      <p>Tell us your state and LOB; we'll send a sample bundle and walk through it.</p>
-      <form class="demo" action="https://phidea-forms.vercel.app/api/lead" method="POST">
-        <input type="hidden" name="variant" value="evidence" />
-        <input type="text" name="carrier" placeholder="Carrier name" required />
-        <input type="email" name="email" placeholder="Work email" required />
-        <button type="submit">Send me a sample →</button>
-      </form>
-      <div class="cta-foot">Redacted sample. Production bundles are carrier-siloed.</div>
-    </div>
-  </div>
-</section>
   <Footer />
 </Layout>
+
+<style>
+  .reg-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; }
+  .reg-table thead th { text-align: left; padding: 12px 16px; background: var(--soft); border-bottom: 1px solid var(--line); color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .reg-table tbody td { padding: 16px; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--ink-2); line-height: 1.5; }
+  .reg-table tbody tr:hover td { background: var(--soft); }
+  .reg-table tbody td:first-child { color: var(--ink); width: 18%; }
+  .reg-table tbody td:nth-child(2) { width: 28%; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent); }
+  @media (max-width: 720px) { .reg-table { font-size: 13px; } .reg-table tbody td { padding: 12px 8px; } }
+</style>
