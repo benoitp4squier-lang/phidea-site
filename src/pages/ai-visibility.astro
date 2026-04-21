@@ -19,11 +19,11 @@ const navCta = { href: "#subscribe", label: "Subscribe →" };
       <div class="wrap wrap-article">
         <div class="article-meta">
           <span>Topic 01 · Distribution</span>
-          <span>April 2026</span>
+          <span>Reference page</span>
         </div>
         <h1>When a carrier isn't cited by ChatGPT.</h1>
         <p class="standfirst">
-          Your Google rank and your ChatGPT citation rate live on different systems. One of them is about to matter a lot more.
+          Your Google rank and your ChatGPT citation rate are not the same number. This page is the starting reference.
         </p>
       </div>
     </header>
@@ -31,51 +31,48 @@ const navCta = { href: "#subscribe", label: "Subscribe →" };
     <section class="article-body">
       <div class="wrap wrap-article">
         <p>
-          Run twelve common insurance buyer questions into ChatGPT. "What's the cheapest auto insurance in my state." "Am I covered if I hit a deer." "Which insurance is best for a new driver." Whatever fits your market. See who gets cited.
+          AI assistants like ChatGPT, Claude, Gemini, and Perplexity answer insurance questions every day. "Am I covered for X." "Cheapest car insurance." "What does an umbrella policy do." The assistants compose a sentence, and that sentence sometimes names a specific carrier, sometimes names a competitor, and sometimes names no one at all.
         </p>
 
         <p>
-          Most carriers who run this for the first time get an unpleasant surprise. Their own brand comes up less often than expected. A competitor they wouldn't have considered a peer comes up more. The result is usually consistent across the four big assistants, not random.
+          Whether your carrier gets named depends on what each model has read. Every assistant uses its own mix of pre-training data and live web retrieval. The full mix is not published. What is published, and what you can verify today, is how the crawlers that feed those models identify themselves, and the fact that they respect your <code>robots.txt</code>.
+        </p>
+
+        <h2>What you can verify this afternoon.</h2>
+
+        <p>
+          <strong>One, your robots.txt.</strong> Visit <code>https://your-site.com/robots.txt</code>. Look for directives involving <code>GPTBot</code>, <code>ChatGPT-User</code> and <code>OAI-SearchBot</code> (OpenAI), <code>ClaudeBot</code> (Anthropic), <code>PerplexityBot</code> (Perplexity), and <code>Google-Extended</code> (Gemini, AI Overviews). Each user-agent is documented publicly. If a <code>Disallow: /</code> is set against any of them, you are invisible to that assistant's training or live retrieval pipeline. Most carriers edited <code>robots.txt</code> during an SEO migration years ago and have not revisited it since.
         </p>
 
         <p>
-          The reason is mechanical. A search engine gives you a ranked list of links. An assistant gives you a sentence, composed by the model from whatever it has read. What it has read is a moving mix of two-year-old training data and whatever the web search picks up when you type your question.
+          <strong>Two, your product page format.</strong> Take one of your FAQ pages and one of your prose product descriptions. Paste each, in turn, into ChatGPT. Ask the same question of each. The quality of the two answers is data about how legibly your site renders to a language model. No probe library needed; your own pages are the test set.
         </p>
 
         <p>
-          None of that looks much like your SEO funnel.
+          <strong>Three, your citation rate on real queries.</strong> Pick twenty questions a buyer in your market would actually type. Run them, in the local language, against each of the four assistants. Note when you are cited. Note when a competitor is. The ratio is your current AI citation rate for that surface. It is a number you can produce and defend without our help.
         </p>
 
         <p>
-          The pattern we keep seeing across a handful of markets: the carriers cited most often aren't the ones with the biggest brand. They're the ones mentioned most in third-party coverage. NerdWallet. The Zebra. MoneyGeek. Insurance Business. Those sites are training data now. Your product microsite, in most cases, is not.
+          <strong>Four, your policy wording.</strong> When a buyer asks "am I covered for flooding," the model does not paste your policy. It composes a sentence from it. If your wording is precise, the composition is likely to be accurate. If it is ambiguous, the model fills the gap. The test is the same as step two: paste a sample of your policy, ask a question about it, read the answer.
         </p>
 
-        <p>
-          So what do you actually do about it. Five things, and none of them ship by Friday.
-        </p>
+        <h2>What is verifiable today, and what is not.</h2>
 
         <p>
-          One, check your <code>robots.txt</code>. GPTBot, ClaudeBot, PerplexityBot, and Google-Extended all respect it. Plenty of carriers are blocking at least one. Usually the reason is lost to institutional memory. Fixing it is a one-line change and then an afternoon of waiting for the crawlers to notice.
+          The user-agent identities, the robots.txt conformance, and the existence of live web retrieval on each assistant are all public. The exact ranking logic each assistant uses to pick which carrier to name in an answer is not. Nobody has a public list of what is in GPT-5's training data, or how Perplexity weighs freshness against authority, or how Claude decides to refuse a price quote. That is the part the weekly newsletter tries to track through repeated observation.
         </p>
 
-        <p>
-          Two, rewrite your product pages in question-and-answer shape. FAQ format gets cited more reliably than prose product descriptions. This is not a keyword thing. The assistants prefer the shape that already looks like a question and an answer.
-        </p>
+        <h2>Sources.</h2>
 
-        <p>
-          Three, treat the assistants as four different products. Claude refuses to quote specific prices. ChatGPT and Gemini will. Perplexity cites whoever has the cleanest structured data on the open web, which is usually an affiliate comparison site, not you. If you want to win on all four, you're running four different plays.
-        </p>
+        <ul class="sources">
+          <li>OpenAI &mdash; GPTBot and related crawlers: <a href="https://platform.openai.com/docs/gptbot" target="_blank" rel="noopener">platform.openai.com/docs/gptbot</a></li>
+          <li>Anthropic &mdash; ClaudeBot crawler documentation: <a href="https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler" target="_blank" rel="noopener">support.anthropic.com</a></li>
+          <li>Perplexity &mdash; crawler user-agents: <a href="https://www.perplexity.ai/help-center/en/articles/10163415-perplexity-crawlers-user-agents" target="_blank" rel="noopener">perplexity.ai/help-center</a></li>
+          <li>Google &mdash; Google-Extended and crawler overview: <a href="https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers" target="_blank" rel="noopener">developers.google.com/search</a></li>
+        </ul>
 
-        <p>
-          Four, measure it. Run the same forty real buyer queries on each assistant. Note who gets cited. Compare with your actual market share. The gap is your AI distribution problem. It's a different number from your SEO one, and for most carriers it's bigger.
-        </p>
-
-        <p>
-          Five, the part no one wants to hear: your policy wording itself matters now. When a buyer asks "am I covered for flooding" the model doesn't copy your policy. It composes a new sentence from it. If your text is ambiguous the model fills the gap with something that sounds reassuring and isn't true. You can't hide your policy from the crawlers. You have to write it so that when it gets paraphrased into something new, the something new is still correct. That's a harder fix than anything else on this list.
-        </p>
-
-        <p>
-          Anyway, that's where things stand in April. Next week: what happens the morning after OpenAI ships a silent model update, and why a carrier's refusal rate on coverage questions can move twenty-two percent without anyone pushing a button.
+        <p class="meta-note">
+          This page is kept deliberately short and anchored in public sources. The observations, comparisons, and counterexamples that would make a real analysis are in the weekly newsletter, where they belong.
         </p>
       </div>
     </section>
@@ -83,9 +80,9 @@ const navCta = { href: "#subscribe", label: "Subscribe →" };
     <section id="subscribe" class="subscribe-strip">
       <div class="wrap wrap-article">
         <div class="section-label">Phidea Weekly</div>
-        <h3>Keep reading.</h3>
+        <h3>The part this page does not cover.</h3>
         <p>
-          One short piece per week on AI in insurance: what regulators are actually doing, what the model providers are actually shipping, what carriers are actually trying.
+          What each assistant actually prefers in practice, how citation rates shift as models retrain, where regulators are starting to treat AI-assistant presence as distribution activity. Once a week, in writing, for people who already know the rest.
         </p>
         <form action="https://buttondown.email/api/emails/embed-subscribe/phidea" method="POST" class="signup">
           <input type="hidden" name="tag" value="ai-visibility" />
@@ -140,12 +137,44 @@ const navCta = { href: "#subscribe", label: "Subscribe →" };
     font-family: 'Fraunces', Georgia, serif;
     font-weight: 400;
   }
-  .article-body p code {
+  .article-body p strong { color: var(--ink); font-weight: 600; }
+  .article-body h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 26px;
+    line-height: 1.25;
+    font-weight: 500;
+    margin: 40px 0 16px;
+    color: var(--ink);
+  }
+  .article-body code {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.9em;
+    font-size: 0.88em;
     background: var(--soft);
     padding: 1px 6px;
     border-radius: 4px;
+    color: var(--ink);
+  }
+  .sources { list-style: none; padding: 0; margin: 0 0 32px; }
+  .sources li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+  .sources li:last-child { border-bottom: none; }
+  .sources a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .sources a:hover { text-decoration: underline; }
+  .meta-note {
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.55;
+    font-family: 'Inter', sans-serif !important;
   }
 
   .section-label {
@@ -198,16 +227,13 @@ const navCta = { href: "#subscribe", label: "Subscribe →" };
     font-family: inherit;
   }
   .signup button:hover { background: var(--accent); }
-  .signup-small {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 12px;
-  }
+  .signup-small { font-size: 13px; color: var(--muted); margin-top: 12px; }
 
   @media (max-width: 720px) {
     .article-head h1 { font-size: 30px; }
     .standfirst { font-size: 17px; }
     .article-body p { font-size: 17px; }
+    .article-body h2 { font-size: 22px; }
     .signup { flex-direction: column; }
   }
 </style>
