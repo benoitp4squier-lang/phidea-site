@@ -1,0 +1,94 @@
+---
+import ReferenceArticle from "@/components/ReferenceArticle.astro";
+
+const intro = [
+  "Banking had model risk management before AI was a marketing word. The governance function that reviews statistical models used in decisioning has been a supervisory expectation since 2011 — SR 11-7 in the US, refreshed in the UK through PRA SS1/23 in 2023. Generative AI sits inside that existing framework.",
+  "What is new is the application. Credit scoring, fraud detection, customer-service agents, and operational-resilience use cases all intersect with a specific primary text. This page catalogues them.",
+];
+
+const steps = [
+  {
+    label: "US — SR 11-7 and OCC Bulletin 2011-12.",
+    body: "Supervisory Letter on Model Risk Management, jointly issued by the Federal Reserve and the OCC. Model inventory, development-and-implementation controls, validation (including ongoing monitoring and outcomes analysis), governance. Still the foundational text for banks supervised in the US."
+  },
+  {
+    label: "UK — PRA Supervisory Statement 1/23.",
+    body: "Published May 2023. Updates the UK model-risk expectations with outcome-based controls, including categories that translate cleanly to LLM telemetry (grounding, refusal, behavioural fingerprints)."
+  },
+  {
+    label: "EU — AI Act (Regulation 2024/1689).",
+    body: "Annex III classifies creditworthiness assessment as a high-risk AI use. Articles 9 (risk management), 11 (technical documentation), 14 (human oversight) apply. Banks using AI in credit decisioning are in scope."
+  },
+  {
+    label: "EU — DORA (Regulation 2022/2554).",
+    body: "Applies to banks as financial entities. ICT third-party risk Register of Information, incident classification, resilience testing. Provisions apply from January 2025."
+  },
+  {
+    label: "US — CFPB and interagency statements on AI.",
+    body: "The Consumer Financial Protection Bureau has issued statements on adverse-action notices, AI-driven advertising, and credit-decisioning transparency under the Fair Credit Reporting Act and Equal Credit Opportunity Act."
+  },
+  {
+    label: "Basel — BCBS principles for risk data and model governance.",
+    body: "BCBS 239 (Principles for Effective Risk Data Aggregation and Risk Reporting) and the Basel Committee's wider guidance on model risk set cross-border expectations that supervisors apply to AI in risk decisioning."
+  },
+];
+
+const sources = [
+  {
+    label: "US — Fed / OCC",
+    desc: "SR 11-7 (Federal Reserve) and OCC Bulletin 2011-12 — the US MRM framework.",
+    urls: [
+      { text: "federalreserve.gov — SR 11-7", url: "https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm" },
+      { text: "occ.treas.gov — Bulletin 2011-12", url: "https://www.occ.treas.gov/news-issuances/bulletins/2011/bulletin-2011-12.html" },
+    ],
+  },
+  {
+    label: "UK — PRA",
+    desc: "Supervisory Statement 1/23 Model Risk Management Principles for Banks.",
+    urls: [
+      { text: "bankofengland.co.uk — SS1/23", url: "https://www.bankofengland.co.uk/prudential-regulation/publication/2023/may/model-risk-management-principles-for-banks" },
+    ],
+  },
+  {
+    label: "EU — AI Act",
+    desc: "Regulation (EU) 2024/1689. Annex III lists creditworthiness assessment as high-risk.",
+    urls: [
+      { text: "eur-lex.europa.eu — Regulation 2024/1689", url: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj" },
+    ],
+  },
+  {
+    label: "EU — DORA",
+    desc: "Regulation (EU) 2022/2554 on digital operational resilience.",
+    urls: [
+      { text: "eur-lex.europa.eu — Regulation 2022/2554", url: "https://eur-lex.europa.eu/eli/reg/2022/2554/oj" },
+      { text: "eba.europa.eu — DORA", url: "https://www.eba.europa.eu/regulation-and-policy/digital-operational-resilience-and-cybersecurity/digital-operational-resilience-act" },
+    ],
+  },
+  {
+    label: "US — CFPB",
+    desc: "Consumer Financial Protection Bureau statements on AI in consumer finance.",
+    urls: [
+      { text: "consumerfinance.gov — guidance", url: "https://www.consumerfinance.gov/rules-policy/final-rules/" },
+    ],
+  },
+  {
+    label: "Basel",
+    desc: "BCBS 239 Principles for Effective Risk Data Aggregation and Risk Reporting.",
+    urls: [
+      { text: "bis.org — BCBS 239", url: "https://www.bis.org/publ/bcbs239.htm" },
+    ],
+  },
+];
+---
+
+<ReferenceArticle
+  variant="banking"
+  tier="Industry · Banking"
+  h1="AI in banking."
+  standfirst="The industry with the oldest model risk management framework. Generative AI sits inside that framework. The application is new; the governance texts are not."
+  intro={intro}
+  verifyTitle="The primary frameworks."
+  steps={steps}
+  sources={sources}
+  newsletterHook="Fed, OCC, PRA, ECB, and FCA supervisory announcements on AI; how banks are extending SR 11-7 and SS1/23 doctrine to LLMs; and which credit-scoring applications are drawing AI Act scrutiny."
+/>

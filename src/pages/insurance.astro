@@ -1,0 +1,99 @@
+---
+import ReferenceArticle from "@/components/ReferenceArticle.astro";
+
+const intro = [
+  "Insurance is the first major regulated industry to have shipped AI into customer-facing workflows at scale: claims triage, underwriting copilots, storefront agents, automated adverse-decision letters. It is also the first to receive named AI regulation at both US state and EU levels.",
+  "The frameworks do not form a single coherent set. Each jurisdiction uses a different mechanism — model bulletin, circular letter, statute, implementing regulation. This page is the index. The eighteen topic pages linked below are the operational depth.",
+];
+
+const steps = [
+  {
+    label: "US — NAIC Model Bulletin on the Use of AI Systems by Insurers.",
+    body: "Adopted December 2023. Taken up state by state, with local modifications. Requires a documented AI System Program, an inventory of AI Systems, third-party oversight, testing, and records retention. The <a href='https://content.naic.org/cipr-topics/artificial-intelligence' target='_blank' rel='noopener'>NAIC AI topic page</a> tracks state adoption."
+  },
+  {
+    label: "US — NY DFS Circular Letter No. 7 of 2024.",
+    body: "Defines External Consumer Data and Information Sources (ECDIS) and sets the unfair-discrimination standard for AI systems used by New York-authorised insurers. The key sentence: AI System use must rest on a clear, empirical, statistically significant, rational, and not-unfairly-discriminatory relationship between variables used and the insured risk."
+  },
+  {
+    label: "US — Colorado SB21-169 and implementing regulation.",
+    body: "The first codified quantitative bias-testing methodology in US insurance. Applies to life insurers. The Colorado Division of Insurance specifies the test, the demographic baselines, and the filing format."
+  },
+  {
+    label: "EU — AI Act (Regulation 2024/1689).",
+    body: "Annex III classifies life and health insurance pricing and risk-assessment AI as high-risk. Article 9 (risk management system), Article 11 (technical documentation), Article 14 (human oversight), Article 72 (post-market monitoring) all apply to in-scope systems."
+  },
+  {
+    label: "EU — DORA (Regulation 2022/2554).",
+    body: "Applies to insurers as financial entities. Requires an ICT third-party risk Register of Information, classified incident reporting, and digital-operational-resilience testing. EIOPA hosts the technical standards."
+  },
+  {
+    label: "EU — IDD (Directive 2016/97).",
+    body: "Governs insurance distribution including advice, comparison, and product information. Article 20 addresses demands-and-needs analysis and suitability — the rule that most often shapes AI-agent compliance review."
+  },
+  {
+    label: "Eighteen operational topics.",
+    body: "The depth under each framework lives in the topic archive: distribution and AI-assistant presence, monitoring and drift detection, governance and adverse-decision trails, model risk for LLMs. Each topic links to its primary sources. See <a href='/#archive'>the topic archive</a> for the full list."
+  },
+];
+
+const sources = [
+  {
+    label: "US — NAIC",
+    desc: "Model Bulletin on the Use of AI Systems by Insurers plus the state-adoption tracker.",
+    urls: [
+      { text: "Model Bulletin (PDF)", url: "https://content.naic.org/sites/default/files/inline-files/2023-12-4%20Model%20Bulletin_Adopted_0.pdf" },
+      { text: "NAIC AI topic page", url: "https://content.naic.org/cipr-topics/artificial-intelligence" },
+    ],
+  },
+  {
+    label: "US — NY DFS",
+    desc: "Circular Letter No. 7 of 2024 on AI Systems and External Consumer Data.",
+    urls: [
+      { text: "dfs.ny.gov — CL 2024-07", url: "https://www.dfs.ny.gov/industry-guidance/circular-letters/cl2024-07" },
+    ],
+  },
+  {
+    label: "US — Colorado",
+    desc: "SB21-169 enacted text and the Colorado Division of Insurance implementing-regulation page.",
+    urls: [
+      { text: "leg.colorado.gov — SB21-169", url: "https://leg.colorado.gov/bills/sb21-169" },
+      { text: "doi.colorado.gov — SB21-169", url: "https://doi.colorado.gov/for-consumers/sb21-169-protecting-consumers-from-unfair-discrimination-in-insurance-practices" },
+    ],
+  },
+  {
+    label: "EU — AI Act",
+    desc: "Regulation (EU) 2024/1689 consolidated text on EUR-Lex.",
+    urls: [
+      { text: "eur-lex.europa.eu — Regulation 2024/1689", url: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj" },
+    ],
+  },
+  {
+    label: "EU — DORA",
+    desc: "Regulation (EU) 2022/2554 on digital operational resilience for the financial sector.",
+    urls: [
+      { text: "eur-lex.europa.eu — Regulation 2022/2554", url: "https://eur-lex.europa.eu/eli/reg/2022/2554/oj" },
+      { text: "eiopa.europa.eu — DORA", url: "https://www.eiopa.europa.eu/browse/regulation-and-policy/digital-operational-resilience-act-dora_en" },
+    ],
+  },
+  {
+    label: "EU — IDD",
+    desc: "Directive (EU) 2016/97 on insurance distribution.",
+    urls: [
+      { text: "eur-lex.europa.eu — Directive 2016/97", url: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016L0097" },
+    ],
+  },
+];
+---
+
+<ReferenceArticle
+  variant="insurance"
+  tier="Industry · Insurance"
+  h1="AI in insurance."
+  standfirst="The first regulated industry to have shipped AI at scale and the first to be named by regulators. Six primary frameworks, eighteen operational topics."
+  intro={intro}
+  verifyTitle="The primary frameworks."
+  steps={steps}
+  sources={sources}
+  newsletterHook="Which states are adopting or modifying the NAIC bulletin, the EU AI Act implementing acts as they land, and how insurance examiners are reading AI governance in the field."
+/>

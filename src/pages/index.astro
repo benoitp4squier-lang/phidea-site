@@ -5,6 +5,7 @@ import Footer from "@/components/Footer.astro";
 
 const navLinks = [
   { href: "#latest", label: "Latest" },
+  { href: "#industries", label: "Industries" },
   { href: "#archive", label: "Topics" },
   { href: "#about", label: "About" },
 ];
@@ -17,9 +18,9 @@ const navCta = { href: "#subscribe", label: "Subscribe →" };
   <header class="masthead">
     <div class="wrap wrap-narrow">
       <div class="masthead-label">Phidea</div>
-      <h1>What's actually happening with AI in regulated industries. <em>Weekly.</em></h1>
+      <h1>AI in regulated industries. <em>The stakes are different here.</em></h1>
       <p class="lead">
-        Every Tuesday morning: the regulator moves, the model updates, the industry experiments, and the ones that didn't make it past compliance review. Written for people who read the primary texts before they read the keynote slides. Insurance-depth first; banking, pharma, and health in the pipeline.
+        In a regulated industry, a hallucinated answer is a compliance event — sometimes a statutory one. The developments move weekly, the regulators are watching, and the gap between what your legal team signed off on and what your model said last Tuesday is where incidents live. Phidea tracks it, industry by industry, framework by framework, model update by model update.
       </p>
 
       <form action="https://buttondown.email/api/emails/embed-subscribe/phidea" method="POST" class="signup">
@@ -250,6 +251,42 @@ const navCta = { href: "#subscribe", label: "Subscribe →" };
     text-transform: uppercase;
   }
   .latest-more a:hover { color: var(--ink); }
+
+  .industries { padding: 72px 0; border-top: 1px solid var(--line); }
+  .industry-list { list-style: none; padding: 0; margin: 0; }
+  .industry-list li {
+    border-bottom: 1px solid var(--line);
+  }
+  .industry-list li:last-child { border-bottom: none; }
+  .industry-list a {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 20px 0;
+    text-decoration: none;
+    color: var(--ink);
+    gap: 24px;
+    transition: color 0.15s ease;
+  }
+  .industry-list a:hover { color: var(--accent); }
+  .industry-list .ind-name {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .industry-list .ind-scope {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+    text-align: right;
+    line-height: 1.5;
+  }
+  @media (max-width: 640px) {
+    .industry-list a { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .industry-list .ind-scope { text-align: left; }
+  }
 
   .archive {
     padding: 72px 0;

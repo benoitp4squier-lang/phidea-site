@@ -36,7 +36,13 @@ export type VariantId =
   | "mrm-llms"
   | "predictive-monitoring"
   | "augmented-underwriting"
-  | "portfolio-drift";
+  | "portfolio-drift"
+  // Industries
+  | "insurance"
+  | "banking"
+  | "healthcare"
+  | "pharma"
+  | "legal";
 
 export interface Variant {
   id: VariantId;
@@ -315,5 +321,50 @@ export const variants: Record<VariantId, Variant> = {
     shortLabel: "Portfolio drift",
     primaryKpi: "Working session",
     audience: "Portfolio manager, chief UW, CRO",
+  },
+  insurance: {
+    id: "insurance",
+    path: "/insurance.html",
+    title: "Phidea — AI in insurance",
+    description: "The primary regulatory frameworks governing AI in insurance — NAIC, NY DFS, Colorado, EU AI Act, DORA, IDD — plus the eighteen operational topics they require.",
+    shortLabel: "Insurance",
+    primaryKpi: "Newsletter signup",
+    audience: "Heads of AI, compliance, risk, actuarial at carriers and reinsurers",
+  },
+  banking: {
+    id: "banking",
+    path: "/banking.html",
+    title: "Phidea — AI in banking",
+    description: "The primary frameworks governing AI in banking — SR 11-7, OCC 2011-12, PRA SS1/23, EU AI Act credit-scoring provisions, DORA, CFPB guidance, Basel.",
+    shortLabel: "Banking",
+    primaryKpi: "Newsletter signup",
+    audience: "Model risk, credit risk, compliance at banks and credit unions",
+  },
+  healthcare: {
+    id: "healthcare",
+    path: "/healthcare.html",
+    title: "Phidea — AI in healthcare",
+    description: "FDA SaMD, HIPAA, ONC HTI-1, EU MDR/IVDR, EU AI Act (medical devices as high-risk), GDPR — the primary texts governing AI in healthcare.",
+    shortLabel: "Healthcare",
+    primaryKpi: "Newsletter signup",
+    audience: "Digital health, clinical informatics, compliance at providers and device makers",
+  },
+  pharma: {
+    id: "pharma",
+    path: "/pharma.html",
+    title: "Phidea — AI in pharma",
+    description: "21 CFR Part 11, FDA AI guidance for drug development, EMA reflection paper, ICH E6(R3), EU AI Act — the primary frameworks for AI in pharma.",
+    shortLabel: "Pharma",
+    primaryKpi: "Newsletter signup",
+    audience: "Regulatory affairs, clinical operations, quality, pharmacovigilance",
+  },
+  legal: {
+    id: "legal",
+    path: "/legal.html",
+    title: "Phidea — AI in legal practice",
+    description: "ABA Opinion 512, state bar guidance, federal and state court standing orders, EU AI Act, SRA and Law Society guidance, GDPR — the professional-responsibility framework for AI in law.",
+    shortLabel: "Legal",
+    primaryKpi: "Newsletter signup",
+    audience: "General counsel, partners, professional responsibility leads at law firms",
   },
 };

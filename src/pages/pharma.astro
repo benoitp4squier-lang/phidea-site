@@ -1,0 +1,86 @@
+---
+import ReferenceArticle from "@/components/ReferenceArticle.astro";
+
+const intro = [
+  "Pharma AI sits inside the GxP framework — Good Clinical Practice, Good Manufacturing Practice, Good Laboratory Practice, Good Vigilance Practice. Each GxP has specific expectations on computer system validation, data integrity, and audit trails that predate AI by decades.",
+  "The FDA and EMA have published AI-specific guidance that applies inside that framework. This page catalogues the primary texts across drug discovery, clinical trials, manufacturing, and post-market surveillance.",
+];
+
+const steps = [
+  {
+    label: "US FDA — 21 CFR Part 11.",
+    body: "Electronic Records; Electronic Signatures. Underpins computer system validation, audit trails, and the integrity of electronic records used in GxP activity. Applies to AI systems generating, storing, or acting on records subject to FDA rules."
+  },
+  {
+    label: "US FDA — AI guidance for drug development.",
+    body: "FDA published Considerations for the Use of Artificial Intelligence to Support Regulatory Decision-Making for Drug and Biological Products (draft guidance, January 2025). It covers credibility assessment of AI models used in sponsor submissions. The <a href='https://www.fda.gov/science-research/science-and-research-special-topics/artificial-intelligence-and-medical-products' target='_blank' rel='noopener'>FDA AI/Medical Products page</a> aggregates related documents."
+  },
+  {
+    label: "US FDA — Predetermined Change Control Plan (PCCP).",
+    body: "For AI/ML-enabled device software functions, the Marketing Submission Recommendations for a PCCP (finalised December 2024) allow continuous-learning AI to update without a new 510(k) submission, provided the plan was authorised up front."
+  },
+  {
+    label: "EU EMA — Reflection Paper on AI in the Medicinal Product Lifecycle.",
+    body: "Published September 2024. Covers AI use across drug discovery, non-clinical development, clinical trials, manufacturing, and post-authorisation safety. Identifies risk categories and sponsor responsibilities for AI-enabled processes."
+  },
+  {
+    label: "ICH — E6(R3) Good Clinical Practice.",
+    body: "Adopted 2024. Updates GCP with risk-based approaches that apply to AI-enabled data handling in clinical trials — data integrity, validation, and trial-oversight obligations."
+  },
+  {
+    label: "EU — AI Act (Regulation 2024/1689).",
+    body: "AI systems used as safety components of medical devices are classified as high-risk under Annex III, stacking with MDR. AI systems used in clinical trial management, pharmacovigilance, and regulatory submissions intersect with Articles 9, 11, and 14."
+  },
+];
+
+const sources = [
+  {
+    label: "US — FDA (CDER/CBER)",
+    desc: "21 CFR Part 11, AI guidance for drug development, and the agency-wide AI/medical-products index.",
+    urls: [
+      { text: "fda.gov — AI/Medical Products", url: "https://www.fda.gov/science-research/science-and-research-special-topics/artificial-intelligence-and-medical-products" },
+      { text: "ecfr.gov — 21 CFR Part 11", url: "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11" },
+    ],
+  },
+  {
+    label: "US — FDA (CDRH)",
+    desc: "Predetermined Change Control Plan for AI/ML-enabled device software.",
+    urls: [
+      { text: "fda.gov — PCCP guidance", url: "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/marketing-submission-recommendations-predetermined-change-control-plan-artificial-intelligence" },
+    ],
+  },
+  {
+    label: "EU — EMA",
+    desc: "Reflection Paper on the Use of AI in the Medicinal Product Lifecycle.",
+    urls: [
+      { text: "ema.europa.eu — AI reflection paper", url: "https://www.ema.europa.eu/en/documents/scientific-guideline/reflection-paper-use-artificial-intelligence-ai-medicinal-product-lifecycle_en.pdf" },
+    ],
+  },
+  {
+    label: "ICH",
+    desc: "International Council for Harmonisation. E6(R3) Good Clinical Practice.",
+    urls: [
+      { text: "ich.org — E6(R3)", url: "https://www.ich.org/page/efficacy-guidelines" },
+    ],
+  },
+  {
+    label: "EU — AI Act",
+    desc: "Regulation (EU) 2024/1689.",
+    urls: [
+      { text: "eur-lex.europa.eu — Regulation 2024/1689", url: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj" },
+    ],
+  },
+];
+---
+
+<ReferenceArticle
+  variant="pharma"
+  tier="Industry · Pharma"
+  h1="AI in pharma."
+  standfirst="AI inside GxP. The FDA and EMA have published specific guidance; 21 CFR Part 11 and ICH GCP already set the validation and audit-trail expectations."
+  intro={intro}
+  verifyTitle="The primary frameworks."
+  steps={steps}
+  sources={sources}
+  newsletterHook="FDA and EMA AI guidance as it lands, how sponsors are writing credibility assessments in submissions, and how ICH E6(R3) risk-based approaches intersect with AI-enabled clinical-trial platforms."
+/>
