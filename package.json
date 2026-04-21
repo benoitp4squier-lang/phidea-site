@@ -1,0 +1,17 @@
+{
+  "name": "phidea-site",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Marketing site for Phidea — AI governance for regulated insurance. Seven positioning variants under test, shipped as one static Astro build.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.2.0"
+  }
+}

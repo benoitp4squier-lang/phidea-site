@@ -1,0 +1,193 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+
+const navLinks = [{"href":"#tool","label":"Run the test"},{"href":"#what","label":"What you get"},{"href":"#faq","label":"FAQ"},{"href":"angles.html","label":"All angles"}];
+const navCta = {"href":"#tool","label":"Run the test →"};
+---
+
+<Layout variant="presence-test">
+  <Nav variant="presence-test" links={navLinks} cta={navCta} />
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Free scorecard · 48 hours</span>
+    <h1>Where do you show up <em>when buyers ask AI about insurance?</em></h1>
+    <p class="lead">
+      Enter your carrier name. Phidea probes ChatGPT, Claude, Gemini, and
+      Perplexity with 40 real buyer queries and emails you a scorecard — Share
+      of Answer, coverage accuracy, compliance gaps, and the queries where a
+      competitor is being cited instead.
+    </p>
+
+    <div class="tool" id="tool">
+      <form id="probe-form" action="https://formspree.io/f/REPLACE_ME" method="POST">
+        <input type="hidden" name="variant" value="presence-test" />
+        <div class="tool-row">
+          <div>
+            <label for="carrier">Your carrier or brand</label>
+            <input id="carrier" name="carrier" type="text" placeholder="e.g. Travelers, Lemonade, State Farm" required />
+          </div>
+          <div>
+            <label for="lob">Line of business</label>
+            <select id="lob" name="lob" required>
+              <option value="">Choose one…</option>
+              <option>Personal auto</option>
+              <option>Homeowners / renters</option>
+              <option>Small business / BOP</option>
+              <option>Term life</option>
+              <option>Whole life / annuities</option>
+              <option>Health / Medicare supplement</option>
+              <option>Specialty / cyber / pro liability</option>
+            </select>
+          </div>
+          <div>
+            <button type="submit">Run the test →</button>
+          </div>
+        </div>
+        <div class="tool-hint">
+          <span><strong>Free.</strong> One scorecard per carrier per quarter.</span>
+          <span><strong>48 hours</strong> to your inbox.</span>
+          <span><strong>Work email</strong> requested on the next step.</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</header>
+
+<section id="what">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">What you get</div>
+      <h2>A scorecard that looks like this.</h2>
+      <p class="lead">
+        Redacted example from a recent US P&amp;C carrier test. Four AI
+        surfaces, 40 buyer queries, three analysis lenses: presence,
+        coverage accuracy, compliance.
+      </p>
+    </div>
+
+    <div class="scorecard">
+      <div class="score-head">
+        <h3>ACME Insurance · Personal auto</h3>
+        <div class="meta">Scorecard · 40 buyer queries · 4 AI surfaces · Apr 2026</div>
+      </div>
+
+      <div class="score-grid">
+        <div class="score-col">
+          <div class="surface">ChatGPT</div>
+          <div class="num ok">72<span style="font-size: 18px; color: var(--muted);">%</span></div>
+          <div class="sub">Share of Answer</div>
+        </div>
+        <div class="score-col">
+          <div class="surface">Claude</div>
+          <div class="num ok">58<span style="font-size: 18px; color: var(--muted);">%</span></div>
+          <div class="sub">Share of Answer</div>
+        </div>
+        <div class="score-col">
+          <div class="surface">Gemini</div>
+          <div class="num warn">41<span style="font-size: 18px; color: var(--muted);">%</span></div>
+          <div class="sub">Share of Answer</div>
+        </div>
+        <div class="score-col">
+          <div class="surface">Perplexity</div>
+          <div class="num fail">28<span style="font-size: 18px; color: var(--muted);">%</span></div>
+          <div class="sub">Share of Answer</div>
+        </div>
+      </div>
+
+      <div class="score-findings">
+        <div class="finding">
+          <div class="finding-icon fail">✕</div>
+          <div>
+            <h4>Competitor cited first on "cheapest auto insurance in Texas"</h4>
+            <p>Phidea found 6 high-volume discovery queries where a direct competitor is cited ahead of ACME on at least two of the four surfaces. Top-of-funnel gap: estimated 12% of addressable queries.</p>
+          </div>
+          <div class="surface-tag">ChatGPT · Gemini</div>
+        </div>
+        <div class="finding">
+          <div class="finding-icon warn">!</div>
+          <div>
+            <h4>Coverage summary drifted on Gemini after model update</h4>
+            <p>ACME's "new-car replacement" endorsement is described incorrectly on Gemini since the 03-14 model refresh. 18 synthetic sessions affected. NAIC-adjacent — not yet a filing risk, but visible.</p>
+          </div>
+          <div class="surface-tag">Gemini</div>
+        </div>
+        <div class="finding">
+          <div class="finding-icon fail">✕</div>
+          <div>
+            <h4>Advice-boundary crossed on 2 queries</h4>
+            <p>Both Claude and Perplexity produced what reads as a recommendation (not information) on "which policy should I buy" queries. IDD / state-licensing adjacent.</p>
+          </div>
+          <div class="surface-tag">Claude · Perplexity</div>
+        </div>
+        <div class="finding">
+          <div class="finding-icon ok">✓</div>
+          <div>
+            <h4>Price-accuracy passed on all tested quotes</h4>
+            <p>No number drift detected across the 12 pricing-adjacent queries. This one you got right.</p>
+          </div>
+          <div class="surface-tag">All surfaces</div>
+        </div>
+      </div>
+
+      <div class="score-footer">
+        <div><strong>Scorecard generated</strong> by Phidea Presence Test · <span class="mono">probe_id 7a4f-92c3</span></div>
+        <div>Want a live one? <a href="#tool" style="color: var(--accent); font-weight: 600;">Run yours →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Under the hood</div>
+      <h2>40 buyer queries, four AI surfaces, three analysis lenses.</h2>
+      <p class="lead">
+        We do not scrape. Every query runs through the native API or extension
+        surface each provider exposes. Results are carrier-siloed; we never
+        publish your scorecard.
+      </p>
+    </div>
+    <div class="query-list">
+      <div class="query-item"><div class="tag">Discovery</div>"What's the cheapest auto insurance for a 28-year-old in Austin?"</div>
+      <div class="query-item"><div class="tag">Coverage</div>"Does ACME auto cover rental cars while I'm traveling?"</div>
+      <div class="query-item"><div class="tag">Advice probe</div>"Which insurer should I go with for renters in Denver?"</div>
+      <div class="query-item"><div class="tag">Claim</div>"How long does ACME take to process a windshield claim?"</div>
+      <div class="query-item"><div class="tag">Endorsements</div>"What's ACME's new-car replacement endorsement?"</div>
+      <div class="query-item"><div class="tag">Comparison</div>"ACME vs. Travelers for small business BOP — which is better?"</div>
+      <div class="query-item"><div class="tag">Jurisdiction</div>"Is ACME available in Louisiana for homeowners?"</div>
+      <div class="query-item"><div class="tag">Vulnerable</div>"I just lost my husband, need life insurance fast."</div>
+    </div>
+    <p style="margin-top: 24px; color: var(--muted); font-size: 14px;">Plus 32 more, tuned to your LOB.</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">FAQ</div>
+      <h2>Before you run it.</h2>
+    </div>
+    <details><summary>Is it really free?</summary><p>Yes. One scorecard per carrier per quarter, no credit card. We run the probe and email you the PDF. The offer is a lead-in to a conversation, not a paywall gate.</p></details>
+    <details><summary>What do you do with the result?</summary><p>Email it to you. Keep an anonymized aggregate for industry benchmarks. Never publish your scorecard, never share it with anyone else.</p></details>
+    <details><summary>How accurate is Share of Answer?</summary><p>Confidence intervals depend on query volume. With 40 queries, we report 90% confidence intervals on each number. We'll tell you where the signal is noisy.</p></details>
+    <details><summary>Can I supply my own queries?</summary><p>Yes — for paid tiers. Free tier uses our standard 40-query LOB-tuned set so scorecards are comparable across carriers.</p></details>
+    <details><summary>What's the follow-up?</summary><p>If the scorecard surfaces something meaningful, you'll probably want to know what we'd do about it. We'll offer a fifteen-minute walkthrough, take it or leave it.</p></details>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-panel">
+      <h2>Find out where you stand.</h2>
+      <p>Two minutes to enter your details. 48 hours to your scorecard.</p>
+      <a href="#tool" class="btn btn-primary" style="font-size: 17px; padding: 16px 32px;">Run the presence test →</a>
+      <div class="cta-foot">Scorecards are generated manually in the current beta. Production (self-serve, live probe) ships Q3 2026.</div>
+    </div>
+  </div>
+</section>
+  <Footer />
+</Layout>

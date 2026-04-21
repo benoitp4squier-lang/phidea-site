@@ -1,0 +1,39 @@
+---
+import type { VariantId } from "@/lib/variants";
+import { variants } from "@/lib/variants";
+
+interface Props {
+  variant: VariantId;
+  links?: { href: string; label: string }[];
+  cta?: { href: string; label: string };
+}
+
+const { variant, links, cta } = Astro.props;
+const v = variants[variant];
+
+const defaultLinks = [
+  { href: "#features", label: "Product" },
+  { href: "#why", label: "Why Phidea" },
+  { href: "#how", label: "How it works" },
+  { href: "angles.html", label: "All angles" },
+  { href: "#cta", label: "Request a demo" },
+];
+
+const navLinks = links ?? defaultLinks;
+const navCta = cta ?? { href: "#cta", label: "Request a demo →" };
+---
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <div class="logo">
+      phidea<span class="dot">.</span>
+      {v.id !== "flagship-observability" && (
+        <span class="logo-sub">{v.shortLabel}</span>
+      )}
+    </div>
+    <div class="nav-links">
+      {navLinks.map((l) => <a href={l.href}>{l.label}</a>)}
+    </div>
+    <a href={navCta.href} class="nav-cta">{navCta.label}</a>
+  </div>
+</nav>

@@ -1,0 +1,165 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+
+const navLinks = [{"href":"index.html","label":"Flagship"},{"href":"#angles","label":"All angles"},{"href":"#how","label":"How to use"}];
+const navCta = {"href":"mailto:benoit@phidea.fr","label":"Email Benoit"};
+---
+
+<Layout variant="angles-index" noIndex>
+  <Nav variant="angles-index" links={navLinks} cta={navCta} />
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Internal · positioning tests</span>
+    <h1>Six angles. <em>One company.</em></h1>
+    <p class="lead">
+      Phidea is running six positioning tests in parallel on phidea.eu. Each has
+      its own landing, its own primary CTA, its own intended persona. Point
+      campaigns at different URLs and compare signup rates, demo requests, and
+      message-to-message engagement.
+    </p>
+    <div class="cta-row">
+      <a href="#angles" class="btn btn-primary">See the six angles →</a>
+      <a href="index.html" class="btn btn-ghost">See the flagship</a>
+    </div>
+  </div>
+</header>
+
+<section id="angles">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Live variants</div>
+      <h2>Pick a starting point.</h2>
+      <p class="lead">
+        All six pages share the same design system but differ on hook, hero,
+        product emphasis, and CTA. Each form submission carries a
+        <code>variant</code> hidden field so you can attribute in the CRM.
+      </p>
+    </div>
+
+    <div class="angle-grid">
+
+      <a class="angle-card" href="index.html">
+        <div class="tag">Flagship · Observability</div>
+        <h3>See every AI answer. Prove every regulation.</h3>
+        <p>Observability / monitoring wedge. "Datadog for AI apps in regulated insurance." Synthetic buyers, live regulatory testing, session traces, cross-model funnel. Hero CTA: Request a demo.</p>
+        <div class="url">phidea.eu/</div>
+      </a>
+
+      <a class="angle-card" href="distribution.html">
+        <div class="tag">Distribution</div>
+        <h3>Be the insurance answer inside every AI agent.</h3>
+        <p>Market-access / AI storefront wedge. For Head of Distribution at carriers. ChatGPT / Claude / Gemini / Perplexity visibility and governed storefronts. Hero CTA: Request a demo.</p>
+        <div class="url">phidea.eu/distribution.html</div>
+      </a>
+
+      <a class="angle-card" href="evidence.html">
+        <div class="tag">Evidence</div>
+        <h3>Audit-ready AI. By default.</h3>
+        <p>Compliance-first wedge. For Heads of Compliance, Legal, Risk. Policy-as-code, immutable ledger, one-click regulator bundles. Hero CTA: See a sample bundle.</p>
+        <div class="url">phidea.eu/evidence.html</div>
+      </a>
+
+      <a class="angle-card" href="developers.html">
+        <div class="tag">Developers</div>
+        <h3>The governed MCP for insurance.</h3>
+        <p>Technical / platform wedge. For CTOs and engineering leads. One MCP tool, policy packs, open reference agent (insurance-agent-v1). Hero CTA: Technical walkthrough.</p>
+        <div class="url">phidea.eu/developers.html</div>
+      </a>
+
+      <a class="angle-card" href="synthetic.html">
+        <div class="tag">Synthetic buyers</div>
+        <h3>Let AI test your AI, 24/7.</h3>
+        <p>Continuous red-teaming wedge — punchy, focused, standalone product. For Heads of AI who worry about model drift and launch-day QA rot. Hero CTA: See it probing.</p>
+        <div class="url">phidea.eu/synthetic.html</div>
+      </a>
+
+      <a class="angle-card" href="presence-test.html">
+        <div class="tag">Lead magnet · Free tool</div>
+        <h3>Test your AI presence.</h3>
+        <p>Top-of-funnel diagnostic. Free scorecard across ChatGPT, Claude, Gemini, Perplexity. Converts curiosity into qualified leads. Hero CTA: Run the test.</p>
+        <div class="url">phidea.eu/presence-test.html</div>
+      </a>
+
+      <a class="angle-card" href="newsletter.html">
+        <div class="tag">Audience · Newsletter</div>
+        <h3>AI in insurance, weekly.</h3>
+        <p>Weekly newsletter. Lowest-commitment CTA (email only). Builds the audience you eventually sell to. Longest-horizon wedge. Hero CTA: Subscribe.</p>
+        <div class="url">phidea.eu/newsletter.html</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">How to use</div>
+      <h2>What to test for, and in what order.</h2>
+      <p class="lead">
+        Running all six pages against the same cold traffic is noisy. Running
+        each against the persona it was built for gives you signal.
+      </p>
+    </div>
+
+    <table class="why-table">
+      <thead>
+        <tr><th>Angle</th><th>Best audience to point at</th><th>Primary KPI</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Flagship (observability)</strong></td>
+          <td class="w">Heads of AI at carriers, insurance CTOs, AI-ops leads</td>
+          <td><strong>Demo request</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Distribution</strong></td>
+          <td class="w">CMOs, Heads of Distribution, D2C carrier growth teams</td>
+          <td><strong>Demo request</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Evidence</strong></td>
+          <td class="w">Heads of Compliance, Legal, Risk at carriers</td>
+          <td><strong>Sample bundle request</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Developers</strong></td>
+          <td class="w">CTOs, platform leads, insurance engineering teams</td>
+          <td><strong>Technical walkthrough</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Synthetic</strong></td>
+          <td class="w">Heads of AI / AI-ops / QA at carriers with live AI</td>
+          <td><strong>Demo request</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Presence Test</strong></td>
+          <td class="w">Cold traffic — LinkedIn, Twitter, paid ads, general awareness</td>
+          <td><strong>Scorecard signup (email)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Newsletter</strong></td>
+          <td class="w">Everyone else — content-driven social, SEO, referrals</td>
+          <td><strong>Email subscription</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top: 40px; padding: 24px 28px; background: var(--soft); border: 1px solid var(--line); border-radius: 14px;">
+      <h3 style="font-family: 'Fraunces', serif; font-size: 20px; margin-bottom: 8px;">Running the test</h3>
+      <p style="color: var(--ink-2); font-size: 15px; margin: 0 0 8px;">
+        Point a small LinkedIn or Reddit ad at each landing with persona-matched targeting. Spend $500 per variant over a week. Compare:
+      </p>
+      <ul style="color: var(--ink-2); font-size: 15px; margin: 0; padding-left: 20px;">
+        <li>Conversion to primary CTA</li>
+        <li>Share of traffic that clicks "All angles" to see the others</li>
+        <li>Qualitative: what do reply emails say? What do they ask about?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+  <Footer />
+</Layout>

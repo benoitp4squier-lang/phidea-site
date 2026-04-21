@@ -1,0 +1,166 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+
+const navLinks = [{"href":"#archive","label":"Archive"},{"href":"#who","label":"Who reads it"},{"href":"#faq","label":"FAQ"},{"href":"angles.html","label":"All angles"}];
+const navCta = {"href":"#subscribe","label":"Subscribe →"};
+---
+
+<Layout variant="newsletter">
+  <Nav variant="newsletter" links={navLinks} cta={navCta} />
+
+<header class="hero-newsletter">
+  <div class="wrap">
+    <span class="eyebrow">One email, every Tuesday morning</span>
+    <h1>AI in insurance. <em>Weekly.</em></h1>
+    <p class="lead">
+      One email, every Tuesday morning, on how AI is rewiring insurance
+      distribution, compliance, and claims. For the people actually shipping
+      it — carriers, brokers, regulators. No fluff. No consultant-speak.
+    </p>
+    <form class="signup" action="https://buttondown.email/api/emails/embed-subscribe/phidea" method="POST">
+      <input type="email" name="email" placeholder="you@carrier.com" required />
+      <button type="submit">Subscribe →</button>
+    </form>
+    <div class="signup-foot">Free. One email per week. Unsubscribe anytime — no guilt trip.</div>
+    <div class="hero-meta" style="margin-top: 32px;">
+      <span><strong>Written by</strong> Benoit Pasquier</span>
+      <span><strong>Tuesday</strong> mornings, Paris time</span>
+      <span><strong>Archive</strong> free and public</span>
+    </div>
+  </div>
+</header>
+
+<section id="who">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Who reads it</div>
+      <h2>Built for operators. Not for panels.</h2>
+      <p class="lead">
+        If you work in insurance AI, you already get five pieces a week that read
+        like a McKinsey slide deck. This is the opposite — one piece a week,
+        written for someone who has to make the call by Friday.
+      </p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-big">Heads of AI</div>
+        <p>At carriers and MGAs who need to understand the NAIC bulletin, the NY DFS filing, the Colorado report — without reading each one twice.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-big">Compliance leads</div>
+        <p>Mapping the AI Act, IDD, NAIC, DFS, and Colorado into one defensible posture without repeating the same due-diligence exercise six times.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-big">Operators</div>
+        <p>Building the AI apps, the agents, the MCPs. Looking for the practical lessons from the people who just shipped, not the people who will speak on a panel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="archive">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">The archive</div>
+      <h2>Recent issues.</h2>
+      <p class="lead">
+        No rewrites of press releases. Real analysis, real tradeoffs, real
+        architectures, with links to sources an engineer or a counsel can verify.
+      </p>
+    </div>
+    <div class="issues">
+      <div class="issue-card">
+        <div class="issue-num">#007</div>
+        <div>
+          <div class="issue-title">The NAIC Model Bulletin isn't one document. It's 20+.</div>
+          <div class="issue-meta">April 14, 2026 · 6 min read</div>
+          <p class="issue-preview">Every state that adopts the NAIC Model Bulletin tweaks it. Here is a mapped diff across the 20+ adoptions, which variant is hardest for a carrier running in multiple states, and what a single policy-as-code module actually has to enforce.</p>
+        </div>
+      </div>
+      <div class="issue-card">
+        <div class="issue-num">#006</div>
+        <div>
+          <div class="issue-title">Why "AI storefronts" live or die on the groundedness check.</div>
+          <div class="issue-meta">April 7, 2026 · 5 min read</div>
+          <p class="issue-preview">Three weeks spent building an insurance agent in ChatGPT, Claude, and Gemini. Same corpus, same guardrails. Here's the gap between each surface's grounding behavior and why the cheapest-to-build layer decides whether the whole thing ships.</p>
+        </div>
+      </div>
+      <div class="issue-card">
+        <div class="issue-num">#005</div>
+        <div>
+          <div class="issue-title">The advice-boundary is not what you think it is.</div>
+          <div class="issue-meta">March 31, 2026 · 4 min read</div>
+          <p class="issue-preview">IDD and state insurance law both care about who gave what advice to whom. LLMs generate advice-shaped text continuously. Here's a cleaner mental model than "information vs. recommendation" — and why it changes how you log.</p>
+        </div>
+      </div>
+      <div class="issue-card">
+        <div class="issue-num">#004</div>
+        <div>
+          <div class="issue-title">Colorado SB21-169 is the tell, not the rule.</div>
+          <div class="issue-meta">March 24, 2026 · 5 min read</div>
+          <p class="issue-preview">Life insurance in Colorado is the US regulator's proof-of-concept for algorithmic bias testing. What it demands today is bad news. What it signals for every other state and every other LOB is worse.</p>
+        </div>
+      </div>
+      <div class="issue-card">
+        <div class="issue-num">#003</div>
+        <div>
+          <div class="issue-title">MCP won the agent distribution war. Nobody noticed.</div>
+          <div class="issue-meta">March 17, 2026 · 3 min read</div>
+          <p class="issue-preview">Six months ago the question was OpenAI Functions vs. Anthropic Tools vs. LangGraph. Today everyone ships MCP. Here's why, what it means for insurance ops, and what your "AI integration plan" should say differently this week.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Why subscribe</div>
+      <h2>Written by someone building it, for people shipping it.</h2>
+    </div>
+    <div class="quotes">
+      <div class="quote-card">
+        <p>"I read it Tuesday morning with coffee. It's the only insurance AI newsletter where I don't skim — I actually open the links."</p>
+        <div class="by">— Head of AI, mid-market P&amp;C carrier</div>
+      </div>
+      <div class="quote-card">
+        <p>"Finally a source that treats carriers as engineers and not as a panel audience."</p>
+        <div class="by">— Platform lead, EU specialty insurer</div>
+      </div>
+    </div>
+    <p style="max-width: 640px; margin-top: 32px; color: var(--muted); font-size: 14px;">Reader quotes are drawn from early subscribers. Attribution is intentionally generic — senior insurance operators don't like their names in marketing copy.</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">FAQ</div>
+      <h2>About the newsletter.</h2>
+    </div>
+    <details><summary>What's the cadence?</summary><p>One email, every Tuesday morning, Paris time (so it lands in US inboxes around 3 a.m. ET and reads nicely with morning coffee). No second email. No "special edition."</p></details>
+    <details><summary>Is it pitching Phidea?</summary><p>The product and the newsletter share a worldview, not a sales funnel. Most issues are analysis. When we ship something relevant, I say so once, in a line, at the bottom. If you hate product-adjacent newsletters, this is not for you.</p></details>
+    <details><summary>Who writes it?</summary><p>I do — Benoit Pasquier, founder of Phidea. Sometimes with a guest contribution from an actuary, a compliance lead, or a platform engineer who actually shipped something. No ghost-writing.</p></details>
+    <details><summary>Can I reply?</summary><p>Yes. Every email is from my address. Replies land in my inbox. Best signal I have.</p></details>
+    <details><summary>Can I share it?</summary><p>Please do. The archive is free and public. Forward freely. If you want bulk access for your team, email me.</p></details>
+  </div>
+</section>
+
+<section id="subscribe">
+  <div class="wrap">
+    <div class="cta-panel">
+      <h2>One email. Every Tuesday.</h2>
+      <p>Join ~1,400 insurance operators reading Phidea Weekly. Unsubscribe with one click, no guilt trip.</p>
+      <form class="signup" style="justify-content: center; margin: 0 auto;" action="https://buttondown.email/api/emails/embed-subscribe/phidea" method="POST">
+        <input type="email" name="email" placeholder="you@carrier.com" required />
+        <button type="submit">Subscribe →</button>
+      </form>
+      <div class="cta-foot">Free. Unsubscribe anytime.</div>
+    </div>
+  </div>
+</section>
+  <Footer />
+</Layout>
